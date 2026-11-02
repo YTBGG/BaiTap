@@ -1,0 +1,1781 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kiểm Tra Trắc Nghiệm Vật Lý 11 (45 Phút) - THPT Nguyễn Đình Chiểu</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#f0fdfa',
+              100: '#ccfbf1',
+              500: '#0d9488',
+              600: '#0f766e',
+              700: '#115e59',
+            },
+            edu: {
+              navy: '#0f172a',
+              indigo: '#3730a3',
+              accent: '#2563eb',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #f8fafc; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    .fade-in { animation: fadeIn 0.25s ease-out forwards; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .math-sym { font-family: 'JetBrains Mono', monospace; font-style: italic; }
+    @media print {
+      .no-print { display: none !important; }
+      body { background: white; color: black; }
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col antialiased selection:bg-indigo-100 selection:text-indigo-800">
+
+  <!-- TOP HEADER -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-sm backdrop-blur-md bg-white/95">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3 cursor-pointer" onclick="app.showHome()">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-700 via-indigo-600 to-teal-500 flex items-center justify-center text-white font-bold text-lg shadow-md shadow-indigo-100">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+          </svg>
+        </div>
+        <div>
+          <h1 class="text-sm sm:text-base font-bold text-slate-900 leading-tight">THPT NGUYỄN ĐÌNH CHIỂU</h1>
+          <p class="text-xs text-slate-500 font-medium">Vật Lý 11 • Kiểm Tra Định Kỳ 45 Phút (GDPT 2018)</p>
+        </div>
+      </div>
+
+      <div class="flex items-center space-x-2 sm:space-x-3">
+        <button id="soundToggleBtn" onclick="app.toggleSound()" class="p-2 rounded-lg text-slate-500 hover:text-slate-800 hover:bg-slate-100 transition" title="Bật/Tắt âm thanh">
+          <svg id="soundIconOn" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path>
+          </svg>
+          <svg id="soundIconOff" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"></path>
+          </svg>
+        </button>
+
+        <button onclick="app.showHome()" class="px-3 py-1.5 text-xs sm:text-sm font-semibold text-slate-600 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition border border-slate-200">
+          Danh mục đề
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN APP CONTAINER -->
+  <main class="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8">
+
+    <!-- VIEW 1: HOME & EXAM SELECTION -->
+    <section id="viewHome" class="space-y-8 fade-in">
+      <!-- Hero Banner -->
+      <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-slate-900 via-indigo-950 to-teal-950 text-white p-6 sm:p-10 shadow-xl border border-slate-800">
+        <div class="relative z-10 max-w-3xl space-y-3">
+          <div class="flex items-center gap-2">
+            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-teal-400/20 text-teal-300 border border-teal-400/30">
+              Chuẩn Đề Kiểm Tra Định Kỳ 45 Phút
+            </span>
+            <span class="text-xs text-indigo-300 font-mono">Chương trình GDPT 2018</span>
+          </div>
+          <h2 class="text-2xl sm:text-4xl font-black tracking-tight leading-tight">
+            Khảo Sát & Luyện Thi Vật Lý 11: Dao Động Cơ
+          </h2>
+          <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+            Hệ thống ngân hàng đề thi bám sát tài liệu học tập THPT Nguyễn Đình Chiểu (Trang 1 - 107). Cấu trúc đề 45 phút chuẩn 3 phần: Trắc nghiệm 4 lựa chọn, Trắc nghiệm Đúng/Sai, và Trắc nghiệm Trả lời ngắn có lời giải chi tiết.
+          </p>
+          <div class="pt-3 flex flex-wrap gap-4 text-xs font-medium text-teal-200">
+            <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-teal-400"></span> Thời gian làm bài: <b>45 phút</b></span>
+            <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-teal-400"></span> 3 Phần kiểm tra tiêu chuẩn</span>
+            <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-teal-400"></span> Chấm điểm tự động thang 10</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mode Selector & Exam Storage Alert -->
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-sm">
+        <div>
+          <h3 class="text-sm font-bold text-slate-900">Phương thức làm bài</h3>
+          <p class="text-xs text-slate-500">Hệ thống tự động lưu bài làm (Auto-save) phòng trường hợp rớt mạng</p>
+        </div>
+        <div class="flex p-1 bg-slate-100 rounded-xl w-full sm:w-auto">
+          <button id="modeExamBtn" onclick="app.setMode('exam')" class="flex-1 sm:flex-none px-4 py-2 text-xs sm:text-sm font-bold rounded-lg transition bg-white text-indigo-700 shadow-sm">
+            ⏱️ Thi chuẩn 45 phút
+          </button>
+          <button id="modePracticeBtn" onclick="app.setMode('practice')" class="flex-1 sm:flex-none px-4 py-2 text-xs sm:text-sm font-semibold rounded-lg transition text-slate-600 hover:text-slate-900">
+            📖 Ôn tập tự do (Xem giải ngay)
+          </button>
+        </div>
+      </div>
+
+      <!-- Exam List -->
+      <div class="space-y-4">
+        <div class="flex items-center justify-between">
+          <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-indigo-600"></span> Danh sách 5 Đề kiểm tra định kỳ (45 phút)
+          </h3>
+          <span class="text-xs font-medium text-slate-500">Mỗi đề chuẩn 3 phần theo GDPT 2018</span>
+        </div>
+
+        <div id="examsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <!-- Rendered via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 2: EXAM TAKING -->
+    <section id="viewExam" class="hidden space-y-6 fade-in">
+      <!-- Sticky Exam Status Bar -->
+      <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-sm flex flex-wrap items-center justify-between gap-4 sticky top-20 z-20">
+        <div>
+          <div class="flex items-center gap-2">
+            <span id="examBadge" class="px-2.5 py-0.5 rounded-md text-xs font-extrabold bg-indigo-100 text-indigo-700 uppercase">ĐỀ SỐ 1</span>
+            <span id="examModeBadge" class="px-2.5 py-0.5 rounded-md text-xs font-semibold bg-emerald-100 text-emerald-800">Thi chuẩn 45 phút</span>
+          </div>
+          <h2 id="examTitleBar" class="text-base sm:text-lg font-bold text-slate-900 mt-1">Đề kiểm tra giữa kì 1</h2>
+        </div>
+
+        <!-- Timer & Submit Controls -->
+        <div class="flex items-center gap-3">
+          <div id="timerContainer" class="flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-100 border border-slate-200 shadow-inner">
+            <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <span id="timerDisplay" class="font-mono text-lg font-black text-slate-800">45:00</span>
+            <button id="pauseTimerBtn" onclick="app.togglePause()" class="ml-1 text-slate-400 hover:text-slate-700 p-1 rounded" title="Tạm dừng / Tiếp tục">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
+            </button>
+          </div>
+
+          <button onclick="app.confirmSubmit()" class="px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-indigo-600 hover:bg-indigo-700 text-white shadow-md shadow-indigo-100 transition">
+            Nộp bài thi
+          </button>
+        </div>
+      </div>
+
+      <!-- Main Workspace: Question Area (3 cols) + Palette (1 col) -->
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 items-start">
+        
+        <!-- Question Column -->
+        <div class="lg:col-span-3 space-y-5">
+          <div class="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-sm space-y-6">
+            
+            <!-- Question Top Header -->
+            <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+              <div class="flex items-center gap-3">
+                <span class="w-8 h-8 rounded-xl bg-indigo-600 text-white font-bold text-sm flex items-center justify-center" id="qCurrentNumber">1</span>
+                <div>
+                  <span id="qPartBadge" class="text-xs font-bold text-indigo-600 tracking-wide uppercase">PHẦN I: TRẮC NGHIỆM LỰA CHỌN</span>
+                  <p class="text-[11px] text-slate-400" id="qPartScoreDesc">Mỗi câu chọn đúng được 0,25 điểm</p>
+                </div>
+              </div>
+
+              <button id="flagBtn" onclick="app.toggleFlagCurrent()" class="flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-50 transition">
+                <svg id="flagIcon" class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9"></path>
+                </svg>
+                <span id="flagText">Cắm cờ</span>
+              </button>
+            </div>
+
+            <!-- Question Stem -->
+            <div id="qContent" class="text-base sm:text-lg font-medium text-slate-900 leading-relaxed">
+              <!-- Rendered via JS -->
+            </div>
+
+            <!-- Dynamic Answer Inputs by Type (Part I, II, III) -->
+            <div id="qInteractionArea" class="pt-2">
+              <!-- Rendered via JS -->
+            </div>
+
+            <!-- Practice Mode Instant Solution -->
+            <div id="qPracticeExplanation" class="hidden mt-6 p-4 rounded-2xl bg-teal-50 border border-teal-200 text-teal-950 text-sm space-y-2">
+              <!-- Rendered via JS -->
+            </div>
+
+            <!-- Question Bottom Navigation -->
+            <div class="flex items-center justify-between pt-6 border-t border-slate-100">
+              <button id="prevQBtn" onclick="app.prevQuestion()" class="flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold border border-slate-200 text-slate-700 hover:bg-slate-50 transition">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                Câu trước
+              </button>
+
+              <span class="text-xs text-slate-400 font-mono font-medium" id="qProgressCounter">Câu 1 / 18</span>
+
+              <button id="nextQBtn" onclick="app.nextQuestion()" class="flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-slate-900 hover:bg-slate-800 text-white transition">
+                Câu tiếp theo
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Sidebar Question Palette (1 col) -->
+        <div class="lg:col-span-1 space-y-4 sticky top-48">
+          <div class="bg-white rounded-3xl border border-slate-200 p-5 shadow-sm space-y-4">
+            <div class="flex items-center justify-between">
+              <h3 class="text-sm font-bold text-slate-800">Mục lục câu hỏi</h3>
+              <span id="answeredCountBadge" class="text-xs font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">0/18 câu</span>
+            </div>
+
+            <!-- Question Palette Grouped by Part -->
+            <div id="paletteContainer" class="space-y-4 max-h-[55vh] overflow-y-auto pr-1">
+              <!-- Rendered via JS -->
+            </div>
+
+            <!-- Legend -->
+            <div class="pt-3 border-t border-slate-100 grid grid-cols-2 gap-2 text-[11px] text-slate-500">
+              <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-md bg-indigo-600"></span><span>Đã làm</span></div>
+              <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-md border border-slate-300 bg-white"></span><span>Chưa làm</span></div>
+              <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-md bg-amber-500"></span><span>Cắm cờ</span></div>
+              <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-md ring-2 ring-indigo-500 border border-slate-300"></span><span>Đang xem</span></div>
+            </div>
+
+            <button onclick="app.confirmSubmit()" class="w-full py-2.5 rounded-xl font-bold text-sm bg-gradient-to-r from-indigo-600 to-teal-600 text-white shadow-sm hover:opacity-95 transition">
+              Nộp bài thi 45 phút
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- VIEW 3: RESULTS & DETAILED REVIEW -->
+    <section id="viewResult" class="hidden space-y-8 fade-in">
+      <!-- Result Score Hero Card -->
+      <div class="bg-white rounded-3xl border border-slate-200 p-6 sm:p-10 shadow-sm relative overflow-hidden">
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+          
+          <div class="space-y-3 text-center md:text-left">
+            <div class="flex items-center justify-center md:justify-start gap-2">
+              <span id="resultBadgeRank" class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800">
+                XUẤT SẮC
+              </span>
+              <span class="text-xs text-slate-500 font-mono font-medium">Chuẩn đề 45 phút</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-black text-slate-900" id="resultExamTitle">Kết quả thi</h2>
+            <p class="text-sm text-slate-600 max-w-lg leading-relaxed" id="resultFeedback">
+              Chúc mừng bạn đã hoàn thành bài kiểm tra 45 phút!
+            </p>
+            <div class="flex flex-wrap justify-center md:justify-start gap-4 pt-2 text-xs text-slate-500 font-medium">
+              <span id="resTimeTaken">⏱️ Thời gian làm bài: 38:15</span>
+              <span id="resPartBreakdown">📊 Chi tiết: P.I (3.0đ) | P.II (2.0đ) | P.III (2.0đ)</span>
+            </div>
+          </div>
+
+          <!-- Total Score Display -->
+          <div class="flex flex-col items-center justify-center p-6 rounded-2xl bg-slate-50 border border-slate-200 min-w-[220px]">
+            <span class="text-xs uppercase font-extrabold text-slate-400 tracking-wider">Tổng điểm thi (Thang 10)</span>
+            <div class="text-5xl sm:text-6xl font-black text-indigo-600 my-1 font-mono" id="resScoreNumber">10.0</div>
+            <div class="text-xs font-semibold text-slate-500" id="resScoreRaw">Đạt 7.0 / 7.0 điểm gốc</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Result Breakdown by Part -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-wide">PHẦN I: LỰA CHỌN</span>
+          <div class="text-2xl font-black text-slate-900 mt-1" id="resPart1Score">3.0 / 3.0</div>
+          <p class="text-xs text-slate-500 mt-0.5" id="resPart1Correct">12 / 12 câu đúng (0,25đ/câu)</p>
+        </div>
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-wide">PHẦN II: ĐÚNG / SAI</span>
+          <div class="text-2xl font-black text-slate-900 mt-1" id="resPart2Score">2.0 / 2.0</div>
+          <p class="text-xs text-slate-500 mt-0.5" id="resPart2Correct">Chuẩn điểm 4 lệnh hỏi a, b, c, d</p>
+        </div>
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-wide">PHẦN III: TRẢ LỜI NGẮN</span>
+          <div class="text-2xl font-black text-slate-900 mt-1" id="resPart3Score">2.0 / 2.0</div>
+          <p class="text-xs text-slate-500 mt-0.5" id="resPart3Correct">Nhập số chính xác (0,5đ/câu)</p>
+        </div>
+      </div>
+
+      <!-- Action & Review Filter Toolbar -->
+      <div class="flex flex-wrap items-center justify-between gap-4 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm no-print">
+        <div class="flex items-center gap-2">
+          <span class="text-xs font-bold text-slate-600">Xem lại:</span>
+          <button onclick="app.filterReview('all')" id="filterAllBtn" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-900 text-white">Tất cả</button>
+          <button onclick="app.filterReview('wrong')" id="filterWrongBtn" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200">Chỉ câu sai / Chưa tối đa</button>
+          <button onclick="app.filterReview('correct')" id="filterCorrectBtn" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200">Chỉ câu đạt tối đa</button>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <button onclick="app.retakeExam()" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold border border-slate-300 text-slate-700 hover:bg-slate-50 transition">
+            🔄 Làm lại đề này
+          </button>
+          <button onclick="app.showHome()" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-indigo-600 hover:bg-indigo-700 text-white transition">
+            📚 Chọn đề khác
+          </button>
+        </div>
+      </div>
+
+      <!-- Detailed Review List -->
+      <div class="space-y-6">
+        <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+          <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+          Lời giải chi tiết & Phương pháp giải chuẩn Bộ GD&ĐT
+        </h3>
+
+        <div id="reviewQuestionsList" class="space-y-6">
+          <!-- Rendered via JS -->
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODAL: CONFIRMATION -->
+  <div id="modalConfirm" class="fixed inset-0 bg-slate-900/60 z-50 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 space-y-5 shadow-2xl fade-in">
+      <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+        </svg>
+      </div>
+      <div>
+        <h4 class="text-lg font-bold text-slate-900">Xác nhận nộp bài thi 45 phút?</h4>
+        <p id="modalConfirmMsg" class="text-sm text-slate-600 mt-1 leading-relaxed">
+          Bạn đã trả lời được các câu hỏi.
+        </p>
+      </div>
+      <div class="flex items-center justify-end gap-3 pt-2">
+        <button onclick="app.closeModalConfirm()" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold border border-slate-200 text-slate-700 hover:bg-slate-50 transition">
+          Kiểm tra lại
+        </button>
+        <button onclick="app.processSubmit()" class="px-5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-indigo-600 hover:bg-indigo-700 text-white shadow-md shadow-indigo-100 transition">
+          Nộp bài ngay
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-400 no-print">
+    <div class="max-w-7xl mx-auto px-4">
+      <p class="font-semibold text-slate-600">BỘ MÔN VẬT LÝ - TRƯỜNG THPT NGUYỄN ĐÌNH CHIỂU (TP. HỒ CHÍ MINH)</p>
+      <p class="mt-1">Tài liệu học tập Vật lý 11 HK1 • Chuẩn đề kiểm tra định kỳ 45 phút (Chương trình GDPT 2018)</p>
+    </div>
+  </footer>
+
+  <!-- DATABASE & JAVASCRIPT LOGIC -->
+  <script>
+    /**
+     * DỮ LIỆU 5 ĐỀ THI 45 PHÚT CHUẨN CẤU TRÚC BỘ GD&ĐT (TÀI LIỆU TRANG 1 - 107)
+     * Mỗi đề gồm:
+     * - PHẦN I: 12 câu trắc nghiệm 4 lựa chọn (3.0 điểm)
+     * - PHẦN II: 2 câu trắc nghiệm Đúng/Sai, mỗi câu 4 ý a,b,c,d (2.0 điểm, chuẩn quy tắc 0.1 - 0.25 - 0.5 - 1.0)
+     * - PHẦN III: 4 câu trả lời ngắn (2.0 điểm)
+     */
+    const EXAMS_DATA = [
+      {
+        id: "de1",
+        title: "Đề số 1: Đề kiểm tra giữa học kỳ 1 (45 phút)",
+        source: "Tài liệu trang 87 - 91",
+        description: "Bao quát toàn diện: Định nghĩa dao động điều hoà, chu kì, pha ban đầu, dao động tự do, dao động tắt dần, cơ năng, hệ con lắc lò xo và đồ thị li độ.",
+        questions: [
+          // PHẦN I
+          { id: 1, part: 1, type: "choice", q: "Khoảng thời gian để vật thực hiện được một dao động toàn phần gọi là", options: ["A. tần số.", "B. chu kì.", "C. biên độ.", "D. tần số góc."], correct: 1, score: 0.25, explanation: "Theo định nghĩa SGK Vật lý 11: Chu kì dao động (kí hiệu T) là khoảng thời gian để vật thực hiện được một dao động toàn phần. Đơn vị là giây (s)." },
+          { id: 2, part: 1, type: "choice", q: "Trong dao động điều hòa thì nhóm đại lượng nào sau đây không thay đổi theo thời gian?", options: ["A. Li độ và thời gian.", "B. Biên độ và tần số góc.", "C. Li độ và pha ban đầu.", "D. Tần số và pha dao động."], correct: 1, score: 0.25, explanation: "Trong phương trình x = A cos(ωt + φ): Biên độ A và tần số góc ω (chu kì T, tần số f) là các hằng số dương không đổi theo thời gian." },
+          { id: 3, part: 1, type: "choice", q: "Một vật dao động điều hòa dọc theo trục Ox với phương trình x = A cos(ωt + φ). Pha ban đầu φ cho phép xác định", options: ["A. trạng thái của dao động ở thời điểm ban đầu.", "B. vận tốc của dao động ở thời điểm t bất kỳ.", "C. li độ của dao động ở thời điểm t bất kỳ.", "D. gia tốc của dao động ở thời điểm t bất kỳ."], correct: 0, score: 0.25, explanation: "Tại thời điểm t = 0, pha dao động là φ. Pha ban đầu cho phép xác định vị trí và chiều chuyển động của vật ở thời điểm ban đầu (tức trạng thái ban đầu)." },
+          { id: 4, part: 1, type: "choice", q: "Dao động tự do là dao động mà chu kì", options: ["A. không phụ thuộc vào các đặc tính của hệ.", "B. chỉ phụ thuộc vào các đặc tính của hệ không phụ thuộc vào các yếu tố bên ngoài.", "C. phụ thuộc vào các đặc tính của hệ và các yếu tố bên ngoài.", "D. không phụ thuộc vào các yếu tố bên ngoài."], correct: 1, score: 0.25, explanation: "Dao động tự do là dao động mà chu kì (hoặc tần số) chỉ phụ thuộc vào cấu tạo riêng của hệ, không phụ thuộc vào các yếu tố bên ngoài." },
+          { id: 5, part: 1, type: "choice", q: "Chuyển động nào sau đây không phải là dao động cơ học?", options: ["A. Chuyển động đung đưa của con lắc đồng hồ.", "B. Chuyển động đung đưa của lá cây khi có gió.", "C. Chuyển động nhấp nhô của phao trên mặt nước.", "D. Chuyển động của ôtô trên đường thẳng."], correct: 3, score: 0.25, explanation: "Dao động cơ học là chuyển động có giới hạn trong không gian, lặp đi lặp lại quanh một vị trí cân bằng. Chuyển động của ô tô trên đường là chuyển động tịnh tiến dời chỗ." },
+          { id: 6, part: 1, type: "choice", q: "Pít-tông của một động cơ đốt trong dao động trên một đoạn thẳng dài 16 cm và làm cho trục khuỷu của động cơ quay đều. Biên độ dao động của một điểm trên mặt pít-tông bằng", options: ["A. 16 cm.", "B. 8 cm.", "C. 4 cm.", "D. 32 cm."], correct: 1, score: 0.25, explanation: "Chiều dài quỹ đạo là L = 2A = 16 cm => Biên độ dao động A = L / 2 = 8 cm." },
+          { id: 7, part: 1, type: "choice", q: "Cho hai dao động điều hòa cùng tần số có pha ban đầu lần lượt là φ₁ và φ₂. Độ lệch pha của hai dao động này là", options: ["A. Δφ = φ₂ - φ₁.", "B. Δφ = |φ₂ - φ₁|.", "C. Δφ = φ₂.φ₁.", "D. Δφ = φ₂ / φ₁."], correct: 1, score: 0.25, explanation: "Độ lệch pha giữa hai dao động cùng tần số được tính bằng giá trị tuyệt đối hiệu số pha ban đầu: Δφ = |φ₂ - φ₁|." },
+          { id: 8, part: 1, type: "choice", q: "Một vật dao động điều hòa trên trục Ox. Đồ thị biểu diễn li độ x theo thời gian t có dạng hình sin với li độ lớn nhất bằng +2,0 cm. Biên độ của vật dao động bằng", options: ["A. 1,0 cm.", "B. 2,0 cm.", "C. 4,0 cm.", "D. 3,0 cm."], correct: 1, score: 0.25, explanation: "Biên độ A là độ lớn cực đại của li độ: A = x_max = 2,0 cm." },
+          { id: 9, part: 1, type: "choice", q: "Một hệ dao động cơ đang thực hiện dao động cưỡng bức. Hiện tượng cộng hưởng xảy ra khi", options: ["A. tần số của lực cưỡng bức bằng tần số dao động riêng của hệ.", "B. tần số của lực cưỡng bức nhỏ hơn tần số dao động riêng của hệ.", "C. tần số của lực cưỡng bức lớn hơn tần số dao động riêng của hệ.", "D. có thêm một lực cưỡng bức tác dụng vào hệ."], correct: 0, score: 0.25, explanation: "Cộng hưởng cơ học xảy ra khi tần số của ngoại lực cưỡng bức bằng đúng tần số dao động riêng của hệ (f = f₀)." },
+          { id: 10, part: 1, type: "choice", q: "Vật dao động điều hòa có biên độ A = 2 cm, chu kì T = 0,4 s. Ở thời điểm t = 0,2 s khi vật đi qua vị trí cân bằng, tốc độ dao động của vật là", options: ["A. 5π cm/s.", "B. -5π cm/s.", "C. 10π cm/s.", "D. -10π cm/s."], correct: 2, score: 0.25, explanation: "Tần số góc ω = 2π / T = 2π / 0,4 = 5π rad/s. Tốc độ qua VTCB là cực đại: v_max = ωA = 5π × 2 = 10π cm/s (tốc độ không âm)." },
+          { id: 11, part: 1, type: "choice", q: "Một con lắc lò xo có khối lượng vật nhỏ là m dao động điều hòa theo phương ngang với phương trình x = A cos(ωt). Mốc tính thế năng ở vị trí cân bằng. Cơ năng của con lắc là", options: ["A. W = m ω A².", "B. W = (1/2) m ω A².", "C. W = m ω² A².", "D. W = (1/2) m ω² A²."], correct: 3, score: 0.25, explanation: "Cơ năng dao động điều hòa: W = (1/2) m v_max² = (1/2) m ω² A²." },
+          { id: 12, part: 1, type: "choice", q: "Khi nói về dao động tắt dần của một vật, phát biểu nào sau đây đúng?", options: ["A. Li độ của vật luôn giảm dần theo thời gian.", "B. Gia tốc của vật luôn giảm dần theo thời gian.", "C. Vận tốc của vật luôn giảm dần theo thời gian.", "D. Biên độ dao động giảm dần theo thời gian."], correct: 3, score: 0.25, explanation: "Dao động tắt dần là dao động có biên độ và cơ năng giảm dần theo thời gian do ma sát sinh công làm tiêu hao năng lượng." },
+          
+          // PHẦN II (Đúng/Sai)
+          {
+            id: 13,
+            part: 2,
+            type: "true_false",
+            q: "Quan sát vị trí của vật nặng trong hệ con lắc lò xo dao động thẳng đứng tại các thời điểm khác nhau (trang 89 tài liệu):",
+            items: [
+              { label: "a", text: "Tại vị trí Q, quả cầu có khoảng cách đến vị trí cân bằng là lớn nhất.", correct: false, exp: "Tại Q vật đang đi qua vị trí cân bằng O nên khoảng cách bằng 0." },
+              { label: "b", text: "Điểm H nằm trên trục thời gian có tọa độ li độ bằng 0.", correct: true, exp: "H nằm trên trục Ot ứng với vị trí cân bằng x = 0." },
+              { label: "c", text: "Tại điểm R, vật ở biên nên độ lớn li độ đạt cực đại.", correct: true, exp: "Điểm R là đỉnh thấp nhất (vị trí biên âm/dương), độ lớn li độ đạt cực đại A." },
+              { label: "d", text: "Điểm F và điểm N gần nhau nhất có cùng trạng thái chuyển động.", correct: false, exp: "F vật đang chuyển động đi lên, còn tại N vật đang chuyển động đi xuống (ngược chiều)." }
+            ]
+          },
+          {
+            id: 14,
+            part: 2,
+            type: "true_false",
+            q: "Một con lắc lò xo gồm viên bi nhỏ khối lượng m = 250 g và lò xo nhẹ có độ cứng k = 100 N/m. Con lắc dao động cưỡng bức theo phương trùng với trục lò xo dưới tác dụng của ngoại lực tuần hoàn F = F₀ cos(ωt). Cho π² = 10.",
+            items: [
+              { label: "a", text: "Tần số góc dao động riêng của hệ là ω₀ = 25 rad/s.", correct: false, exp: "ω₀ = √(k/m) = √(100 / 0,25) = √400 = 20 rad/s." },
+              { label: "b", text: "Khi tần số góc ngoại lực lần lượt là ω₁ = 10 rad/s và ω₂ = 15 rad/s thì biên độ A₁ > A₂.", correct: false, exp: "|ω₂ - ω₀| = |15 - 20| = 5 rad/s nhỏ hơn |ω₁ - ω₀| = |10 - 20| = 10 rad/s, do đó A₂ > A₁." },
+              { label: "c", text: "Biên độ dao động tương ứng thỏa mãn A₁ < A₂.", correct: true, exp: "Tần số góc 15 rad/s gần tần số riêng 20 rad/s hơn 10 rad/s nên biên độ A₂ lớn hơn A₁." },
+              { label: "d", text: "Hiện tượng cộng hưởng xảy ra khi tần số của lực cưỡng bức là f = 10/π Hz.", correct: true, exp: "f₀ = ω₀ / (2π) = 20 / (2π) = 10/π Hz. Khi f = f₀ thì biên độ đạt cực đại." }
+            ]
+          },
+
+          // PHẦN III (Trả lời ngắn)
+          {
+            id: 15,
+            part: 3,
+            type: "short_answer",
+            q: "Một vật dao động điều hòa dọc theo trục Ox với phương trình x = 3 cos(4πt - π/3) (cm). Biên độ dao động của vật là bao nhiêu centimet? (Chỉ nhập số nguyên)",
+            correctAnswers: ["3", "3.0", "3,0"],
+            score: 0.5,
+            explanation: "Đối chiếu với phương trình x = A cos(ωt + φ), biên độ A = 3 cm."
+          },
+          {
+            id: 16,
+            part: 3,
+            type: "short_answer",
+            q: "Một vật dao động điều hòa có đồ thị li độ - thời gian hình sin: tại t = 0 vật qua vị trí cân bằng theo chiều âm và đạt li độ cực tiểu -2 cm tại t = 0,1 s. Pha ban đầu của dao động là bao nhiêu radian? (Làm tròn đến 2 chữ số thập phân)",
+            correctAnswers: ["1.57", "1,57"],
+            score: 0.5,
+            explanation: "Tại t = 0: x = 0 và v < 0 => cosφ = 0 và sinφ > 0 => φ = π/2 ≈ 1,57 rad."
+          },
+          {
+            id: 17,
+            part: 3,
+            type: "short_answer",
+            q: "Một con lắc lò xo có độ cứng k = 40 N/m. Kéo quả nặng ra khỏi vị trí cân bằng một đoạn 4 cm rồi thả nhẹ cho nó dao động điều hòa. Bỏ qua ma sát. Cơ năng dao động của con lắc bằng bao nhiêu Jun? (Làm tròn đến 2 chữ số thập phân)",
+            correctAnswers: ["0.03", "0,03", "0.032", "0,032"],
+            score: 0.5,
+            explanation: "Biên độ A = 4 cm = 0,04 m. Cơ năng W = (1/2) k A² = 0,5 × 40 × (0,04)² = 0,032 J ≈ 0,03 J."
+          },
+          {
+            id: 18,
+            part: 3,
+            type: "short_answer",
+            q: "Một vật dao động điều hòa có phương trình x = 5 cos(2πt + π/3) (cm). Lấy π² = 10. Ở thời điểm vật có li độ x = 3 cm thì gia tốc của vật có giá trị bằng bao nhiêu m/s²? (Làm tròn đến 2 chữ số thập phân)",
+            correctAnswers: ["-1.2", "-1,2", "-1.20", "-1,20"],
+            score: 0.5,
+            explanation: "Tần số góc ω = 2π rad/s => ω² = 4π² = 40 rad²/s². Gia tốc a = -ω²x = -40 × 3 = -120 cm/s² = -1,2 m/s²."
+          }
+        ]
+      },
+      {
+        id: "de2",
+        title: "Đề số 2: Đề kiểm tra giữa học kỳ 1 (45 phút)",
+        source: "Tài liệu trang 92 - 96",
+        description: "Mối liên hệ pha giữa vận tốc và gia tốc, trạng thái dao động, chu kì con lắc đơn, giá trị cực tiểu vận tốc, và hệ thức độc lập thời gian.",
+        questions: [
+          // PHẦN I
+          { id: 1, part: 1, type: "choice", q: "Trong dao động điều hoà, gia tốc biến đổi điều hoà", options: ["A. cùng pha so với vận tốc.", "B. ngược pha so với vận tốc.", "C. sớm pha π/2 so với vận tốc.", "D. chậm pha π/2 so với vận tốc."], correct: 2, score: 0.25, explanation: "Gia tốc a = v' = ωA cos(ωt + φ + π) = ω²A cos(ωt + φ + π), do đó gia tốc sớm pha π/2 so với vận tốc." },
+          { id: 2, part: 1, type: "choice", q: "Một chất điểm dao động điều hòa với phương trình x = A cos(ωt + φ), trong đó A, ω là các hằng số dương. Pha của dao động ở thời điểm t là", options: ["A. (ωt + φ).", "B. ω.", "C. φ.", "D. ωt."], correct: 0, score: 0.25, explanation: "Đại lượng (ωt + φ) là pha của dao động tại thời điểm t, cho biết trạng thái chuyển động tại thời điểm đó." },
+          { id: 3, part: 1, type: "choice", q: "Trạng thái dao động của một vật bao gồm", options: ["A. chiều dao động.", "B. vị trí dao động.", "C. tần số dao động.", "D. Cả A và B đều đúng."], correct: 3, score: 0.25, explanation: "Trạng thái dao động tại một thời điểm được xác định bởi cả vị trí (li độ x) và chiều chuyển động (chiều của vận tốc v)." },
+          { id: 4, part: 1, type: "choice", q: "Tần số góc có đơn vị chuẩn là", options: ["A. Hz.", "B. cm.", "C. rad.", "D. rad/s."], correct: 3, score: 0.25, explanation: "Tần số góc ω có đơn vị radian trên giây (rad/s)." },
+          { id: 5, part: 1, type: "choice", q: "“Có tần số chỉ phụ thuộc vào các đặc tính riêng của hệ mà không phụ thuộc vào các yếu tố môi trường” là định nghĩa của", options: ["A. cộng hưởng.", "B. dao động tắt dần.", "C. dao động tự do.", "D. dao động duy trì."], correct: 2, score: 0.25, explanation: "Đó là định nghĩa của dao động tự do (dao động riêng)." },
+          { id: 6, part: 1, type: "choice", q: "Trong phương trình dao động điều hoà x = A cos(ωt + φ), radian trên giây (rad/s) là thứ nguyên của đại lượng", options: ["A. Biên độ A.", "B. Tần số góc ω.", "C. Pha dao động.", "D. Chu kì T."], correct: 1, score: 0.25, explanation: "Tần số góc ω đo bằng rad/s." },
+          { id: 7, part: 1, type: "choice", q: "Trong dao động điều hòa, đại lượng nào sau đây không có giá trị âm?", options: ["A. Pha dao động.", "B. Pha ban đầu.", "C. Li độ.", "D. Biên độ."], correct: 3, score: 0.25, explanation: "Biên độ A là độ lệch lớn nhất so với VTCB, luôn là một hằng số dương (A > 0)." },
+          { id: 8, part: 1, type: "choice", q: "Con lắc đơn có chiều dài l dao động điều hòa tại nơi có gia tốc trọng trường g. Chu kì dao động là", options: ["A. T = 2π √(l/g).", "B. T = (1/2π) √(l/g).", "C. T = (1/2π) √(g/l).", "D. T = 2π √(g/l)."], correct: 0, score: 0.25, explanation: "Chu kì con lắc đơn dao động nhỏ: T = 2π √(l/g)." },
+          { id: 9, part: 1, type: "choice", q: "Trong dao động điều hòa, giá trị cực tiểu của vận tốc là", options: ["A. v_min = ωA.", "B. v_min = 0.", "C. v_min = -ωA.", "D. v_min = -ω²A."], correct: 2, score: 0.25, explanation: "Vận tốc biến thiên từ -ωA đến +ωA. Do đó giá trị cực tiểu là v_min = -ωA (khi qua VTCB theo chiều âm)." },
+          { id: 10, part: 1, type: "choice", q: "Chất điểm dao động điều hòa với phương trình x = 6 cos(10t - 3π/2) cm. Li độ của chất điểm khi pha dao động bằng 2π/3 là", options: ["A. x = 30 cm.", "B. x = 32 cm.", "C. x = -3 cm.", "D. x = -40 cm."], correct: 2, score: 0.25, explanation: "Pha dao động là góc trong hàm cos: x = 6 cos(2π/3) = 6 × (-0,5) = -3 cm." },
+          { id: 11, part: 1, type: "choice", q: "Bộ phận giảm xóc trong ôtô là ứng dụng của", options: ["A. dao động cưỡng bức.", "B. dao động duy trì.", "C. dao động tự do.", "D. dao động tắt dần."], correct: 3, score: 0.25, explanation: "Giảm xóc ứng dụng hiện tượng dao động tắt dần nhanh để triệt tiêu dao động rung lắc của thân xe." },
+          { id: 12, part: 1, type: "choice", q: "Một vật dao động điều hoà, khi vật có li độ 4 cm thì tốc độ là 30π cm/s, còn khi vật có li độ 3 cm thì tốc độ là 40π cm/s. Biên độ và tần số của dao động là", options: ["A. A = 5 cm; f = 5 Hz.", "B. A = 12 cm; f = 12 Hz.", "C. A = 12 cm; f = 10 Hz.", "D. A = 10 cm; f = 10 Hz."], correct: 0, score: 0.25, explanation: "Dùng hệ thức độc lập: x₁² + v₁²/ω² = x₂² + v₂²/ω² => 4² + (30π)²/ω² = 3² + (40π)²/ω² => ω = 10π rad/s => f = 5 Hz và A = 5 cm." },
+          
+          // PHẦN II (Đúng/Sai)
+          {
+            id: 13,
+            part: 2,
+            type: "true_false",
+            q: "Một vật nhỏ dao động điều hoà trên quỹ đạo dài 40 cm. Khi vật ở vị trí x = 10 cm, vật có tốc độ 20π√3 cm/s:",
+            items: [
+              { label: "a", text: "Biên độ dao động của vật là A = 20 cm.", correct: true, exp: "Quỹ đạo L = 2A = 40 cm => A = 20 cm." },
+              { label: "b", text: "Chu kì dao động của vật là T = 2 s.", correct: true, exp: "Ta có: A² = x² + v²/ω² => 20² = 10² + (20π√3)²/ω² => ω² = (1200π²)/300 = 4π² => ω = 2π rad/s => T = 2π/ω = 1 s (Khẳng định T = 2 s là Sai, nhưng đề trang 94 xét tương đương, ta tính chuẩn T = 1 s, vậy mệnh đề sai)." , correct: false },
+              { label: "c", text: "Vận tốc cực đại của vật có độ lớn là v_max = 40π cm/s.", correct: true, exp: "v_max = ωA = 2π × 20 = 40π cm/s." },
+              { label: "d", text: "Gia tốc cực đại của vật có độ lớn là a_max = 80π² cm/s².", correct: true, exp: "a_max = ω²A = (2π)² × 20 = 80π² cm/s²." }
+            ]
+          },
+          {
+            id: 14,
+            part: 2,
+            type: "true_false",
+            q: "Đồ thị mô tả sự thay đổi động năng W_đ theo li độ x của quả cầu khối lượng 0,4 kg trong một con lắc lò xo treo thẳng đứng có dạng parabol với đỉnh W_đmax = 80 mJ tại x = 0 và W_đ = 0 tại x = ±4 cm:",
+            items: [
+              { label: "a", text: "Cơ năng của con lắc lò xo là 80 mJ.", correct: true, exp: "W = W_đmax = 80 mJ = 0,08 J." },
+              { label: "b", text: "Vận tốc cực đại có độ lớn là v_max = √10 / 5 m/s ≈ 0,63 m/s.", correct: true, exp: "(1/2) m v_max² = 0,08 J => v_max = √(2 × 0,08 / 0,4) = √0,4 = 2/√10 = √10/5 m/s." },
+              { label: "c", text: "Tại vị trí x = 2 cm, động năng của quả cầu bằng 60 mJ.", correct: true, exp: "Đồ thị parabol: khi x = A/2 = 2 cm thì W_t = W/4 = 20 mJ => W_đ = W - W_t = 60 mJ." },
+              { label: "d", text: "Thế năng tại vị trí x = 2 cm có giá trị W_t = 20 mJ.", correct: true, exp: "W_t = W - W_đ = 80 - 60 = 20 mJ." }
+            ]
+          },
+
+          // PHẦN III (Trả lời ngắn)
+          {
+            id: 15,
+            part: 3,
+            type: "short_answer",
+            q: "Một con lắc lò xo treo thẳng đứng gồm vật nặng khối lượng m = 250 g, lò xo có độ cứng k = 100 N/m. Lấy g = 10 m/s². Độ dãn của lò xo ở vị trí cân bằng là bao nhiêu centimet? (Làm tròn đến 1 chữ số thập phân)",
+            correctAnswers: ["2.5", "2,5", "3"],
+            score: 0.5,
+            explanation: "Độ dãn tại VTCB: Δl₀ = mg / k = (0,25 × 10) / 100 = 0,025 m = 2,5 cm."
+          },
+          {
+            id: 16,
+            part: 3,
+            type: "short_answer",
+            q: "Một vật dao động điều hòa với biên độ A = 6 cm. Mốc thế năng ở vị trí cân bằng. Khi vật có động năng bằng 0,75 lần cơ năng thì vật cách vị trí cân bằng một đoạn bao nhiêu centimet? (Chỉ nhập số nguyên)",
+            correctAnswers: ["3", "3.0", "3,0"],
+            score: 0.5,
+            explanation: "W_đ = 0,75 W => Thế năng W_t = 0,25 W = W / 4. Vì W_t tỉ lệ với x² nên x² = A² / 4 => |x| = A / 2 = 6 / 2 = 3 cm."
+          },
+          {
+            id: 17,
+            part: 3,
+            type: "short_answer",
+            q: "Một vật dao động điều hòa với tần số góc ω = 10 rad/s. Khi vật có li độ x = 3 cm thì tốc độ của vật là bao nhiêu cm/s biết biên độ A = 5 cm? (Chỉ nhập số nguyên)",
+            correctAnswers: ["40", "40.0", "40,0"],
+            score: 0.5,
+            explanation: "Tốc độ v = ω √(A² - x²) = 10 × √(5² - 3²) = 10 × 4 = 40 cm/s."
+          },
+          {
+            id: 18,
+            part: 3,
+            type: "short_answer",
+            q: "Một con lắc lò xo có khối lượng m = 100 g dao động cưỡng bức ổn định dưới tác dụng của ngoại lực. Đồ thị biên độ theo tần số góc ngoại lực đạt đỉnh cộng hưởng tại ω = 5π rad/s. Lấy π² = 10. Tìm độ cứng k của lò xo theo đơn vị N/m? (Chỉ nhập số nguyên)",
+            correctAnswers: ["25", "25.0", "25,0"],
+            score: 0.5,
+            explanation: "Khi cộng hưởng: ω = ω₀ = √(k/m) => k = m ω₀² = 0,1 × (5π)² = 0,1 × 25 × 10 = 25 N/m."
+          }
+        ]
+      },
+      {
+        id: "de3",
+        title: "Đề số 3: Đề kiểm tra giữa học kỳ 1 (45 phút)",
+        source: "Tài liệu trang 97 - 101",
+        description: "Đồ thị li độ - thời gian, biểu thức gia tốc và thế năng, sự bảo toàn cơ năng, khối giảm chấn Taipei 101, đồ thị động năng thế năng.",
+        questions: [
+          // PHẦN I
+          { id: 1, part: 1, type: "choice", q: "Một vật dao động điều hòa có đồ thị li độ - thời gian hình sin với đỉnh cao nhất là 20 cm. Biên độ dao động của vật là", options: ["A. -10 cm.", "B. -20 cm.", "C. 10 cm.", "D. 20 cm."], correct: 3, score: 0.25, explanation: "Biên độ A là giá trị cực đại của li độ: A = 20 cm." },
+          { id: 2, part: 1, type: "choice", q: "Một vật dao động điều hòa với li độ x = A cos(ωt + φ₀), A > 0. Vận tốc của vật có biểu thức", options: ["A. v = ωA sin(ωt + φ₀).", "B. v = -ωA cos(ωt + φ₀).", "C. v = -ωA sin(ωt + φ₀).", "D. v = ωA cos(ωt + φ₀)."], correct: 2, score: 0.25, explanation: "v = x' = -ωA sin(ωt + φ₀)." },
+          { id: 3, part: 1, type: "choice", q: "Một vật dao động điều hòa với li độ x = A cos(ωt + φ₀), A > 0. Biểu thức gia tốc của vật theo hàm cos là", options: ["A. a = ω²A sin(ωt + φ₀).", "B. a = -ω²A sin(ωt + φ₀).", "C. a = ω²A cos(ωt + φ₀ + π).", "D. a = ω²A cos(ωt + φ₀)."], correct: 2, score: 0.25, explanation: "a = -ω²x = -ω²A cos(ωt + φ₀) = ω²A cos(ωt + φ₀ + π)." },
+          { id: 4, part: 1, type: "choice", q: "Một chất điểm dao động điều hòa với phương trình x = A cos(ωt), mốc thế năng tại VTCB thì biểu thức thế năng là", options: ["A. W_t = (1/2) m ω² A² cos²(ωt).", "B. W_t = (1/2) m ω² A² sin²(ωt).", "C. W_t = (1/2) m ω A² cos²(ωt).", "D. W_t = (1/2) m ω A² sin²(ωt)."], correct: 0, score: 0.25, explanation: "W_t = (1/2) k x² = (1/2) m ω² x² = (1/2) m ω² A² cos²(ωt)." },
+          { id: 5, part: 1, type: "choice", q: "Cơ năng của một chất điểm dao động điều hoà tỉ lệ thuận với", options: ["A. bình phương biên độ dao động.", "B. chu kì dao động.", "C. bình phương chu kì dao động.", "D. biên độ dao động."], correct: 0, score: 0.25, explanation: "Cơ năng W = (1/2) m ω² A² tỉ lệ thuận với bình phương biên độ dao động A²." },
+          { id: 6, part: 1, type: "choice", q: "Dao động tắt dần là dao động", options: ["A. có biên độ giảm dần theo thời gian.", "B. luôn có lợi.", "C. luôn có hại.", "D. có biên độ không đổi theo thời gian."], correct: 0, score: 0.25, explanation: "Theo định nghĩa, dao động có biên độ giảm dần theo thời gian là dao động tắt dần." },
+          { id: 7, part: 1, type: "choice", q: "Hiện tượng cộng hưởng xảy ra khi", options: ["A. tần số góc dao động của hệ đạt giá trị lớn nhất.", "B. tần số góc của lực cưỡng bức nhỏ hơn tần số góc riêng của hệ.", "C. tần số góc của lực cưỡng bức lớn hơn tần số góc riêng của hệ.", "D. tần số góc của lực cưỡng bức bằng tần số góc riêng của hệ."], correct: 3, score: 0.25, explanation: "Điều kiện xảy ra cộng hưởng: ω = ω₀ (tần số góc ngoại lực bằng tần số góc riêng)." },
+          { id: 8, part: 1, type: "choice", q: "Cho đồ thị li độ - thời gian của một vật dao động điều hòa có đỉnh thứ nhất tại 0,5 s và đỉnh kế tiếp tại 2,5 s. Thời gian vật thực hiện được một dao động toàn phần bằng", options: ["A. 1,5 giây.", "B. 2,0 giây.", "C. 0,5 giây.", "D. 2,5 giây."], correct: 1, score: 0.25, explanation: "Chu kì T = t₂ - t₁ = 2,5 - 0,5 = 2,0 giây." },
+          { id: 9, part: 1, type: "choice", q: "Đồ thị li độ - thời gian của hai dao động cùng chu kì luôn đối xứng ngược nhau qua trục Ot. Hai dao động này", options: ["A. ngược pha.", "B. cùng pha.", "C. lệch pha 2π.", "D. lệch pha π/2."], correct: 0, score: 0.25, explanation: "Khi x₁ = -x₂ thì hai dao động ngược pha nhau (độ lệch pha Δφ = π)." },
+          { id: 10, part: 1, type: "choice", q: "Một chất điểm dao động có phương trình x = 6 cos(πt) (cm, s). Tốc độ cực đại của chất điểm là", options: ["A. 6 cm/s.", "B. 18,8 cm/s.", "C. 113 cm/s.", "D. 2 cm/s."], correct: 1, score: 0.25, explanation: "v_max = ωA = 6π ≈ 18,85 cm/s." },
+          { id: 11, part: 1, type: "choice", q: "Chọn mốc thế năng ở vị trí cân bằng, khi một vật dao động điều hòa đi từ vị trí biên về vị trí cân bằng thì", options: ["A. thế năng tăng, động năng giảm, cơ năng không đổi.", "B. thế năng và động năng tăng, cơ năng giảm.", "C. thế năng giảm, động năng tăng, cơ năng không đổi.", "D. thế năng và động năng giảm, cơ năng tăng."], correct: 2, score: 0.25, explanation: "Đi từ biên về VTCB: li độ giảm => thế năng giảm; tốc độ tăng => động năng tăng; cơ năng bảo toàn." },
+          { id: 12, part: 1, type: "choice", q: "Khối giảm chấn (damper) 720 tấn của tòa nhà Taipei 101 giữ ổn định công trình bằng cách", options: ["A. làm tòa nhà nặng hơn để móng đè chặt xuống đất.", "B. làm giảm sự rung chuyển của tòa nhà nhờ dao động cưỡng bức do xy lanh gây ra.", "C. tạo ra sự cộng hưởng ở tòa nhà khi có bão.", "D. làm giảm sự rung chuyển của tòa nhà nhờ dao động tắt dần của con lắc qua xy lanh thủy lực tiêu tán năng lượng."], correct: 3, score: 0.25, explanation: "Con lắc dao động ngược pha với tòa nhà và xy lanh thủy lực tiêu tán cơ năng thành nhiệt năng, giúp dao động tắt nhanh." },
+          
+          // PHẦN II (Đúng/Sai)
+          {
+            id: 13,
+            part: 2,
+            type: "true_false",
+            q: "Một vật nhỏ dao động điều hòa có đồ thị vận tốc – thời gian hình sin: tại t = 0 vận tốc cực đại v_max = 5π cm/s, vận tốc bằng 0 lần đầu tiên tại t = 1 s:",
+            items: [
+              { label: "a", text: "Tốc độ lớn nhất của vật là 5π cm/s.", correct: true, exp: "v_max = 5π cm/s." },
+              { label: "b", text: "Chu kì dao động của vật là T = 4 s.", correct: true, exp: "Từ cực đại về 0 mất T/4 = 1 s => T = 4 s." },
+              { label: "c", text: "Ở thời điểm t = 2 s, gia tốc của vật đạt độ lớn cực đại.", correct: true, exp: "Tại t = 2 s, v = -v_max (vật qua VTCB) nên gia tốc a = 0 (phát biểu bảo gia tốc = 0 là đúng, đề bài bảo cực đại là sai)." , correct: false },
+              { label: "d", text: "Biên độ dao động của vật bằng 10 cm.", correct: true, exp: "Tần số góc ω = 2π / 4 = 0,5π rad/s. A = v_max / ω = 5π / (0,5π) = 10 cm." }
+            ]
+          },
+          {
+            id: 14,
+            part: 2,
+            type: "true_false",
+            q: "Một vật dao động điều hòa có thế năng và động năng biến đổi theo li độ x. Cơ năng toàn phần là 80 mJ, biên độ A = 4 cm (trang 100 tài liệu):",
+            items: [
+              { label: "a", text: "Biên độ dao động của vật bằng 4 cm.", correct: true, exp: "Độ lệch cực đại trên đồ thị là x = ±4 cm." },
+              { label: "b", text: "Cơ năng của vật có giá trị bằng 80 mJ.", correct: true, exp: "Đỉnh cực đại của đường cong động năng tại x = 0 là W = 80 mJ." },
+              { label: "c", text: "Đường cong có dạng bề lõm quay lên là đồ thị thế năng theo li độ.", correct: true, exp: "W_t = 1/2 k x² là parabol có bề lõm quay lên trên." },
+              { label: "d", text: "Giao điểm của hai đồ thị động năng và thế năng ứng với li độ x = ±2√2 cm.", correct: true, exp: "Khi W_đ = W_t => x = ±A/√2 = ±4/√2 = ±2√2 cm." }
+            ]
+          },
+
+          // PHẦN III (Trả lời ngắn)
+          {
+            id: 15,
+            part: 3,
+            type: "short_answer",
+            q: "Một vật dao động điều hòa có phương trình li độ x = 0,02 cos(4πt) (m, s). Lấy π² = 10. Gia tốc cực đại của vật bằng bao nhiêu m/s²? (Làm tròn đến 1 chữ số thập phân)",
+            correctAnswers: ["3.2", "3,2", "3"],
+            score: 0.5,
+            explanation: "a_max = ω²A = (4π)² × 0,02 = 16 × 10 × 0,02 = 3,2 m/s²."
+          },
+          {
+            id: 16,
+            part: 3,
+            type: "short_answer",
+            q: "Một con lắc lò xo gồm lò xo có độ cứng k = 100 N/m và vật nặng m = 1 kg đang dao động điều hòa với biên độ A = 10 cm. Cơ năng của con lắc có giá trị bằng bao nhiêu Jun? (Làm tròn đến 1 chữ số thập phân)",
+            correctAnswers: ["0.5", "0,5"],
+            score: 0.5,
+            explanation: "A = 10 cm = 0,1 m. Cơ năng W = (1/2) k A² = 0,5 × 100 × (0,1)² = 0,5 J."
+          },
+          {
+            id: 17,
+            part: 3,
+            type: "short_answer",
+            q: "Một vật có tần số riêng 20 Hz thực hiện dao động cưỡng bức dưới tác dụng của ngoại lực F = 15 cos(50πt) N. Tần số dao động của vật ở giai đoạn ổn định là bao nhiêu Hz? (Chỉ nhập số nguyên)",
+            correctAnswers: ["25", "25.0", "25,0"],
+            score: 0.5,
+            explanation: "Khi dao động cưỡng bức đã ổn định, tần số dao động của vật bằng đúng tần số của ngoại lực cưỡng bức: f = ω / 2π = 50π / 2π = 25 Hz."
+          },
+          {
+            id: 18,
+            part: 3,
+            type: "short_answer",
+            q: "Một vật dao động điều hòa với tần số f = 2 Hz. Tại thời điểm t vật có li độ x = 4 cm và tốc độ v = 8π cm/s. Tính biên độ dao động A theo centimet? (Làm tròn đến 1 chữ số thập phân)",
+            correctAnswers: ["4.5", "4,5", "4.47", "4,47"],
+            score: 0.5,
+            explanation: "ω = 2πf = 4π rad/s. A = √(x² + v²/ω²) = √(4² + (8π / 4π)²) = √(16 + 4) = √20 ≈ 4,47 cm ≈ 4,5 cm."
+          }
+        ]
+      },
+      {
+        id: "de4",
+        title: "Đề số 4: Đề kiểm tra giữa học kỳ 1 (45 phút)",
+        source: "Tài liệu trang 102 - 106",
+        description: "Tần số đập cánh của ong, phương trình vận tốc, chuyển động nhanh dần của vật, biến đổi thế năng, và bài toán thời gian vật dừng.",
+        questions: [
+          // PHẦN I
+          { id: 1, part: 1, type: "choice", q: "Đại lượng cho biết số dao động mà vật thực hiện được trong 1 s gọi là", options: ["A. pha dao động.", "B. tần số.", "C. biên độ.", "D. li độ."], correct: 1, score: 0.25, explanation: "Tần số f là số dao động toàn phần thực hiện được trong 1 giây (Hz)." },
+          { id: 2, part: 1, type: "choice", q: "Độ lệch cực đại so với vị trí cân bằng gọi là", options: ["A. Biên độ.", "B. Tần số.", "C. Li độ.", "D. Pha ban đầu."], correct: 0, score: 0.25, explanation: "Biên độ dao động là độ lệch lớn nhất khỏi vị trí cân bằng." },
+          { id: 3, part: 1, type: "choice", q: "Tần số góc có đơn vị là", options: ["A. Hz.", "B. cm.", "C. rad.", "D. rad/s."], correct: 3, score: 0.25, explanation: "Tần số góc ω có đơn vị radian trên giây (rad/s)." },
+          { id: 4, part: 1, type: "choice", q: "Một con ong mật đang bay tại chỗ trong không trung đập cánh với tần số khoảng 200 Hz. Chu kì dao động của cánh ong là", options: ["A. 5 s.", "B. 5 ms.", "C. 2 s.", "D. 2 ms."], correct: 1, score: 0.25, explanation: "T = 1 / f = 1 / 200 = 0,005 s = 5 ms." },
+          { id: 5, part: 1, type: "choice", q: "Phương trình vận tốc của vật dao động điều hòa theo li độ x = A cos(ωt + φ) là", options: ["A. v = -ω²A cos(ωt + φ).", "B. v = -ωA cos(ωt + φ).", "C. v = -ωA sin(ωt + φ).", "D. v = ωA sin(ωt + φ)."], correct: 2, score: 0.25, explanation: "v = x' = -ωA sin(ωt + φ)." },
+          { id: 6, part: 1, type: "choice", q: "Một chất điểm dao động điều hòa với phương trình x = 2 cos(2πt + π/2) cm. Tại thời điểm t = 1/4 s chất điểm có li độ bằng", options: ["A. 2 cm.", "B. -√3 cm.", "C. √3 cm.", "D. -2 cm."], correct: 3, score: 0.25, explanation: "x = 2 cos(2π × 0,25 + π/2) = 2 cos(π) = -2 cm." },
+          { id: 7, part: 1, type: "choice", q: "Một vật dao động điều hoà, mỗi chu kỳ dao động vật đi qua vị trí cân bằng", options: ["A. một lần.", "B. bốn lần.", "C. ba lần.", "D. hai lần."], correct: 3, score: 0.25, explanation: "Trong một chu kì, vật qua VTCB 2 lần (1 lần chiều dương, 1 lần chiều âm)." },
+          { id: 8, part: 1, type: "choice", q: "Chọn phát biểu đúng nhất? Hình chiếu của một chuyển động tròn đều lên một đường kính", options: ["A. là một dao động điều hòa.", "B. được xem là chuyển động thẳng đều.", "C. là dao động tự do có biên độ giảm.", "D. không tuần hoàn."], correct: 0, score: 0.25, explanation: "Hình chiếu của chuyển động tròn đều lên một trục tọa độ nằm trong mặt phẳng quỹ đạo là một dao động điều hòa." },
+          { id: 9, part: 1, type: "choice", q: "Thế năng của vật dao động điều hòa có đặc điểm nào sau đây?", options: ["A. độ lớn tỉ lệ thuận với bình phương li độ của vật.", "B. chiều luôn hướng về vị trí cân bằng.", "C. phương không thay đổi.", "D. độ lớn cực tiểu tại biên dương."], correct: 0, score: 0.25, explanation: "W_t = (1/2) k x² tỉ lệ thuận với x²." },
+          { id: 10, part: 1, type: "choice", q: "Piston của một động cơ đốt trong dao động trên một đoạn thẳng dài L. Biên độ dao động của một điểm trên mặt piston bằng", options: ["A. L.", "B. 0,5 L.", "C. 2 L.", "D. 0,25 L."], correct: 1, score: 0.25, explanation: "Quỹ đạo L = 2A => A = 0,5 L." },
+          { id: 11, part: 1, type: "choice", q: "Phát biểu nào sau đây sai khi nói về dao động điều hòa của chất điểm?", options: ["A. Vận tốc của chất điểm có độ lớn tỉ lệ nghịch với li độ.", "B. Biên độ dao động không đổi theo thời gian.", "C. Khi chọn gốc tọa độ tại VTCB thì lực kéo về có độ lớn tỉ lệ thuận với li độ.", "D. Động năng biến đổi tuần hoàn với chu kì bằng nửa chu kì dao động."], correct: 0, score: 0.25, explanation: "Mối liên hệ giữa v và x là hệ thức elip độc lập thời gian, không phải tỉ lệ nghịch." },
+          { id: 12, part: 1, type: "choice", q: "Khi một vật dao động điều hòa chuyển động từ vị trí biên về vị trí cân bằng thì chuyển động là", options: ["A. nhanh dần đều.", "B. chậm dần đều.", "C. nhanh dần.", "D. chậm dần."], correct: 2, score: 0.25, explanation: "Tốc độ tăng dần nhưng gia tốc biến thiên nên là chuyển động nhanh dần (không đều)." },
+          
+          // PHẦN II (Đúng/Sai)
+          {
+            id: 13,
+            part: 2,
+            type: "true_false",
+            q: "Một vật thực hiện dao động điều hòa mất 0,25 s để di chuyển từ một điểm có vận tốc bằng không đến điểm tiếp theo có vận tốc bằng không. Khoảng cách giữa các điểm đó là 36 cm (trang 106 tài liệu):",
+            items: [
+              { label: "a", text: "Biên độ dao động của vật là A = 18 cm.", correct: true, exp: "Khoảng cách giữa hai biên liên tiếp là L = 2A = 36 cm => A = 18 cm." },
+              { label: "b", text: "Chu kì của dao động là T = 0,5 s.", correct: true, exp: "Thời gian giữa 2 lần liên tiếp v = 0 là nửa chu kì: T/2 = 0,25 s => T = 0,5 s." },
+              { label: "c", text: "Các vị trí có vận tốc bằng không được đề cập là vị trí cân bằng của vật.", correct: false, exp: "Vận tốc bằng không tại hai vị trí biên x = ±A, không phải vị trí cân bằng." },
+              { label: "d", text: "Tần số của dao động là f = 2 Hz.", correct: true, exp: "f = 1 / T = 1 / 0,5 = 2 Hz." }
+            ]
+          },
+          {
+            id: 14,
+            part: 2,
+            type: "true_false",
+            q: "Vật m = 100 g dao động điều hòa trên trục Ox, biên độ A = 5 cm. Gia tốc của vật phụ thuộc vào li độ theo phương trình a = -400π² x (cm/s²). Lấy π² = 10:",
+            items: [
+              { label: "a", text: "Tần số góc dao động của vật là ω = 20π rad/s.", correct: true, exp: "a = -ω²x => ω² = 400π² => ω = 20π rad/s." },
+              { label: "b", text: "Số dao động toàn phần vật thực hiện được trong mỗi giây là 10.", correct: true, exp: "Tần số f = ω / 2π = 20π / 2π = 10 Hz => mỗi giây thực hiện 10 dao động." },
+              { label: "c", text: "Độ cứng tương đương của hệ là k = 400 N/m.", correct: true, exp: "k = m ω² = 0,1 × 4000 = 400 N/m." },
+              { label: "d", text: "Cơ năng dao động của vật bằng 0,5 J.", correct: true, exp: "W = (1/2) k A² = 0,5 × 400 × (0,05)² = 0,5 J." }
+            ]
+          },
+
+          // PHẦN III (Trả lời ngắn)
+          {
+            id: 15,
+            part: 3,
+            type: "short_answer",
+            q: "Gia tốc tối đa của một vật dao động với biên độ A = 2,2 cm và tần số f = 6,6 Hz là bao nhiêu m/s²? Lấy π² = 9,87. (Làm tròn đến 1 chữ số thập phân)",
+            correctAnswers: ["37.8", "37,8", "38"],
+            score: 0.5,
+            explanation: "ω = 2πf = 13,2π rad/s. a_max = ω²A = (13,2π)² × 0,022 ≈ 174,24 × 9,87 × 0,022 ≈ 37,83 m/s² ≈ 37,8 m/s²."
+          },
+          {
+            id: 16,
+            part: 3,
+            type: "short_answer",
+            q: "Một chất điểm dao động điều hoà với tần số 4 Hz và biên độ 10 cm. Độ lớn gia tốc cực đại của chất điểm bằng bao nhiêu m/s²? Cho π² = 10. (Chỉ nhập số nguyên)",
+            correctAnswers: ["64", "64.0", "64,0"],
+            score: 0.5,
+            explanation: "ω = 2πf = 8π rad/s. a_max = ω²A = 64π² × 0,1 = 64 × 10 × 0,1 = 64 m/s²."
+          },
+          {
+            id: 17,
+            part: 3,
+            type: "short_answer",
+            q: "Một vật khối lượng 100 g dao động điều hòa theo phương trình x = 4 cos(2πt - π/3) (cm). Lấy π² = 10. Khi vật có li độ x = 1 cm thì động năng của vật là bao nhiêu mJ? (Chỉ nhập số nguyên)",
+            correctAnswers: ["3", "3.0", "3,0"],
+            score: 0.5,
+            explanation: "k = mω² = 0,1 × 40 = 4 N/m. Động năng W_đ = (1/2) k (A² - x²) = 0,5 × 4 × (0,04² - 0,01²) = 2 × 0,0015 = 0,003 J = 3 mJ."
+          },
+          {
+            id: 18,
+            part: 3,
+            type: "short_answer",
+            q: "Một con lắc dao động tắt dần có cơ năng ban đầu W = 0,5 J. Cứ sau mỗi chu kì dao động thì biên độ giảm 2%. Phần năng lượng bị mất đi trong chu kì đầu tiên là bao nhiêu mJ? (Làm tròn đến 1 chữ số thập phân)",
+            correctAnswers: ["19.8", "19,8", "20"],
+            score: 0.5,
+            explanation: "Biên độ còn lại A' = 0,98A. Cơ năng còn lại W' = 0,98² W = 0,9604 × 0,5 = 0,4802 J. Năng lượng mất đi ΔW = W - W' = 0,5 - 0,4802 = 0,0198 J = 19,8 mJ."
+          }
+        ]
+      },
+      {
+        id: "de5",
+        title: "Đề số 5: Tổng hợp Dao động cơ & Năng lượng (45 phút)",
+        source: "Tài liệu trang 1 - 84",
+        description: "Đề thi toàn diện kiểm tra bản chất cơ học: Sự biến thiên vận tốc - gia tốc, tỉ số động năng - thế năng, chu kì con lắc lò xo và con lắc đơn.",
+        questions: [
+          // PHẦN I
+          { id: 1, part: 1, type: "choice", q: "Chọn phát biểu sai trong các phương án sau:", options: ["A. Dao động điều hòa thì chắc chắn tuần hoàn.", "B. Dao động là chuyển động qua lại quanh một vị trí cân bằng.", "C. Dao động điều hòa là dao động trong đó li độ là hàm tang theo thời gian.", "D. Dao động tuần hoàn có trạng thái lặp lại sau những khoảng thời gian bằng nhau."], correct: 2, score: 0.25, explanation: "Li độ dao động điều hòa là hàm cosin hoặc sin theo thời gian, không thể là hàm tang." },
+          { id: 2, part: 1, type: "choice", q: "Một vật dao động điều hòa với biên độ A = 4 cm. Quãng đường vật đi được sau 2 dao động toàn phần là", options: ["A. 32 cm.", "B. 16 cm.", "C. 8 cm.", "D. 64 cm."], correct: 0, score: 0.25, explanation: "Sau 1 dao động vật đi được 4A => sau 2 dao động vật đi được S = 2 × 4A = 8A = 32 cm." },
+          { id: 3, part: 1, type: "choice", q: "Đại lượng nào dưới đây đặc trưng cho độ lệch về thời gian giữa hai dao động điều hòa cùng chu kì?", options: ["A. Li độ.", "B. Pha dao động.", "C. Pha ban đầu.", "D. Độ lệch pha."], correct: 3, score: 0.25, explanation: "Độ lệch pha Δφ không đổi theo thời gian, đặc trưng cho độ lệch về thời gian: Δt = Δφ / ω." },
+          { id: 4, part: 1, type: "choice", q: "Khi vật thực hiện một dao động toàn phần thì pha của dao động biến thiên một lượng bằng", options: ["A. 0 rad.", "B. π/2 rad.", "C. π rad.", "D. 2π rad."], correct: 3, score: 0.25, explanation: "Sau một chu kì T, góc quét pha tăng thêm Δφ = ωT = 2π rad." },
+          { id: 5, part: 1, type: "choice", q: "Tìm phát biểu sai khi nói về dao động điều hoà:", options: ["A. Gia tốc sớm pha π so với li độ.", "B. Vận tốc và gia tốc luôn luôn ngược pha nhau.", "C. Vận tốc luôn trễ pha π/2 so với gia tốc.", "D. Vận tốc luôn sớm pha π/2 so với li độ."], correct: 1, score: 0.25, explanation: "Vận tốc và gia tốc vuông pha với nhau (gia tốc sớm pha π/2 so với vận tốc), không phải ngược pha." },
+          { id: 6, part: 1, type: "choice", q: "Một vật dao động điều hòa, khi chuyển động từ vị trí biên về vị trí cân bằng thì", options: ["A. vật chuyển động chậm dần.", "B. gia tốc ngược chiều vận tốc.", "C. gia tốc cùng hướng với chuyển động.", "D. li độ có độ lớn tăng dần."], correct: 2, score: 0.25, explanation: "Vật đi từ biên về VTCB chuyển động nhanh dần nên vectơ gia tốc a cùng hướng với vectơ vận tốc v." },
+          { id: 7, part: 1, type: "choice", q: "Một con lắc lò xo dao động điều hòa với tần số f. Động năng của con lắc biến thiên tuần hoàn theo thời gian với tần số", options: ["A. f.", "B. 2f.", "C. f/2.", "D. 4f."], correct: 1, score: 0.25, explanation: "Động năng và thế năng biến thiên tuần hoàn với tần số gấp đôi tần số dao động: f' = 2f." },
+          { id: 8, part: 1, type: "choice", q: "Dao động điều hòa có vận tốc cực đại là v_max = 8π cm/s và gia tốc cực đại a_max = 16π² cm/s² thì biên độ dao động là", options: ["A. 3 cm.", "B. 4 cm.", "C. 5 cm.", "D. 8 cm."], correct: 1, score: 0.25, explanation: "ω = a_max / v_max = 16π² / 8π = 2π rad/s => A = v_max / ω = 8π / 2π = 4 cm." },
+          { id: 9, part: 1, type: "choice", q: "Một con lắc lò xo có k = 100 N/m dao động với biên độ A = 0,1 m. Khi vật cách VTCB 6 cm thì động năng của con lắc bằng", options: ["A. 0,64 J.", "B. 3,2 mJ.", "C. 6,4 mJ.", "D. 0,32 J."], correct: 3, score: 0.25, explanation: "W = (1/2) k A² = 0,5 J; W_t = (1/2) k x² = 0,18 J => W_đ = W - W_t = 0,32 J." },
+          { id: 10, part: 1, type: "choice", q: "Biên độ của dao động cưỡng bức khi ổn định KHÔNG phụ thuộc vào", options: ["A. tần số lực cưỡng bức.", "B. biên độ lực cưỡng bức.", "C. pha ban đầu của lực cưỡng bức.", "D. lực cản của môi trường."], correct: 2, score: 0.25, explanation: "Biên độ dao động cưỡng bức chỉ phụ thuộc F₀, lực cản và độ chênh lệch tần số |f - f₀|, không phụ thuộc pha ban đầu." },
+          { id: 11, part: 1, type: "choice", q: "Một vật dao động điều hòa với biên độ A. Tại li độ nào thì động năng bằng thế năng?", options: ["A. x = ± A.", "B. x = ± A/2.", "C. x = ± A/4.", "D. x = ± A / √2."], correct: 3, score: 0.25, explanation: "W_đ = W_t => W_t = W/2 => (1/2) k x² = (1/2) k A² / 2 => x = ± A / √2." },
+          { id: 12, part: 1, type: "choice", q: "Tại li độ nào thì thế năng của một vật dao động điều hòa bằng 3 lần động năng?", options: ["A. x = ± A/2.", "B. x = ± A√3 / 2.", "C. x = ± A/3.", "D. x = ± A/√2."], correct: 1, score: 0.25, explanation: "W_t = 3 W_đ => W = (4/3) W_t => x² = (3/4) A² => x = ± A√3 / 2." },
+          
+          // PHẦN II (Đúng/Sai)
+          {
+            id: 13,
+            part: 2,
+            type: "true_false",
+            q: "Một con lắc đơn có chiều dài l = 1 m, vật nặng m = 100 g dao động điều hòa tại nơi có g = 10 m/s². Kéo vật lệch khỏi VTCB góc α₀ = 0,1 rad rồi thả nhẹ. Lấy mốc thế năng tại VTCB:",
+            items: [
+              { label: "a", text: "Chu kì dao động của con lắc đơn xấp xỉ bằng 1,99 s.", correct: true, exp: "T = 2π √(l/g) = 2π √(1/10) = 2π / π = 2 s." },
+              { label: "b", text: "Cơ năng dao động của con lắc đơn là 5 mJ.", correct: true, exp: "W ≈ (1/2) m g l α₀² = 0,5 × 0,1 × 10 × 1 × (0,1)² = 0,005 J = 5 mJ." },
+              { label: "c", text: "Tốc độ của vật khi đi qua vị trí cân bằng là 0,316 m/s.", correct: true, exp: "v_max = √(2gl(1 - cosα₀)) ≈ √(gl α₀²) = √(10 × 1 × 0,01) = √0,1 ≈ 0,316 m/s." },
+              { label: "d", text: "Lực căng dây của con lắc khi đi qua vị trí cân bằng có giá trị nhỏ nhất.", correct: false, exp: "Lực căng dây T = mg(3cosα - 2cosα₀) đạt giá trị LỚN NHẤT tại VTCB." }
+            ]
+          },
+          {
+            id: 14,
+            part: 2,
+            type: "true_false",
+            q: "Một vật có khối lượng m = 200 g dao động điều hòa với phương trình x = 5 cos(20t) cm:",
+            items: [
+              { label: "a", text: "Tần số góc của dao động là ω = 20 rad/s.", correct: true, exp: "Đối chiếu phương trình ta có ω = 20 rad/s." },
+              { label: "b", text: "Cơ năng của vật trong quá trình dao động là W = 0,1 J.", correct: true, exp: "W = (1/2) m ω² A² = 0,5 × 0,2 × 400 × (0,05)² = 0,1 J = 100 mJ." },
+              { label: "c", text: "Thế năng của vật khi li độ x = 3 cm là 0,036 J.", correct: true, exp: "k = mω² = 0,2 × 400 = 80 N/m. W_t = (1/2) k x² = 0,5 × 80 × (0,03)² = 0,036 J." },
+              { label: "d", text: "Động năng của con lắc khi vật có tốc độ 30 cm/s là 9 mJ.", correct: true, exp: "W_đ = (1/2) m v² = 0,5 × 0,2 × (0,3)² = 0,009 J = 9 mJ." }
+            ]
+          },
+
+          // PHẦN III (Trả lời ngắn)
+          {
+            id: 15,
+            part: 3,
+            type: "short_answer",
+            q: "Một con lắc lò xo nằm ngang có độ cứng k = 50 N/m, vật nặng m = 1 kg. Tại thời điểm vật có vận tốc v = 0,2 m/s thì gia tốc a = -√3 m/s². Tính cơ năng dao động của con lắc theo đơn vị Jun? (Làm tròn đến 2 chữ số thập phân)",
+            correctAnswers: ["0.05", "0,05"],
+            score: 0.5,
+            explanation: "ω² = k / m = 50. x = -a / ω² = √3 / 50 m. Cơ năng W = (1/2) k x² + (1/2) m v² = 0,5 × 50 × (3/2500) + 0,5 × 1 × 0,04 = 0,03 + 0,02 = 0,05 J."
+          },
+          {
+            id: 16,
+            part: 3,
+            type: "short_answer",
+            q: "Một vật dao động điều hòa theo phương trình x = 5 cos(10πt) (cm). Lấy π² = 10. Hãy xác định giá trị cực tiểu của gia tốc theo đơn vị m/s²? (Chỉ nhập số nguyên)",
+            correctAnswers: ["-50", "-50.0", "-50,0"],
+            score: 0.5,
+            explanation: "Gia tốc biến thiên từ -ω²A đến +ω²A. Giá trị cực tiểu là a_min = -ω²A = -(1000) × 0,05 = -50 m/s²."
+          },
+          {
+            id: 17,
+            part: 3,
+            type: "short_answer",
+            q: "Một con lắc lò xo có k = 20 N/m và m = 200 g dao động điều hòa với biên độ 4 cm. Vị trí của vật khi động năng bằng 2 lần thế năng có độ lớn là bao nhiêu centimet? (Làm tròn đến 1 chữ số thập phân)",
+            correctAnswers: ["2.3", "2,3"],
+            score: 0.5,
+            explanation: "W_đ = 2 W_t => W = 3 W_t => x² = A² / 3 => |x| = A / √3 = 4 / √3 ≈ 2,31 cm ≈ 2,3 cm."
+          },
+          {
+            id: 18,
+            part: 3,
+            type: "short_answer",
+            q: "Một con lắc lò xo gồm lò xo có độ cứng k = 100 N/m và vật nặng m. Tác dụng lên vật ngoại lực F = 20 cos(10πt) N thì xảy ra cộng hưởng. Lấy π² = 10. Khối lượng m của vật là bao nhiêu gam? (Chỉ nhập số nguyên)",
+            correctAnswers: ["100", "100.0", "100,0"],
+            score: 0.5,
+            explanation: "Cộng hưởng => ω₀ = 10π rad/s => k / m = (10π)² = 1000 => m = k / 1000 = 100 / 1000 = 0,1 kg = 100 g."
+          }
+        ]
+      }
+    ];
+
+    /**
+     * SOUND ENGINE USING WEB AUDIO API
+     */
+    class SoundEngine {
+      constructor() {
+        this.ctx = null;
+        this.enabled = true;
+      }
+      init() {
+        if (!this.ctx && (window.AudioContext || window.webkitAudioContext)) {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          this.ctx = new AudioContext();
+        }
+      }
+      playClick() {
+        if (!this.enabled) return;
+        this.init();
+        if (!this.ctx) return;
+        try {
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.frequency.setValueAtTime(520, this.ctx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(320, this.ctx.currentTime + 0.04);
+          gain.gain.setValueAtTime(0.08, this.ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.04);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start();
+          osc.stop(this.ctx.currentTime + 0.04);
+        } catch (e) {}
+      }
+      playVictory() {
+        if (!this.enabled) return;
+        this.init();
+        if (!this.ctx) return;
+        try {
+          const now = this.ctx.currentTime;
+          [523.25, 659.25, 783.99, 1046.5].forEach((freq, i) => {
+            const osc = this.ctx.createOscillator();
+            const gain = this.ctx.createGain();
+            osc.frequency.value = freq;
+            gain.gain.setValueAtTime(0.08, now + i * 0.1);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.1 + 0.2);
+            osc.connect(gain);
+            gain.connect(this.ctx.destination);
+            osc.start(now + i * 0.1);
+            osc.stop(now + i * 0.1 + 0.22);
+          });
+        } catch (e) {}
+      }
+    }
+
+    /**
+     * QUIZ APP CONTROLLER
+     */
+    class QuizApp {
+      constructor() {
+        this.sound = new SoundEngine();
+        this.mode = 'exam'; // 'exam' (45p) | 'practice'
+        this.currentExamId = 'de1';
+        this.currentExam = EXAMS_DATA[0];
+        this.currentQuestionIdx = 0;
+        
+        // Answers storage
+        // For Part 1: answers[idx] = optionIdx (0..3)
+        // For Part 2: answers[idx] = { a: true/false, b: true/false, ... }
+        // For Part 3: answers[idx] = "string"
+        this.answers = {};
+        this.flags = {};
+        
+        // 45 minutes = 2700 seconds
+        this.examDuration = 45 * 60;
+        this.timeRemaining = this.examDuration;
+        this.timerInterval = null;
+        this.isPaused = false;
+        this.isSubmitted = false;
+
+        this.reviewFilter = 'all'; // 'all' | 'wrong' | 'correct'
+
+        this.init();
+      }
+
+      init() {
+        this.renderExamsList();
+        this.checkSavedSession();
+      }
+
+      setMode(newMode) {
+        this.mode = newMode;
+        const examBtn = document.getElementById('modeExamBtn');
+        const practiceBtn = document.getElementById('modePracticeBtn');
+        if (newMode === 'exam') {
+          examBtn.className = "flex-1 sm:flex-none px-4 py-2 text-xs sm:text-sm font-bold rounded-lg transition bg-white text-indigo-700 shadow-sm";
+          practiceBtn.className = "flex-1 sm:flex-none px-4 py-2 text-xs sm:text-sm font-semibold rounded-lg transition text-slate-600 hover:text-slate-900";
+        } else {
+          practiceBtn.className = "flex-1 sm:flex-none px-4 py-2 text-xs sm:text-sm font-bold rounded-lg transition bg-white text-teal-700 shadow-sm";
+          examBtn.className = "flex-1 sm:flex-none px-4 py-2 text-xs sm:text-sm font-semibold rounded-lg transition text-slate-600 hover:text-slate-900";
+        }
+        this.sound.playClick();
+      }
+
+      toggleSound() {
+        this.sound.enabled = !this.sound.enabled;
+        document.getElementById('soundIconOn').classList.toggle('hidden', !this.sound.enabled);
+        document.getElementById('soundIconOff').classList.toggle('hidden', this.sound.enabled);
+        if (this.sound.enabled) this.sound.playClick();
+      }
+
+      renderExamsList() {
+        const grid = document.getElementById('examsGrid');
+        grid.innerHTML = EXAMS_DATA.map((exam, idx) => {
+          const saved = localStorage.getItem(`phys11_exam_${exam.id}`);
+          const hasResume = saved && !JSON.parse(saved).isSubmitted;
+          return `
+            <div class="bg-white rounded-3xl border border-slate-200 p-6 flex flex-col justify-between hover:shadow-lg hover:border-indigo-400 transition-all duration-200 group">
+              <div class="space-y-3">
+                <div class="flex items-center justify-between">
+                  <span class="px-3 py-1 rounded-full text-xs font-black bg-indigo-50 text-indigo-700 border border-indigo-100">
+                    ĐỀ SỐ ${idx + 1}
+                  </span>
+                  <span class="text-xs font-mono text-slate-400">${exam.source}</span>
+                </div>
+                <h4 class="text-base font-bold text-slate-900 group-hover:text-indigo-600 transition leading-snug">
+                  ${exam.title}
+                </h4>
+                <p class="text-xs text-slate-500 leading-relaxed line-clamp-3">
+                  ${exam.description}
+                </p>
+                <div class="pt-2 flex flex-wrap gap-2 text-[11px] text-slate-600 font-medium">
+                  <span class="bg-slate-100 px-2.5 py-1 rounded-md">Phần I: 12 câu</span>
+                  <span class="bg-slate-100 px-2.5 py-1 rounded-md">Phần II: 2 câu Đ/S</span>
+                  <span class="bg-slate-100 px-2.5 py-1 rounded-md">Phần III: 4 câu ngắn</span>
+                </div>
+              </div>
+
+              <div class="pt-5 mt-5 border-t border-slate-100 flex items-center justify-between">
+                <span class="text-xs font-semibold text-slate-500 flex items-center gap-1">
+                  ⏱️ 45 phút
+                </span>
+                <div class="flex items-center gap-2">
+                  ${hasResume ? `
+                    <button onclick="app.resumeExam('${exam.id}')" class="px-3 py-2 rounded-xl text-xs font-bold bg-amber-500 hover:bg-amber-600 text-white shadow-sm transition">
+                      Làm tiếp
+                    </button>
+                  ` : ''}
+                  <button onclick="app.startExam('${exam.id}', true)" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-900 text-white hover:bg-indigo-600 transition flex items-center gap-1 shadow-sm">
+                    ${hasResume ? 'Làm mới' : 'Bắt đầu làm'}
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      checkSavedSession() {
+        // Just for badge display
+      }
+
+      startExam(examId, reset = false) {
+        this.sound.playClick();
+        this.currentExamId = examId;
+        this.currentExam = EXAMS_DATA.find(e => e.id === examId) || EXAMS_DATA[0];
+        this.currentQuestionIdx = 0;
+        this.isSubmitted = false;
+        this.isPaused = false;
+
+        const savedKey = `phys11_exam_${examId}`;
+        const savedData = localStorage.getItem(savedKey);
+
+        if (!reset && savedData) {
+          const parsed = JSON.parse(savedData);
+          this.answers = parsed.answers || {};
+          this.flags = parsed.flags || {};
+          this.timeRemaining = parsed.timeRemaining || this.examDuration;
+        } else {
+          this.answers = {};
+          this.flags = {};
+          this.timeRemaining = this.examDuration;
+          localStorage.removeItem(savedKey);
+        }
+
+        // Switch View
+        document.getElementById('viewHome').classList.add('hidden');
+        document.getElementById('viewResult').classList.add('hidden');
+        document.getElementById('viewExam').classList.remove('hidden');
+
+        // Header
+        document.getElementById('examBadge').innerText = `ĐỀ SỐ ${EXAMS_DATA.indexOf(this.currentExam) + 1}`;
+        document.getElementById('examTitleBar').innerText = this.currentExam.title;
+        
+        const modeBadge = document.getElementById('examModeBadge');
+        if (this.mode === 'exam') {
+          modeBadge.innerText = "Chuẩn thi 45 phút";
+          modeBadge.className = "px-2.5 py-0.5 rounded-md text-xs font-bold bg-emerald-100 text-emerald-800";
+          document.getElementById('timerContainer').classList.remove('hidden');
+          this.startTimer();
+        } else {
+          modeBadge.innerText = "Ôn tập tự do (Tự kiểm tra)";
+          modeBadge.className = "px-2.5 py-0.5 rounded-md text-xs font-bold bg-amber-100 text-amber-800";
+          document.getElementById('timerContainer').classList.add('hidden');
+          this.stopTimer();
+        }
+
+        this.renderQuestion();
+        this.renderPalette();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      resumeExam(examId) {
+        this.startExam(examId, false);
+      }
+
+      showHome() {
+        if (!this.isSubmitted && Object.keys(this.answers).length > 0) {
+          this.saveProgress();
+        }
+        this.stopTimer();
+        this.sound.playClick();
+        document.getElementById('viewExam').classList.add('hidden');
+        document.getElementById('viewResult').classList.add('hidden');
+        document.getElementById('viewHome').classList.remove('hidden');
+        this.renderExamsList();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      /* TIMER CONTROLS */
+      startTimer() {
+        this.stopTimer();
+        this.updateTimerDisplay();
+        this.timerInterval = setInterval(() => {
+          if (!this.isPaused) {
+            this.timeRemaining--;
+            this.updateTimerDisplay();
+            if (this.timeRemaining % 5 === 0) {
+              this.saveProgress();
+            }
+            if (this.timeRemaining <= 0) {
+              this.stopTimer();
+              this.processSubmit(true);
+            }
+          }
+        }, 1000);
+      }
+
+      stopTimer() {
+        if (this.timerInterval) {
+          clearInterval(this.timerInterval);
+          this.timerInterval = null;
+        }
+      }
+
+      togglePause() {
+        this.isPaused = !this.isPaused;
+        const display = document.getElementById('timerDisplay');
+        display.classList.toggle('text-amber-600', this.isPaused);
+        display.classList.toggle('animate-pulse', this.isPaused);
+      }
+
+      updateTimerDisplay() {
+        const m = Math.floor(Math.max(0, this.timeRemaining) / 60);
+        const s = Math.max(0, this.timeRemaining) % 60;
+        const display = document.getElementById('timerDisplay');
+        display.innerText = `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+        
+        // Highlight when < 5 mins
+        if (this.timeRemaining <= 300) {
+          display.classList.add('text-rose-600');
+        } else {
+          display.classList.remove('text-rose-600');
+        }
+      }
+
+      saveProgress() {
+        if (this.isSubmitted) return;
+        const payload = {
+          examId: this.currentExamId,
+          answers: this.answers,
+          flags: this.flags,
+          timeRemaining: this.timeRemaining,
+          isSubmitted: false
+        };
+        localStorage.setItem(`phys11_exam_${this.currentExamId}`, JSON.stringify(payload));
+      }
+
+      /* RENDER QUESTION */
+      renderQuestion() {
+        const q = this.currentExam.questions[this.currentQuestionIdx];
+        const total = this.currentExam.questions.length;
+
+        document.getElementById('qCurrentNumber').innerText = this.currentQuestionIdx + 1;
+        document.getElementById('qProgressCounter').innerText = `Câu ${this.currentQuestionIdx + 1} / ${total}`;
+        document.getElementById('qContent').innerHTML = `<p class="leading-relaxed">${this.formatMath(q.q)}</p>`;
+
+        // Part Badge and Description
+        const partBadge = document.getElementById('qPartBadge');
+        const partScoreDesc = document.getElementById('qPartScoreDesc');
+        if (q.part === 1) {
+          partBadge.innerText = "PHẦN I: TRẮC NGHIỆM LỰA CHỌN (12 CÂU)";
+          partScoreDesc.innerText = "Chọn 1 đáp án đúng duy nhất (0,25 điểm / câu)";
+        } else if (q.part === 2) {
+          partBadge.innerText = "PHẦN II: TRẮC NGHIỆM ĐÚNG / SAI (2 CÂU)";
+          partScoreDesc.innerText = "Chọn Đúng hoặc Sai cho mỗi ý a, b, c, d (Đúng 1 ý: 0,1đ | 2 ý: 0,25đ | 3 ý: 0,5đ | 4 ý: 1,0đ)";
+        } else {
+          partBadge.innerText = "PHẦN III: TRẮC NGHIỆM TRẢ LỜI NGẮN (4 CÂU)";
+          partScoreDesc.innerText = "Điền đáp số vào ô trống (0,5 điểm / câu)";
+        }
+
+        // Flag status
+        const isFlagged = !!this.flags[this.currentQuestionIdx];
+        const flagIcon = document.getElementById('flagIcon');
+        const flagText = document.getElementById('flagText');
+        if (isFlagged) {
+          flagIcon.setAttribute('fill', 'currentColor');
+          flagIcon.classList.add('text-amber-500');
+          flagText.innerText = "Đã cắm cờ";
+          flagText.classList.add('text-amber-600');
+        } else {
+          flagIcon.setAttribute('fill', 'none');
+          flagIcon.classList.remove('text-amber-500');
+          flagText.innerText = "Cắm cờ";
+          flagText.classList.remove('text-amber-600');
+        }
+
+        // Render Interaction Area based on Question Type
+        const container = document.getElementById('qInteractionArea');
+        container.innerHTML = "";
+
+        if (q.type === "choice") {
+          this.renderChoiceQuestion(q, container);
+        } else if (q.type === "true_false") {
+          this.renderTrueFalseQuestion(q, container);
+        } else if (q.type === "short_answer") {
+          this.renderShortAnswerQuestion(q, container);
+        }
+
+        // Practice Mode Solution Display
+        this.renderPracticeExplanation(q);
+
+        // Navigation state
+        document.getElementById('prevQBtn').disabled = this.currentQuestionIdx === 0;
+        document.getElementById('prevQBtn').classList.toggle('opacity-40', this.currentQuestionIdx === 0);
+
+        const nextBtn = document.getElementById('nextQBtn');
+        if (this.currentQuestionIdx === total - 1) {
+          nextBtn.innerHTML = `Nộp bài thi <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>`;
+        } else {
+          nextBtn.innerHTML = `Câu tiếp theo <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>`;
+        }
+      }
+
+      /* RENDER PART I: 4 CHOICES */
+      renderChoiceQuestion(q, container) {
+        const selected = this.answers[this.currentQuestionIdx];
+        const html = `
+          <div class="space-y-3">
+            ${q.options.map((opt, optIdx) => {
+              const isSelected = selected === optIdx;
+              let boxClass = "border-slate-200 hover:border-indigo-300 hover:bg-indigo-50/30 text-slate-800";
+              let circleClass = "border-slate-300 text-slate-400";
+
+              if (isSelected) {
+                boxClass = "border-indigo-600 bg-indigo-50 text-indigo-900 ring-1 ring-indigo-600";
+                circleClass = "bg-indigo-600 border-indigo-600 text-white font-bold";
+              }
+
+              // Practice mode colors
+              if (this.mode === 'practice' && selected !== undefined) {
+                if (optIdx === q.correct) {
+                  boxClass = "border-emerald-500 bg-emerald-50 text-emerald-900 ring-1 ring-emerald-500";
+                  circleClass = "bg-emerald-600 border-emerald-600 text-white font-bold";
+                } else if (isSelected && optIdx !== q.correct) {
+                  boxClass = "border-rose-500 bg-rose-50 text-rose-900 ring-1 ring-rose-500";
+                  circleClass = "bg-rose-600 border-rose-600 text-white font-bold";
+                }
+              }
+
+              const prefix = ['A', 'B', 'C', 'D'][optIdx];
+              const text = opt.replace(/^[A-D]\.\s*/, '');
+
+              return `
+                <div onclick="app.selectChoice(${optIdx})" class="p-4 rounded-2xl border-2 cursor-pointer transition flex items-start gap-3.5 ${boxClass}">
+                  <div class="w-7 h-7 rounded-lg border-2 flex items-center justify-center text-xs font-bold shrink-0 mt-0.5 ${circleClass}">
+                    ${prefix}
+                  </div>
+                  <div class="text-sm sm:text-base font-normal pt-0.5 leading-relaxed">
+                    ${this.formatMath(text)}
+                  </div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        `;
+        container.innerHTML = html;
+      }
+
+      selectChoice(optIdx) {
+        this.sound.playClick();
+        this.answers[this.currentQuestionIdx] = optIdx;
+        this.saveProgress();
+        this.renderQuestion();
+        this.renderPalette();
+      }
+
+      /* RENDER PART II: TRUE / FALSE */
+      renderTrueFalseQuestion(q, container) {
+        const curAns = this.answers[this.currentQuestionIdx] || {};
+        const html = `
+          <div class="space-y-4">
+            <div class="hidden sm:grid grid-cols-12 gap-3 pb-2 text-xs font-bold text-slate-400 uppercase tracking-wider px-2">
+              <div class="col-span-8">Ý phát biểu</div>
+              <div class="col-span-4 text-center">Lựa chọn của thí sinh</div>
+            </div>
+            ${q.items.map((item) => {
+              const val = curAns[item.label]; // true, false or undefined
+              const isTrueSelected = val === true;
+              const isFalseSelected = val === false;
+
+              let trueBtnStyle = isTrueSelected 
+                ? 'bg-emerald-600 text-white border-emerald-600 shadow-sm font-bold' 
+                : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-50';
+              let falseBtnStyle = isFalseSelected 
+                ? 'bg-rose-600 text-white border-rose-600 shadow-sm font-bold' 
+                : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-50';
+
+              // Practice mode highlighting
+              if (this.mode === 'practice' && val !== undefined) {
+                if (item.correct === true) {
+                  trueBtnStyle += ' ring-2 ring-emerald-400';
+                } else {
+                  falseBtnStyle += ' ring-2 ring-emerald-400';
+                }
+              }
+
+              return `
+                <div class="p-4 rounded-2xl border border-slate-200 bg-slate-50/50 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <div class="flex items-start gap-3 flex-1">
+                    <span class="w-6 h-6 rounded-md bg-indigo-100 text-indigo-700 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
+                      ${item.label}
+                    </span>
+                    <span class="text-sm font-medium text-slate-800 leading-relaxed">
+                      ${this.formatMath(item.text)}
+                    </span>
+                  </div>
+
+                  <div class="flex items-center justify-end gap-2 shrink-0">
+                    <button onclick="app.setTrueFalse('${item.label}', true)" class="px-4 py-2 rounded-xl text-xs border-2 transition ${trueBtnStyle}">
+                      ✓ Đúng
+                    </button>
+                    <button onclick="app.setTrueFalse('${item.label}', false)" class="px-4 py-2 rounded-xl text-xs border-2 transition ${falseBtnStyle}">
+                      ✗ Sai
+                    </button>
+                  </div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        `;
+        container.innerHTML = html;
+      }
+
+      setTrueFalse(label, value) {
+        this.sound.playClick();
+        if (!this.answers[this.currentQuestionIdx]) {
+          this.answers[this.currentQuestionIdx] = {};
+        }
+        this.answers[this.currentQuestionIdx][label] = value;
+        this.saveProgress();
+        this.renderQuestion();
+        this.renderPalette();
+      }
+
+      /* RENDER PART III: SHORT ANSWER */
+      renderShortAnswerQuestion(q, container) {
+        const val = this.answers[this.currentQuestionIdx] || "";
+        const html = `
+          <div class="space-y-4 max-w-lg">
+            <div class="space-y-2">
+              <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider">Nhập kết quả tính toán:</label>
+              <div class="relative flex items-center">
+                <input type="text" id="shortAnswerInput" value="${val}" oninput="app.onShortAnswerChange(this.value)" placeholder="Ví dụ: 3 hoặc 0,05 hoặc -1,2" class="w-full px-4 py-3.5 rounded-2xl border-2 border-slate-200 text-slate-900 font-mono text-base font-bold focus:border-indigo-600 focus:outline-none transition shadow-inner">
+                <button onclick="document.getElementById('shortAnswerInput').focus()" class="absolute right-3 px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-600">
+                  Xác nhận
+                </button>
+              </div>
+            </div>
+            <p class="text-xs text-slate-500 flex items-center gap-1.5">
+              <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+              Có thể nhập số nguyên hoặc số thập phân (chấp nhận cả dấu phẩy <code>,</code> và dấu chấm <code>.</code>)
+            </p>
+          </div>
+        `;
+        container.innerHTML = html;
+      }
+
+      onShortAnswerChange(val) {
+        const trimmed = val.trim();
+        if (trimmed) {
+          this.answers[this.currentQuestionIdx] = trimmed;
+        } else {
+          delete this.answers[this.currentQuestionIdx];
+        }
+        this.saveProgress();
+        this.renderPalette();
+      }
+
+      /* PRACTICE EXPLANATION VIEW */
+      renderPracticeExplanation(q) {
+        const expBox = document.getElementById('qPracticeExplanation');
+        const userAns = this.answers[this.currentQuestionIdx];
+
+        if (this.mode === 'practice' && userAns !== undefined) {
+          expBox.classList.remove('hidden');
+          let resText = "";
+
+          if (q.type === "choice") {
+            const isCorrect = userAns === q.correct;
+            resText = `<div class="font-bold ${isCorrect ? 'text-emerald-700' : 'text-rose-700'}">${isCorrect ? '✓ Trả lời chính xác!' : '✗ Chưa chính xác!'} (Đáp án đúng: ${['A','B','C','D'][q.correct]})</div>`;
+          } else if (q.type === "true_false") {
+            resText = `<div class="font-bold text-teal-800">Đáp án chuẩn:</div><ul class="list-disc pl-5 text-xs text-slate-700 space-y-1 mt-1">${q.items.map(it => `<li><b>${it.label})</b> ${it.correct ? 'ĐÚNG' : 'SAI'} - ${it.exp}</li>`).join('')}</ul>`;
+          } else if (q.type === "short_answer") {
+            resText = `<div class="font-bold text-teal-800">Đáp số chuẩn: <b>${q.correctAnswers[0]}</b></div>`;
+          }
+
+          expBox.innerHTML = `
+            ${resText}
+            ${q.explanation ? `<div class="text-xs text-slate-700 pt-2 border-t border-teal-200/60 leading-relaxed"><b>Lời giải chi tiết:</b> ${this.formatMath(q.explanation)}</div>` : ''}
+          `;
+        } else {
+          expBox.classList.add('hidden');
+        }
+      }
+
+      toggleFlagCurrent() {
+        this.sound.playClick();
+        this.flags[this.currentQuestionIdx] = !this.flags[this.currentQuestionIdx];
+        this.saveProgress();
+        this.renderQuestion();
+        this.renderPalette();
+      }
+
+      prevQuestion() {
+        if (this.currentQuestionIdx > 0) {
+          this.sound.playClick();
+          this.currentQuestionIdx--;
+          this.renderQuestion();
+          this.renderPalette();
+        }
+      }
+
+      nextQuestion() {
+        if (this.currentQuestionIdx < this.currentExam.questions.length - 1) {
+          this.sound.playClick();
+          this.currentQuestionIdx++;
+          this.renderQuestion();
+          this.renderPalette();
+        } else {
+          this.confirmSubmit();
+        }
+      }
+
+      jumpToQuestion(idx) {
+        this.sound.playClick();
+        this.currentQuestionIdx = idx;
+        this.renderQuestion();
+        this.renderPalette();
+      }
+
+      /* RENDER PALETTE GROUPED BY 3 PARTS */
+      renderPalette() {
+        const total = this.currentExam.questions.length;
+        const answeredCount = Object.keys(this.answers).length;
+        document.getElementById('answeredCountBadge').innerText = `${answeredCount}/${total} câu`;
+
+        const container = document.getElementById('paletteContainer');
+        const parts = [
+          { name: "Phần I (Lựa chọn)", filter: (q) => q.part === 1 },
+          { name: "Phần II (Đúng/Sai)", filter: (q) => q.part === 2 },
+          { name: "Phần III (Trả lời ngắn)", filter: (q) => q.part === 3 }
+        ];
+
+        container.innerHTML = parts.map(p => {
+          const partQuestions = this.currentExam.questions
+            .map((q, idx) => ({ ...q, globalIdx: idx }))
+            .filter(p.filter);
+
+          return `
+            <div class="space-y-2">
+              <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">${p.name}</span>
+              <div class="grid grid-cols-4 gap-2">
+                ${partQuestions.map(q => {
+                  const isCurrent = this.currentQuestionIdx === q.globalIdx;
+                  const isAnswered = this.isQuestionAnswered(q.globalIdx);
+                  const isFlagged = !!this.flags[q.globalIdx];
+
+                  let btnClass = "border border-slate-200 bg-white text-slate-700 hover:border-slate-400";
+                  if (isAnswered) {
+                    btnClass = "bg-indigo-600 border-indigo-600 text-white font-semibold";
+                  }
+                  if (isFlagged) {
+                    btnClass = "bg-amber-500 border-amber-500 text-white font-semibold";
+                  }
+                  if (isCurrent) {
+                    btnClass += " ring-2 ring-indigo-500 ring-offset-2";
+                  }
+
+                  return `
+                    <button onclick="app.jumpToQuestion(${q.globalIdx})" class="w-full h-9 rounded-xl text-xs font-mono flex items-center justify-center transition shadow-sm ${btnClass}">
+                      ${q.globalIdx + 1}
+                    </button>
+                  `;
+                }).join('')}
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      isQuestionAnswered(idx) {
+        const q = this.currentExam.questions[idx];
+        const val = this.answers[idx];
+        if (val === undefined || val === null || val === "") return false;
+        if (q.type === "true_false") {
+          return Object.keys(val).length > 0;
+        }
+        return true;
+      }
+
+      /* SUBMISSION MODAL */
+      confirmSubmit() {
+        this.sound.playClick();
+        const total = this.currentExam.questions.length;
+        let answered = 0;
+        for (let i = 0; i < total; i++) {
+          if (this.isQuestionAnswered(i)) answered++;
+        }
+        const unanswered = total - answered;
+        const flagged = Object.values(this.flags).filter(Boolean).length;
+
+        let msg = `Bạn đã làm được <b>${answered}/${total}</b> câu hỏi theo chuẩn đề 45 phút.`;
+        if (unanswered > 0) {
+          msg += `<br><span class="text-amber-600 font-semibold">⚠️ Còn ${unanswered} câu chưa hoàn thành.</span>`;
+        }
+        if (flagged > 0) {
+          msg += `<br>🚩 Có ${flagged} câu đang được cắm cờ xem lại.`;
+        }
+        msg += `<br><br>Bạn có chắc chắn muốn nộp bài để xem điểm và lời giải chi tiết?`;
+
+        document.getElementById('modalConfirmMsg').innerHTML = msg;
+        document.getElementById('modalConfirm').classList.remove('hidden');
+      }
+
+      closeModalConfirm() {
+        document.getElementById('modalConfirm').classList.add('hidden');
+      }
+
+      /* SCORE CALCULATION - MOET 2018 STANDARD */
+      processSubmit(auto = false) {
+        this.closeModalConfirm();
+        this.stopTimer();
+        this.isSubmitted = true;
+        this.sound.playVictory();
+
+        // Clear session
+        localStorage.removeItem(`phys11_exam_${this.currentExamId}`);
+
+        let part1Score = 0;
+        let part1Correct = 0;
+        let part2Score = 0;
+        let part3Score = 0;
+        let part3Correct = 0;
+
+        this.currentExam.questions.forEach((q, idx) => {
+          const userAns = this.answers[idx];
+
+          if (q.part === 1) {
+            // Choice: 0.25đ / câu
+            if (userAns === q.correct) {
+              part1Score += 0.25;
+              part1Correct++;
+            }
+          } else if (q.part === 2) {
+            // True/False: 1 ý = 0.1đ, 2 ý = 0.25đ, 3 ý = 0.5đ, 4 ý = 1.0đ
+            let matchCount = 0;
+            if (userAns && typeof userAns === 'object') {
+              q.items.forEach(it => {
+                if (userAns[it.label] === it.correct) {
+                  matchCount++;
+                }
+              });
+            }
+            if (matchCount === 1) part2Score += 0.1;
+            else if (matchCount === 2) part2Score += 0.25;
+            else if (matchCount === 3) part2Score += 0.5;
+            else if (matchCount === 4) part2Score += 1.0;
+          } else if (q.part === 3) {
+            // Short answer: 0.5đ / câu
+            if (userAns) {
+              const cleanedUser = userAns.toString().trim().replace(',', '.');
+              const isMatch = q.correctAnswers.some(ans => {
+                const cleanedAns = ans.toString().trim().replace(',', '.');
+                return Math.abs(parseFloat(cleanedUser) - parseFloat(cleanedAns)) < 0.05 || cleanedUser.toLowerCase() === cleanedAns.toLowerCase();
+              });
+              if (isMatch) {
+                part3Score += 0.5;
+                part3Correct++;
+              }
+            }
+          }
+        });
+
+        const totalRaw = part1Score + part2Score + part3Score; // Max = 3.0 + 2.0 + 2.0 = 7.0 (chuẩn trắc nghiệm đề gốc)
+        // Scaled to 10.0 scale: (totalRaw / 7.0) * 10
+        const scale10 = (totalRaw / 7.0) * 10;
+        const finalScore = Math.min(10.0, Math.round(scale10 * 10) / 10).toFixed(1);
+
+        // Populate Result Elements
+        document.getElementById('resScoreNumber').innerText = finalScore;
+        document.getElementById('resScoreRaw').innerText = `Đạt ${totalRaw.toFixed(2)} / 7.00 điểm trắc nghiệm gốc`;
+        document.getElementById('resultExamTitle').innerText = `Kết quả thi: ${this.currentExam.title}`;
+
+        document.getElementById('resPart1Score').innerText = `${part1Score.toFixed(2)} / 3.00`;
+        document.getElementById('resPart1Correct').innerText = `${part1Correct}/12 câu đúng (0,25đ/câu)`;
+
+        document.getElementById('resPart2Score').innerText = `${part2Score.toFixed(2)} / 2.00`;
+        document.getElementById('resPart3Score').innerText = `${part3Score.toFixed(2)} / 2.00`;
+        document.getElementById('resPart3Correct').innerText = `${part3Correct}/4 câu đúng (0,5đ/câu)`;
+
+        const timeSpent = this.examDuration - this.timeRemaining;
+        const m = Math.floor(timeSpent / 60);
+        const s = timeSpent % 60;
+        document.getElementById('resTimeTaken').innerText = `⏱️ Thời gian: ${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')} / 45:00`;
+
+        // Classification
+        const rankBadge = document.getElementById('resultBadgeRank');
+        const feedback = document.getElementById('resultFeedback');
+        const numericScore = parseFloat(finalScore);
+
+        if (numericScore >= 9.0) {
+          rankBadge.innerText = "XUẤT SẮC";
+          rankBadge.className = "inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800";
+          feedback.innerText = "Tuyệt vời! Bạn nắm vững 100% bản chất dao động điều hoà, cơ năng và kĩ năng xử lý bài toán định lượng.";
+        } else if (numericScore >= 8.0) {
+          rankBadge.innerText = "GIỎI";
+          rankBadge.className = "inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-teal-100 text-teal-800";
+          feedback.innerText = "Rất tốt! Khả năng tư duy phân tích hiện tượng và công thức vật lý đạt chuẩn yêu cầu.";
+        } else if (numericScore >= 6.5) {
+          rankBadge.innerText = "KHÁ";
+          rankBadge.className = "inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-800";
+          feedback.innerText = "Kết quả khá! Hãy chú ý cẩn thận ở phần Đúng/Sai và đơn vị đo ở phần trả lời ngắn.";
+        } else if (numericScore >= 5.0) {
+          rankBadge.innerText = "TRUNG BÌNH";
+          rankBadge.className = "inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-800";
+          feedback.innerText = "Đã đạt yêu cầu cơ bản. Bạn nên ôn lại công thức độc lập thời gian và bảo toàn cơ năng.";
+        } else {
+          rankBadge.innerText = "CẦN CỐ GẮNG";
+          rankBadge.className = "inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-rose-100 text-rose-800";
+          feedback.innerText = "Điểm chưa đạt. Hãy đọc kỹ phần lời giải chi tiết dưới đây để củng cố lại lý thuyết.";
+        }
+
+        this.renderReviewList();
+
+        // Switch to result view
+        document.getElementById('viewExam').classList.add('hidden');
+        document.getElementById('viewResult').classList.remove('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      filterReview(type) {
+        this.reviewFilter = type;
+        const allBtn = document.getElementById('filterAllBtn');
+        const wrongBtn = document.getElementById('filterWrongBtn');
+        const correctBtn = document.getElementById('filterCorrectBtn');
+
+        const active = "px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-900 text-white";
+        const inactive = "px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200";
+
+        allBtn.className = type === 'all' ? active : inactive;
+        wrongBtn.className = type === 'wrong' ? active : inactive;
+        correctBtn.className = type === 'correct' ? active : inactive;
+
+        this.renderReviewList();
+      }
+
+      /* DETAILED REVIEW LIST */
+      renderReviewList() {
+        const container = document.getElementById('reviewQuestionsList');
+        const list = this.currentExam.questions.filter((q, idx) => {
+          const userAns = this.answers[idx];
+          const isMax = this.isQuestionMaxScore(q, userAns);
+          if (this.reviewFilter === 'wrong') return !isMax;
+          if (this.reviewFilter === 'correct') return isMax;
+          return true;
+        });
+
+        if (list.length === 0) {
+          container.innerHTML = `
+            <div class="bg-white rounded-3xl border border-slate-200 p-8 text-center text-slate-500 text-sm">
+              Không có câu hỏi nào thỏa mãn bộ lọc hiện tại.
+            </div>
+          `;
+          return;
+        }
+
+        container.innerHTML = list.map(q => {
+          const originalIdx = this.currentExam.questions.indexOf(q);
+          const userAns = this.answers[originalIdx];
+          const isMax = this.isQuestionMaxScore(q, userAns);
+
+          let partLabel = q.part === 1 ? "Phần I: Lựa chọn" : (q.part === 2 ? "Phần II: Đúng / Sai" : "Phần III: Trả lời ngắn");
+
+          return `
+            <div class="bg-white rounded-3xl border ${isMax ? 'border-emerald-300' : 'border-rose-300'} p-6 sm:p-8 shadow-sm space-y-5">
+              <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                <div class="flex items-center gap-2">
+                  <span class="text-sm font-bold text-slate-900">Câu ${originalIdx + 1}</span>
+                  <span class="text-xs px-2.5 py-0.5 rounded-md font-semibold bg-slate-100 text-slate-600">${partLabel}</span>
+                </div>
+                ${isMax 
+                  ? `<span class="px-2.5 py-1 rounded-md text-xs font-bold bg-emerald-100 text-emerald-800">✓ Đạt điểm tối đa</span>`
+                  : `<span class="px-2.5 py-1 rounded-md text-xs font-bold bg-rose-100 text-rose-800">✗ Chưa đạt tối đa</span>`
+                }
+              </div>
+
+              <div class="text-slate-900 font-medium text-base sm:text-lg leading-relaxed">
+                ${this.formatMath(q.q)}
+              </div>
+
+              <!-- Question specifics review -->
+              ${this.renderQuestionReviewContent(q, userAns)}
+
+              <!-- Detailed Explanation -->
+              <div class="p-4 rounded-2xl bg-indigo-50/70 border border-indigo-100 text-indigo-950 text-xs sm:text-sm space-y-2">
+                <div class="flex items-center gap-1.5 font-bold text-indigo-900">
+                  <svg class="w-4 h-4 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                  Phương pháp giải & Hướng dẫn chi tiết:
+                </div>
+                <div class="leading-relaxed text-slate-700">
+                  ${this.formatMath(q.explanation || "Đối chiếu theo định nghĩa và công thức chuẩn SGK Vật lý 11.")}
+                </div>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      isQuestionMaxScore(q, userAns) {
+        if (q.part === 1) return userAns === q.correct;
+        if (q.part === 2) {
+          if (!userAns || typeof userAns !== 'object') return false;
+          return q.items.every(it => userAns[it.label] === it.correct);
+        }
+        if (q.part === 3) {
+          if (!userAns) return false;
+          const cleanedUser = userAns.toString().trim().replace(',', '.');
+          return q.correctAnswers.some(ans => {
+            const cleanedAns = ans.toString().trim().replace(',', '.');
+            return Math.abs(parseFloat(cleanedUser) - parseFloat(cleanedAns)) < 0.05 || cleanedUser.toLowerCase() === cleanedAns.toLowerCase();
+          });
+        }
+        return false;
+      }
+
+      renderQuestionReviewContent(q, userAns) {
+        if (q.type === "choice") {
+          return `
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              ${q.options.map((opt, optIdx) => {
+                const isKey = optIdx === q.correct;
+                const isChoice = userAns === optIdx;
+                let cls = "border-slate-200 bg-slate-50 text-slate-700";
+                let tag = "";
+                if (isKey) {
+                  cls = "border-emerald-500 bg-emerald-50 text-emerald-900 font-semibold ring-1 ring-emerald-500";
+                  tag = `<span class="ml-auto text-xs font-bold text-emerald-700">Đáp án đúng</span>`;
+                } else if (isChoice && !isKey) {
+                  cls = "border-rose-500 bg-rose-50 text-rose-900 font-semibold ring-1 ring-rose-500";
+                  tag = `<span class="ml-auto text-xs font-bold text-rose-700">Bạn đã chọn</span>`;
+                }
+                const prefix = ['A', 'B', 'C', 'D'][optIdx];
+                const text = opt.replace(/^[A-D]\.\s*/, '');
+                return `
+                  <div class="p-3.5 rounded-xl border flex items-center gap-3 text-sm ${cls}">
+                    <span class="w-6 h-6 rounded-md border flex items-center justify-center text-xs font-bold shrink-0 bg-white shadow-xs">${prefix}</span>
+                    <span>${this.formatMath(text)}</span>
+                    ${tag}
+                  </div>
+                `;
+              }).join('')}
+            </div>
+          `;
+        } else if (q.type === "true_false") {
+          const userObj = userAns || {};
+          return `
+            <div class="space-y-3">
+              ${q.items.map(it => {
+                const choice = userObj[it.label];
+                const isRight = choice === it.correct;
+                return `
+                  <div class="p-3 rounded-xl border border-slate-200 bg-slate-50/80 text-xs sm:text-sm space-y-1">
+                    <div class="flex items-center justify-between">
+                      <span class="font-bold text-slate-800">Ý ${it.label}: ${this.formatMath(it.text)}</span>
+                      <div class="flex items-center gap-2">
+                        <span class="px-2 py-0.5 rounded font-bold ${choice === true ? 'bg-indigo-100 text-indigo-700' : (choice === false ? 'bg-indigo-100 text-indigo-700' : 'bg-slate-200 text-slate-600')}">
+                          Bạn chọn: ${choice === true ? 'Đúng' : (choice === false ? 'Sai' : 'Chưa chọn')}
+                        </span>
+                        <span class="px-2 py-0.5 rounded font-bold ${it.correct ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'}">
+                          Chuẩn: ${it.correct ? 'ĐÚNG' : 'SAI'}
+                        </span>
+                      </div>
+                    </div>
+                    <p class="text-xs text-slate-500 pt-1">💡 <i>${it.exp}</i></p>
+                  </div>
+                `;
+              }).join('')}
+            </div>
+          `;
+        } else if (q.type === "short_answer") {
+          return `
+            <div class="p-4 rounded-xl border border-slate-200 bg-slate-50 flex flex-wrap items-center justify-between gap-3 text-sm">
+              <div>
+                <span class="text-xs text-slate-500 font-semibold block">Câu trả lời của bạn:</span>
+                <span class="font-mono font-bold text-base ${userAns ? 'text-slate-900' : 'text-slate-400 italic'}">${userAns || '(Chưa nhập)'}</span>
+              </div>
+              <div>
+                <span class="text-xs text-emerald-600 font-semibold block">Đáp số chuẩn chấp nhận:</span>
+                <span class="font-mono font-bold text-base text-emerald-700">${q.correctAnswers.join(' hoặc ')}</span>
+              </div>
+            </div>
+          `;
+        }
+      }
+
+      retakeExam() {
+        this.startExam(this.currentExamId, true);
+      }
+
+      formatMath(text) {
+        if (!text) return '';
+        return text
+          .replace(/ω/g, '<span class="math-sym font-semibold">ω</span>')
+          .replace(/φ/g, '<span class="math-sym font-semibold">φ</span>')
+          .replace(/π/g, '<span class="math-sym font-semibold">π</span>')
+          .replace(/Δφ/g, '<span class="math-sym font-semibold">Δφ</span>')
+          .replace(/λ/g, '<span class="math-sym font-semibold">λ</span>')
+          .replace(/√/g, '√');
+      }
+    }
+
+    // App Initialization
+    let app;
+    window.addEventListener('DOMContentLoaded', () => {
+      app = new QuizApp();
+    });
+  </script>
+</body>
+</html>
