@@ -3,35 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Khảo Sát & Ôn Luyện Tin Học 11 - 2026</title>
-  <!-- Tailwind CSS CDN -->
+  <title>Khảo Sát & Ôn Luyện Tin Học 11 - Đề Thi Chuẩn 2026</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
-      darkMode: 'class',
       theme: {
         extend: {
           colors: {
-            purpleDark: {
-              950: '#0b0617',
-              900: '#13092b',
-              850: '#1b0e3b',
-              800: '#23124d',
-              700: '#381a7a',
-              600: '#5824b0',
-              500: '#7e3bf2',
-              400: '#a773f7',
-              300: '#cbb2fa'
-            },
-            neonViolet: '#a855f7',
-            neonCyan: '#06b6d4',
-            neonPink: '#ec4899',
-            neonAmber: '#f59e0b'
+            appDark: '#0d1117',
+            appHeader: '#161b22',
+            appCard: '#181d26',
+            appCardHover: '#1f2530',
+            appBorder: '#272f3d',
+            appBorderActive: '#7c5ce6',
+            textBase: '#e6edf3',
+            textMuted: '#9aa5b5',
+            accentViolet: '#7c5ce6',
+            accentVioletLight: '#997ff0',
+            accentVioletDim: 'rgba(124, 92, 230, 0.12)',
+            statusOk: '#238636',
+            statusErr: '#da3633'
           },
-          boxShadow: {
-            'glow-purple': '0 0 25px -3px rgba(168, 85, 247, 0.4)',
-            'glow-cyan': '0 0 25px -3px rgba(6, 182, 212, 0.4)',
-            'card-glass': '0 8px 32px 0 rgba(15, 6, 35, 0.65)'
+          fontSize: {
+            'body-lg': ['16.5px', '26px'],
+            'q-title': ['18px', '28px'],
+            'opt-text': ['16px', '24px']
           }
         }
       }
@@ -39,1919 +35,1008 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
   <style>
-    body {
+    * {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      background: radial-gradient(circle at 15% 15%, #1f0b3f 0%, #0b0617 50%, #06020d 100%);
-      min-height: 100vh;
-      color: #e2e8f0;
-      scroll-behavior: smooth;
+      box-sizing: border-box;
     }
-    .font-mono-code {
+    code, pre, .font-mono {
       font-family: 'JetBrains Mono', monospace;
     }
-    .glass-panel {
-      background: rgba(27, 14, 59, 0.6);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(167, 115, 247, 0.18);
+    .break-words-safe {
+      word-break: break-word;
+      overflow-wrap: break-word;
     }
-    .glass-input {
-      background: rgba(19, 9, 43, 0.7);
-      border: 1px solid rgba(167, 115, 247, 0.25);
-    }
-    .glass-input:focus {
-      border-color: #a855f7;
-      box-shadow: 0 0 15px rgba(168, 85, 247, 0.35);
-      outline: none;
-    }
-    /* Tùy chỉnh thanh cuộn */
+    /* Thanh cuộn tinh tế */
     ::-webkit-scrollbar {
-      width: 7px;
-      height: 7px;
+      width: 6px;
+      height: 6px;
     }
     ::-webkit-scrollbar-track {
-      background: #0b0617;
+      background: #0d1117;
     }
     ::-webkit-scrollbar-thumb {
-      background: #5824b0;
-      border-radius: 9999px;
+      background: #272f3d;
+      border-radius: 4px;
     }
     ::-webkit-scrollbar-thumb:hover {
-      background: #7e3bf2;
-    }
-    /* Animation pulse chậm cho badge */
-    @keyframes slowPulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.85; transform: scale(1.02); }
-    }
-    .pulse-glow {
-      animation: slowPulse 3s infinite ease-in-out;
+      background: #3b4455;
     }
   </style>
 </head>
-<body class="selection:bg-purple-600 selection:text-white pb-16">
+<body class="bg-appDark text-textBase min-h-screen flex flex-col selection:bg-accentVioletDim selection:text-accentVioletLight">
 
-  <!-- Header & Thanh công cụ -->
-  <header class="sticky top-0 z-50 glass-panel border-b border-purple-500/20 backdrop-blur-xl">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-wrap items-center justify-between gap-4">
-      
-      <!-- Logo & Tiêu đề -->
-      <div class="flex items-center space-x-3.5">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-600 via-indigo-500 to-cyan-400 p-[2px] shadow-glow-purple">
-          <div class="w-full h-full bg-purpleDark-950 rounded-[10px] flex items-center justify-center">
-            <svg class="w-6 h-6 text-neonViolet" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-            </svg>
-          </div>
+  <!-- Header -->
+  <header class="sticky top-0 z-40 bg-appHeader/95 border-b border-appBorder backdrop-blur px-4 sm:px-6 py-3.5 transition-all">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-lg bg-accentVioletDim border border-accentViolet/30 flex items-center justify-center text-accentVioletLight font-bold text-lg">
+          T11
         </div>
         <div>
-          <h1 class="text-lg sm:text-xl font-bold bg-gradient-to-r from-purple-200 via-purple-400 to-cyan-300 bg-clip-text text-transparent flex items-center gap-2">
-            TIN HỌC 11 <span class="text-xs px-2 py-0.5 rounded-full bg-purple-900/60 text-purple-300 border border-purple-500/30">KNTT • Bài 1-7</span>
+          <h1 class="text-lg sm:text-xl font-bold tracking-tight text-white flex items-center gap-2">
+            Tin Học 11 <span class="text-xs px-2 py-0.5 rounded bg-accentVioletDim text-accentVioletLight border border-accentViolet/30 font-medium">Đề thi 2026</span>
           </h1>
-          <p class="text-xs text-purple-300/70">Định dạng 4 phần chuẩn 2026 • SGK Trang 1 - 38</p>
+          <p class="text-xs sm:text-sm text-textMuted hidden sm:block">Chủ đề 1 & 2 (Bài 1 - Bài 7: Hệ điều hành, Phần cứng, Mã nguồn mở, Mạng, Lưu trữ & Tìm kiếm)</p>
         </div>
       </div>
 
-      <!-- Chọn Đề thi (1 đến 5) -->
-      <div class="flex items-center gap-2 bg-purpleDark-900/90 p-1.5 rounded-2xl border border-purple-600/30">
-        <span class="text-xs font-medium text-purple-300 px-2 flex items-center gap-1">
-          <svg class="w-3.5 h-3.5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
-          Bộ đề:
-        </span>
-        <div id="exam-selector-container" class="flex gap-1 overflow-x-auto">
-          <!-- Các nút đề 1-5 sẽ render ở đây -->
-        </div>
-      </div>
-
-      <!-- Đồng hồ đếm ngược & Hành động -->
-      <div class="flex items-center gap-3">
-        <div class="flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-purpleDark-900/90 border border-purple-500/30 shadow-inner">
-          <svg class="w-4 h-4 text-neonAmber animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-          <span id="timer-display" class="font-mono-code text-sm font-bold text-amber-300 tracking-wider">45:00</span>
+      <!-- Controls: Chọn Đề & Đồng hồ đếm ngược -->
+      <div class="flex items-center gap-2 sm:gap-4 ml-auto">
+        <div class="relative">
+          <select id="examSelector" onchange="switchExam(this.value)" class="bg-appDark border border-appBorder text-textBase text-sm sm:text-base rounded-lg px-3 py-2 pr-8 focus:outline-none focus:border-accentViolet cursor-pointer">
+            <option value="0">Đề số 1: Trọng tâm Căn bản</option>
+            <option value="1">Đề số 2: Hệ điều hành & Mạng</option>
+            <option value="2">Đề số 3: Phần cứng & Mạch logic</option>
+            <option value="3">Đề số 4: Giấy phép & Đĩa trực tuyến</option>
+            <option value="4">Đề số 5: Tổng hợp Đánh giá Năng lực</option>
+          </select>
         </div>
 
-        <button id="btn-submit" onclick="submitExam()" class="px-4 py-2 rounded-xl text-sm font-semibold bg-gradient-to-r from-purple-600 via-indigo-600 to-purple-500 hover:from-purple-500 hover:to-indigo-500 text-white shadow-glow-purple transition duration-200 active:scale-95 flex items-center gap-1.5">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-          <span>Nộp Bài</span>
-        </button>
+        <div class="flex items-center gap-2 bg-appDark border border-appBorder px-3 py-1.5 rounded-lg">
+          <svg class="w-5 h-5 text-accentVioletLight" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          <span id="timerDisplay" class="font-mono text-base font-bold text-white tracking-wider">45:00</span>
+        </div>
 
-        <button id="btn-reset" onclick="resetCurrentExam()" class="p-2 rounded-xl text-purple-300 hover:text-white bg-purple-950/60 hover:bg-purple-900 border border-purple-600/30 transition" title="Làm lại đề">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+        <button id="btnSubmitTop" onclick="submitExam()" class="px-4 py-2 bg-accentViolet hover:bg-accentVioletLight text-white font-semibold text-sm sm:text-base rounded-lg shadow-sm transition-colors">
+          Nộp bài
         </button>
       </div>
-
     </div>
   </header>
 
-  <!-- Banner thông tin tổng quát -->
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
-    <div class="relative overflow-hidden rounded-3xl glass-panel p-6 sm:p-7 border border-purple-500/25 shadow-card-glass">
-      <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-purple-600/10 rounded-full blur-3xl pointer-events-none"></div>
-      <div class="absolute -left-10 -top-10 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
-
-      <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-5">
+  <!-- Banner Kết Quả (ẩn mặc định) -->
+  <div id="resultModal" class="hidden max-w-7xl mx-auto w-full px-4 sm:px-6 pt-5">
+    <div class="bg-appCard border border-accentViolet/40 rounded-xl p-5 sm:p-6 shadow-xl relative overflow-hidden">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
         <div>
-          <div class="flex items-center gap-2 mb-2 flex-wrap">
-            <span id="badge-exam-name" class="px-3 py-1 text-xs font-semibold rounded-full bg-purple-600/30 text-purple-200 border border-purple-500/40">Đề Khảo Sát Số 1</span>
-            <span class="px-3 py-1 text-xs font-medium rounded-full bg-indigo-900/40 text-indigo-300 border border-indigo-500/30">Cấu trúc 4 phần chuẩn 2026</span>
-            <span class="px-3 py-1 text-xs font-medium rounded-full bg-cyan-900/40 text-cyan-300 border border-cyan-500/30">Thời gian: 45 phút</span>
-          </div>
-          <h2 id="exam-headline" class="text-xl sm:text-2xl font-extrabold text-white tracking-tight">Hệ Điều Hành, Phần Cứng & Lưu Trữ Đám Mây</h2>
-          <p class="text-sm text-purple-300/80 mt-1 max-w-3xl">
-            Bao quát toàn diện kiến thức trọng tâm SGK: Chức năng OS & thiết bị di động, Cơ chế tối ưu đĩa cứng HDD, Bản quyền phần mềm & GNU GPL, Cấu trúc CPU - Cổng logic AND/OR/NOT, Thiết bị vào ra & Cổng kết nối, Lưu trữ trực tuyến & Kỹ năng tìm kiếm chuyên sâu.
-          </p>
+          <span class="text-xs uppercase font-semibold text-accentVioletLight tracking-wider">Kết Quả Kiểm Tra</span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">
+            Tổng điểm: <span id="finalScore" class="text-accentVioletLight">0.0</span> / 10.0
+          </h2>
+          <p id="scoreBreakdown" class="text-sm text-textMuted mt-1">Phần I: 0đ | Phần II: 0đ | Phần III: 0đ | Phần IV: 0đ</p>
         </div>
-
-        <!-- Bảng điểm nhanh & Trạng thái nộp bài -->
-        <div id="quick-score-card" class="hidden flex-shrink-0 bg-purpleDark-900/90 border border-purple-500/40 rounded-2xl p-4 text-center min-w-[190px] shadow-glow-purple">
-          <div class="text-xs uppercase tracking-wider text-purple-300 font-semibold mb-1">Tổng điểm đạt được</div>
-          <div class="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-300 to-pink-400 font-mono-code" id="score-text">0.0 / 10</div>
-          <div id="score-rating" class="text-xs font-bold mt-1 text-amber-400">Chưa nộp</div>
-          <button onclick="scrollToResultDetail()" class="text-[11px] text-cyan-400 hover:underline mt-2 inline-block">Xem bảng đáp án chi tiết &darr;</button>
-        </div>
-      </div>
-
-      <!-- Chỉ dẫn thang điểm chuẩn 4 phần theo cấu trúc 2026 -->
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 mt-5 pt-4 border-t border-purple-500/20 text-xs">
-        <div class="p-2 rounded-xl bg-purpleDark-900/50 border border-purple-500/20">
-          <span class="text-purple-400 font-bold block mb-0.5">Phần I: Trắc nghiệm</span>
-          <span class="text-gray-300">12 câu (3.0 điểm - 0.25đ/câu)</span>
-        </div>
-        <div class="p-2 rounded-xl bg-purpleDark-900/50 border border-purple-500/20">
-          <span class="text-cyan-400 font-bold block mb-0.5">Phần II: Đúng / Sai</span>
-          <span class="text-gray-300">4 câu (4.0 điểm - thang lũy tiến)</span>
-        </div>
-        <div class="p-2 rounded-xl bg-purpleDark-900/50 border border-purple-500/20">
-          <span class="text-neonPink font-bold block mb-0.5">Phần III: Trả lời ngắn</span>
-          <span class="text-gray-300">4 câu (1.0 điểm - 0.25đ/câu)</span>
-        </div>
-        <div class="p-2 rounded-xl bg-purpleDark-900/50 border border-purple-500/20">
-          <span class="text-amber-400 font-bold block mb-0.5">Phần IV: Vận dụng</span>
-          <span class="text-gray-300">2 tình huống (2.0 điểm - tự chấm)</span>
+        <div class="flex items-center gap-3">
+          <button onclick="reviewSolutions()" class="px-4 py-2 bg-appDark hover:bg-appCardHover text-textBase border border-appBorder rounded-lg text-sm sm:text-base font-medium transition-colors">
+            Xem lời giải chi tiết
+          </button>
+          <button onclick="resetExam()" class="px-4 py-2 bg-accentViolet hover:bg-accentVioletLight text-white rounded-lg text-sm sm:text-base font-medium transition-colors">
+            Làm lại đề này
+          </button>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Nội dung đề thi chính & Thanh điều hướng -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+  <!-- Layout Thân Đề Thi -->
+  <main class="max-w-7xl mx-auto w-full px-4 sm:px-6 py-6 flex-1 flex flex-col lg:flex-row gap-6">
+    
+    <!-- Khung Câu Hỏi (Chiếm 70%) -->
+    <section class="flex-1 min-w-0" id="questionArea">
+      <!-- Sẽ được render động qua JavaScript -->
+    </section>
 
-      <!-- Cột chính: Danh sách các phần thi -->
-      <div class="lg:col-span-9 space-y-6" id="exam-questions-container">
-        <!-- Render các câu hỏi tự động ở đây bằng JS -->
-      </div>
+    <!-- Sidebar Điều Hướng Nhanh (Chiếm 30%) -->
+    <aside class="w-full lg:w-80 shrink-0">
+      <div class="sticky top-20 bg-appCard border border-appBorder rounded-xl p-4 sm:p-5 flex flex-col gap-4">
+        <div class="flex items-center justify-between border-b border-appBorder pb-3">
+          <h3 class="font-bold text-white text-base">Danh mục câu hỏi</h3>
+          <span id="answeredStats" class="text-xs text-textMuted font-mono">Đã làm: 0/22</span>
+        </div>
 
-      <!-- Cột phụ: Bảng điều hướng câu hỏi Sticky -->
-      <div class="lg:col-span-3">
-        <div class="sticky top-20 glass-panel rounded-2xl p-4 border border-purple-500/30 shadow-card-glass space-y-4">
-          <div class="flex items-center justify-between pb-2 border-b border-purple-500/20">
-            <h3 class="text-xs font-bold uppercase tracking-wider text-purple-200">Điều Hướng Bài Thi</h3>
-            <span id="answered-counter" class="text-xs font-mono-code text-cyan-300 bg-cyan-950/60 px-2 py-0.5 rounded-md border border-cyan-500/30">0/22 câu</span>
+        <!-- Bảng số thứ tự câu hỏi -->
+        <div class="space-y-3 max-h-[60vh] overflow-y-auto pr-1">
+          <div>
+            <div class="text-xs font-semibold text-accentVioletLight mb-1.5">Phần I: Trắc nghiệm (1 - 12)</div>
+            <div class="grid grid-cols-6 gap-1.5" id="navPart1"></div>
           </div>
-
-          <!-- Nhóm nút điều hướng -->
-          <div class="space-y-3 max-h-[60vh] overflow-y-auto pr-1">
-            <div>
-              <p class="text-[11px] font-bold text-purple-400 uppercase tracking-wider mb-1.5">Phần I (12 câu)</p>
-              <div id="nav-part-1" class="grid grid-cols-6 gap-1.5"></div>
-            </div>
-            <div>
-              <p class="text-[11px] font-bold text-cyan-400 uppercase tracking-wider mb-1.5">Phần II: Đúng/Sai (4 câu)</p>
-              <div id="nav-part-2" class="grid grid-cols-4 gap-1.5"></div>
-            </div>
-            <div>
-              <p class="text-[11px] font-bold text-pink-400 uppercase tracking-wider mb-1.5">Phần III: Trả lời ngắn (4 câu)</p>
-              <div id="nav-part-3" class="grid grid-cols-4 gap-1.5"></div>
-            </div>
-            <div>
-              <p class="text-[11px] font-bold text-amber-400 uppercase tracking-wider mb-1.5">Phần IV: Vận dụng (2 câu)</p>
-              <div id="nav-part-4" class="grid grid-cols-2 gap-1.5"></div>
-            </div>
+          <div>
+            <div class="text-xs font-semibold text-accentVioletLight mb-1.5">Phần II: Đúng / Sai (13 - 16)</div>
+            <div class="grid grid-cols-4 gap-1.5" id="navPart2"></div>
           </div>
-
-          <!-- Chú giải trạng thái -->
-          <div class="pt-3 border-t border-purple-500/20 text-[11px] space-y-1 text-purple-300/80">
-            <div class="flex items-center gap-2">
-              <span class="w-3.5 h-3.5 rounded bg-purple-950/80 border border-purple-600/40 inline-block"></span>
-              <span>Chưa làm</span>
-            </div>
-            <div class="flex items-center gap-2">
-              <span class="w-3.5 h-3.5 rounded bg-purple-600 text-white font-bold inline-block"></span>
-              <span>Đã hoàn thành</span>
-            </div>
+          <div>
+            <div class="text-xs font-semibold text-accentVioletLight mb-1.5">Phần III: Điền khuyết (17 - 20)</div>
+            <div class="grid grid-cols-4 gap-1.5" id="navPart3"></div>
           </div>
-
-          <!-- Nút nộp bài phụ -->
-          <div class="pt-2">
-            <button onclick="submitExam()" class="w-full py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white shadow-glow-purple transition active:scale-95">
-              Kiểm Tra & Tính Điểm
-            </button>
+          <div>
+            <div class="text-xs font-semibold text-accentVioletLight mb-1.5">Phần IV: Vận dụng (21 - 22)</div>
+            <div class="grid grid-cols-2 gap-1.5" id="navPart4"></div>
           </div>
         </div>
-      </div>
 
-    </div>
+        <div class="pt-3 border-t border-appBorder">
+          <button onclick="submitExam()" class="w-full py-2.5 bg-accentViolet hover:bg-accentVioletLight text-white font-semibold rounded-lg text-base transition-colors shadow">
+            Hoàn thành & Nộp bài
+          </button>
+        </div>
+      </div>
+    </aside>
+
   </main>
 
-  <!-- Modal thông báo nộp bài / Đã chấm xong -->
-  <div id="result-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4">
-    <div class="glass-panel border border-purple-500/40 rounded-3xl p-6 sm:p-8 max-w-lg w-full text-center shadow-card-glass transform transition-all">
-      <div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-tr from-purple-600 to-cyan-400 p-[2px] mb-4">
-        <div class="w-full h-full bg-purpleDark-950 rounded-[14px] flex items-center justify-center">
-          <svg class="w-8 h-8 text-cyan-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-        </div>
-      </div>
-      <h3 class="text-2xl font-extrabold text-white mb-1">Kết Quả Bài Làm</h3>
-      <p class="text-xs text-purple-300 mb-4" id="modal-exam-subtitle">Đề Khảo Sát Số 1 - Tin Học 11</p>
+  <footer class="border-t border-appBorder bg-appHeader py-4 px-4 text-center text-xs text-textMuted">
+    Hệ thống ôn tập Tin học 11 bám sát Chương trình GDPT 2018 (SGK Kết nối tri thức - Trang 1 đến 38).
+  </footer>
 
-      <div class="bg-purpleDark-950/80 p-4 rounded-2xl border border-purple-500/30 my-4 text-center">
-        <div class="text-xs uppercase text-purple-400 font-semibold mb-1">Tổng điểm quy đổi</div>
-        <div id="modal-score" class="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-300 font-mono-code">8.50 / 10</div>
-        <div id="modal-breakdown" class="text-xs text-purple-200 mt-2 space-y-0.5"></div>
-      </div>
-
-      <div class="flex gap-3 justify-center mt-6">
-        <button onclick="closeModalAndReview()" class="px-5 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-xs font-bold uppercase tracking-wider transition shadow-glow-purple">
-          Xem Chi Tiết Lời Giải
-        </button>
-        <button onclick="closeModal()" class="px-5 py-2.5 rounded-xl bg-purple-950 hover:bg-purple-900 border border-purple-500/30 text-purple-300 text-xs font-semibold transition">
-          Đóng
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- DỮ LIỆU ĐỀ THI & LOGIC JAVASCRIPT -->
+  <!-- DỮ LIỆU ĐỀ THI VÀ BỘ SỬ LÝ JAVASCRIPT -->
   <script>
-    /* DỮ LIỆU 5 ĐỀ THI ĐƯỢC XÂY DỰNG TỪ SGK TIN HỌC 11 (BÀI 1 ĐẾN 7, TRANG 1 - 38) */
+    // 5 ĐỀ THI CHUẨN 4 PHẦN TỪ BÀI 1 ĐẾN BÀI 7
     const EXAMS_DATA = [
       {
-        id: 1,
-        title: "Đề Khảo Sát Số 1",
-        headline: "Hệ Điều Hành, Phần Cứng & Lưu Trữ Đám Mây",
-        description: "Kiểm tra kiến thức cơ chế Plug & Play, phân mảnh đĩa HDD, bản quyền mã nguồn mở GNU GPL, cấu tạo CPU, và các thiết bị số.",
-        part1: [
+        id: 0,
+        title: "Đề số 1: Trọng tâm Căn bản (Bài 1 - Bài 7)",
+        p1: [
+          { q: "Cơ chế nào của hệ điều hành máy tính cá nhân giúp tự động nhận biết thiết bị ngoại vi ngay khi cắm vào mà không đòi hỏi người dùng cài đặt thủ công phức tạp?", opt: ["Plug & Play", "Virtual Memory", "Multitasking", "File Explorer"], ans: 0, exp: "SGK Tin học 11 trang 6: Cơ chế Plug & Play (cắm và chạy) giúp hệ điều hành nhận biết thiết bị ngoại vi ngay khi kết nối và hỗ trợ nạp trình điều khiển tự động." },
+          { q: "Hệ điều hành đầu tiên của Microsoft đánh dấu sự chuyển biến tích hợp toàn diện giao diện đồ hoạ, thanh Taskbar và bảng chọn Start là:", opt: ["Windows 95", "Windows 3.1", "Windows XP", "MS-DOS"], ans: 0, exp: "SGK trang 7: Windows 95 (1995) tích hợp trực tiếp nhiều tính năng, lần đầu xuất hiện nút Start, Taskbar, Status bar và cơ chế Plug & Play." },
+          { q: "Hệ điều hành di động như Android hoặc iOS chú trọng nhất vào đặc điểm nào sau đây?", opt: ["Hỗ trợ kết nối mạng không dây và nhận dạng hành vi cử chỉ người dùng", "Chỉ hỗ trợ bàn phím cơ vật lý có dây", "Không có khả năng kết nối mạng Internet", "Không tích hợp các cảm biến sức khoẻ hay định vị"], ans: 0, exp: "SGK trang 8: Hệ điều hành di động chú trọng kết nối không dây (Wifi, 4G, 5G, Bluetooth) và giao tiếp cảm ứng chạm, vuốt qua cảm biến." },
+          { q: "Một cung (sector) trên bề mặt đĩa từ (HDD) chuẩn theo SGK Tin học 11 ghi được bao nhiêu byte dữ liệu?", opt: ["512 byte", "1024 byte", "256 byte", "4096 byte"], ans: 0, exp: "SGK trang 13: Mỗi cung (sector) ghi 512 byte dữ liệu. Việc đọc ghi thường tính theo liên cung (cluster) gồm 8 cung." },
+          { q: "Tiện ích nào sau đây trên Windows được dùng để gom các liên cung phân tán của một tệp lại liên tục, giảm sự di chuyển đầu từ cơ học?", opt: ["Tối ưu hoá và hợp mảnh (Optimize / Defragment)", "Quét kiểm tra đĩa (Check disk)", "Xoá tệp tạm thời (Disk Cleanup)", "Định dạng đĩa (Format)"], ans: 0, exp: "SGK trang 13: Tiện ích Optimize / Defragment (hợp mảnh) tổ chức lại tệp sao cho các liên cung được ghi liên tục, giúp tăng tốc độ truy cập đĩa cứng." },
+          { q: "Đặc điểm cơ bản nhất của phần mềm nguồn mở theo giấy phép công cộng GNU GPL là gì?", opt: ["Cung cấp mã nguồn và cho phép người dùng tự do sửa đổi, phân phối lại", "Cấm người dùng chia sẻ lại cho người khác", "Chỉ chuyển giao dưới dạng mã máy mã hoá bí mật", "Bắt buộc phải trả phí bản quyền hàng năm"], ans: 0, exp: "SGK trang 17: Giấy phép GNU GPL đảm bảo quyền tiếp cận mã nguồn, cho phép tự do sửa đổi và phân phối lại." },
+          { q: "Thành phần nào bên trong CPU đảm nhận việc thực hiện tất cả các phép tính số học và phép so sánh logic?", opt: ["Bộ số học và logic (ALU)", "Bộ điều khiển (CU)", "Bộ nhớ đệm (Cache)", "Thanh ghi (Register)"], ans: 0, exp: "SGK trang 22: ALU (Arithmetic & Logic Unit) thực hiện tất cả các phép tính số học và logic trong máy tính." },
+          { q: "Khi tắt nguồn điện của máy tính, dữ liệu trong bộ nhớ nào sau đây sẽ bị xoá sạch hoàn toàn?", opt: ["RAM", "ROM", "Ổ đĩa cứng HDD", "Ổ thể rắn SSD"], ans: 0, exp: "SGK trang 22: RAM là bộ nhớ truy cập ngẫu nhiên tạm thời, mất toàn bộ dữ liệu khi ngắt nguồn điện nuôi." },
+          { q: "Chuẩn cổng kết nối nào vừa truyền đồng thời cả tín hiệu âm thanh và hình ảnh số chất lượng cao trên máy tính?", opt: ["HDMI", "VGA", "Cổng COM", "Cổng Parallel"], ans: 0, exp: "SGK trang 30: Cổng HDMI truyền tín hiệu số, truyền đồng thời cả âm thanh và hình ảnh với băng thông lớn." },
+          { q: "Khoảng cách kết nối hiệu quả thông thường của công nghệ không dây Bluetooth giữa hai thiết bị là:", opt: ["Dưới 10 mét", "Dưới 100 mét", "Dưới 1 kilômét", "Không giới hạn khoảng cách"], ans: 0, exp: "SGK trang 30: Bluetooth là phương thức kết nối không dây trong khoảng cách gần (dưới 10 m)." },
+          { q: "Trong Google Drive, quyền chia sẻ nào cho phép người nhận có thể vừa đọc, vừa thêm góp ý nhưng không thể xoá hoặc sửa nội dung tệp?", opt: ["Người nhận xét", "Người xem", "Người chỉnh sửa", "Chủ sở hữu"], ans: 0, exp: "SGK trang 33: Có 3 chế độ chia sẻ: (1) Chỉ xem, (2) Được nhận xét (xem và nhận xét), (3) Người chỉnh sửa." },
+          { q: "Để tìm kiếm chính xác một cụm từ trên Google mà không bị phân tách các từ đơn lẻ, ta sử dụng cú pháp nào?", opt: ["Đặt cụm từ trong cặp dấu ngoặc kép \"...\"", "Đặt cụm từ sau dấu cộng +", "Đặt cụm từ trong ngoặc đơn (...)", "Gõ chữ IN HOA toàn bộ cụm từ"], ans: 0, exp: "SGK trang 38: Đặt cụm từ cần tìm trong dấu nháy kép \"...\" là cách thông dụng để thu hẹp phạm vi tìm kiếm chính xác." }
+        ],
+        p2: [
           {
-            id: "p1_1",
-            question: "Chức năng nào sau đây thể hiện rõ nét nhất tiêu chí quan trọng của hệ điều hành dành cho máy tính cá nhân so với máy chủ?",
-            options: [
-              "Giao diện đồ hoạ thân thiện và cơ chế Plug & Play tự động nhận biết thiết bị ngoại vi",
-              "Khả năng quản trị cơ sở dữ liệu phân tán cho hàng triệu tài khoản người dùng",
-              "Chỉ sử dụng duy nhất giao diện dòng lệnh (CLI) để tối ưu hóa bộ nhớ RAM",
-              "Cung cấp giải pháp tính toán song song với hàng nghìn cụm vi xử lý công nghiệp"
-            ],
-            correct: 0,
-            explain: "SGK trang 5-6: Khác với máy chủ do kỹ sư vận hành, máy tính cá nhân dành cho người dùng phổ thông nên sự thân thiện, dễ sử dụng là tiêu chí quan trọng nhất, thể hiện ở Giao diện đồ hoạ và cơ chế Plug & Play."
+            intro: "Khi nói về bộ nhớ máy tính và tổ chức dữ liệu trên đĩa cứng (SGK Bài 4 & Bài 2):",
+            items: [
+              { text: "a) Bộ nhớ ROM là bộ nhớ chỉ đọc, không cần nguồn điện nuôi vẫn lưu giữ được dữ liệu.", ans: true },
+              { text: "b) Mỗi liên cung (cluster) trên đĩa từ HDD chuẩn thông thường bao gồm 16 cung (sector).", ans: false, exp: "Mỗi cluster thường gồm 8 cung (sector), mỗi sector chứa 512 byte." },
+              { text: "c) Hiện tượng phân mảnh đĩa cứng làm tăng thời gian đọc/ghi dữ liệu do đầu từ phải dịch chuyển cơ học liên tục.", ans: true },
+              { text: "d) Chức năng hợp mảnh (Defragment) có tác dụng tối ưu hiệu năng đối với đĩa thể rắn (SSD) tương tự như đĩa từ HDD.", ans: false, exp: "Chức năng hợp mảnh chỉ có tác dụng với đĩa từ (HDD), không áp dụng với SSD do cơ chế chip nhớ flash." }
+            ]
           },
           {
-            id: "p1_2",
-            question: "Hệ điều hành mã nguồn mở Linux do tác giả nào phát triển vào năm 1991 dựa trên ý tưởng từ hệ điều hành UNIX?",
-            options: ["Bill Gates", "Linus Torvalds", "Steve Jobs", "Edgar Frank Codd"],
-            correct: 1,
-            explain: "SGK trang 7: LINUX do Linus Torvalds viết vào năm 1991, công bố chính thức phiên bản 1.0 năm 1994 dưới dạng mã nguồn mở."
+            intro: "Xét về phần mềm nguồn mở và giấy phép công cộng GNU GPL (SGK Bài 3):",
+            items: [
+              { text: "a) Phần mềm mã nguồn mở luôn đồng nghĩa với việc hoàn toàn không được thu phí phân phối.", ans: false, exp: "Người phân phối vẫn có quyền yêu cầu trả phí dịch vụ chuyển giao/sao chép theo giấy phép GPL." },
+              { text: "b) Giấy phép GNU GPL bảo đảm quyền miễn trừ trách nhiệm bảo hành của tác giả ban đầu.", ans: true },
+              { text: "c) Phần mềm phái sinh được phát triển từ một phần mềm nguồn mở theo giấy phép GPL bắt buộc cũng phải công bố mã nguồn theo GPL.", ans: true },
+              { text: "d) Phần mềm thương mại đóng gói có thể thay thế 100% mọi nhu cầu riêng biệt của từng doanh nghiệp cụ thể.", ans: false, exp: "Nhu cầu riêng biệt phải cần đến phần mềm 'đặt hàng' (may-đo)." }
+            ]
           },
           {
-            id: "p1_3",
-            question: "Theo SGK Tin học 11, một đĩa cứng kim loại phủ từ tính (HDD) tổ chức ghi dữ liệu thành các cung (sector). Mỗi sector ghi được bao nhiêu dữ liệu?",
-            options: ["256 byte", "512 byte", "1024 byte", "4096 byte"],
-            correct: 1,
-            explain: "SGK trang 13: Dữ liệu được đọc, ghi theo các đường tròn đồng tâm gọi là đường ghi (track), mỗi đường gồm nhiều cung (sector), mỗi cung ghi 512 byte dữ liệu."
+            intro: "Về các mạch logic cơ bản và tính toán nhị phân (SGK Bài 4):",
+            items: [
+              { text: "a) Cổng logic AND chỉ cho đầu ra giá trị 1 khi tất cả các đầu vào đều bằng 1.", ans: true },
+              { text: "b) Phép cộng hai bit đơn x và y phát sinh bit nhớ z là kết quả của phép toán logic x XOR y.", ans: false, exp: "Bit nhớ z chính là kết quả của x AND y; còn tổng t là kết quả của x XOR y." },
+              { text: "c) Mọi mạch logic phức tạp trong máy tính đều có thể xây dựng từ ba cổng cơ bản: AND, OR và NOT.", ans: true },
+              { text: "d) Kết quả của phép cộng nhị phân 1010₂ + 0101₂ trong hệ thập phân là 15.", ans: true }
+            ]
           },
           {
-            id: "p1_4",
-            question: "Tiện ích Optimize (Defragment - Hợp mảnh) trên hệ điều hành Windows có tác dụng gì đối với ổ đĩa cứng từ tính (HDD)?",
-            options: [
-              "Chuyển đổi dữ liệu từ định dạng nhị phân sang định dạng thập phân",
-              "Sắp xếp lại các liên cung của tệp liên tục, giảm sự di chuyển cơ học của đầu từ để tăng tốc độ truy cập",
-              "Tự động tăng dung lượng thực tế của ổ đĩa lên gấp 2 lần",
-              "Xóa vĩnh viễn hệ điều hành để cài đặt lại hệ điều hành nguồn mở Ubuntu"
-            ],
-            correct: 1,
-            explain: "SGK trang 13: Khi các liên cung bị ghi rải rác trên các track khác nhau, đầu từ cơ học dịch chuyển nhiều làm giảm tốc độ. Tiện ích hợp mảnh (Defragment) tổ chức lại tệp để các liên cung ghi liên tục, giảm di chuyển đầu từ."
-          },
-          {
-            id: "p1_5",
-            question: "Phần mềm chuyển giao dưới dạng mã máy khó đọc hiểu nhằm mục đích chống đánh cắp ý tưởng và sửa đổi thường được gọi là gì?",
-            options: ["Phần mềm nguồn đóng", "Phần mềm nguồn mở", "Phần mềm tự do", "Phần mềm chia sẻ cộng đồng"],
-            correct: 0,
-            explain: "SGK trang 15: Phần mềm chuyển giao dưới dạng mã máy thường được gọi là phần mềm nguồn đóng."
-          },
-          {
-            id: "p1_6",
-            question: "Nội dung nào sau đây là ĐÚNG khi nói về Giấy phép công cộng GNU GPL phiên bản 3.0 (phát hành năm 2007)?",
-            options: [
-              "Người dùng bị cấm hoàn toàn việc phân phối lại phần mềm",
-              "Phần mềm có nguồn gốc từ việc sửa đổi một phần mềm nguồn mở theo GPL cũng bắt buộc phải mở theo giấy phép GPL",
-              "Tác giả gốc phải chịu hoàn toàn trách nhiệm bồi thường khi phần mềm xảy ra lỗi",
-              "Bắt buộc người phát triển phải bán bản quyền dưới dạng mã máy nhị phân"
-            ],
-            correct: 1,
-            explain: "SGK trang 17: Giấy phép GNU GPL quy định phần mềm có nguồn gốc từ việc sửa đổi một phần mềm nguồn mở theo GPL cũng phải là phần mềm nguồn mở theo GPL."
-          },
-          {
-            id: "p1_7",
-            question: "Bộ phận nào bên trong bộ xử lí trung tâm (CPU) trực tiếp đảm nhận việc thực hiện tất cả các phép tính số học và lôgic?",
-            options: [
-              "Bộ điều khiển (Control Unit - CU)",
-              "Bộ số học và lôgic (Arithmetic & Logic Unit - ALU)",
-              "Bộ nhớ chỉ đọc (Read Only Memory - ROM)",
-              "Bộ nhớ truy cập ngẫu nhiên (RAM)"
-            ],
-            correct: 1,
-            explain: "SGK trang 22: ALU (Arithmetic & Logic Unit) thực hiện tất cả các phép tính số học và lôgic trong máy tính."
-          },
-          {
-            id: "p1_8",
-            question: "Đơn vị đo xung nhịp đồng hồ thường dùng để đánh giá tốc độ của CPU là gì?",
-            options: ["DPI", "GHz (1 tỉ xung/giây)", "Byte/giây", "Flops"],
-            correct: 1,
-            explain: "SGK trang 22: Người ta thường dùng tần số đồng hồ xung, thường là GHz (1 tỉ xung một giây) để đánh giá tốc độ của CPU."
-          },
-          {
-            id: "p1_9",
-            question: "Độ phân giải của chuột máy tính được đo bằng đơn vị nào sau đây?",
-            options: ["dpi (dots per inch)", "Hz (Hertz)", "ms (mili giây)", "GB (Gigabyte)"],
-            correct: 0,
-            explain: "SGK trang 27: Hai thông số quan trọng của chuột là phương thức kết nối và độ phân giải, đo bằng dpi (dots per inch) - số điểm riêng rẽ xác định khi di chuyển 1 inch."
-          },
-          {
-            id: "p1_10",
-            question: "Cổng kết nối nào vừa truyền tín hiệu số cho cả hình ảnh chất lượng cao và âm thanh đồng thời trên máy tính?",
-            options: ["Cổng VGA", "Cổng HDMI", "Cổng PS/2", "Cổng COM"],
-            correct: 1,
-            explain: "SGK trang 30: Cổng HDMI truyền tín hiệu số, truyền đồng thời cả âm thanh và hình ảnh với băng thông lớn; trong khi cổng VGA dùng tín hiệu tương tự và không truyền âm thanh."
-          },
-          {
-            id: "p1_11",
-            question: "Khi chia sẻ tệp tin hoặc thư mục trên các dịch vụ đám mây như Google Drive, quyền cao nhất cho phép xem, nhận xét, xóa, đổi tên và chỉnh sửa là:",
-            options: ["Quyền chỉ xem", "Quyền nhận xét", "Quyền chỉnh sửa", "Quyền sao chép"],
-            correct: 2,
-            explain: "SGK trang 33: Quyền chỉnh sửa là quyền cao nhất cho phép xem, nhận xét và thực hiện mọi thao tác với thư mục và tệp."
-          },
-          {
-            id: "p1_12",
-            question: "Để tìm chính xác một cụm từ trên Google (không bị đảo thứ tự từ hoặc thêm từ xen giữa), người dùng cần sử dụng cú pháp nào?",
-            options: [
-              "Đặt cụm từ tìm kiếm trong dấu ngoặc kép \"...\"",
-              "Đặt dấu thăng # trước mỗi từ",
-              "Thêm cú pháp filetype:all vào cuối",
-              "Viết in hoa toàn bộ các ký tự của cụm từ"
-            ],
-            correct: 0,
-            explain: "SGK trang 38: Đặt từ khoá cần tìm trong dấu nháy kép là cách thông dụng để thu hẹp phạm vi tìm kiếm, cho kết quả tìm kiếm chính xác cụm từ đó."
+            intro: "Về các thiết bị vào - ra và kết nối máy tính (SGK Bài 5 & Bài 6):",
+            items: [
+              { text: "a) Cổng VGA truyền tín hiệu tương tự (analog) và hỗ trợ truyền cả hình ảnh lẫn âm thanh đa kênh.", ans: false, exp: "Cổng VGA chỉ truyền hình ảnh dạng tín hiệu tương tự, không truyền âm thanh." },
+              { text: "b) Tần số quét màn hình (đo bằng Hz) càng cao thì hình ảnh chuyển động càng mượt và đỡ mỏi mắt.", ans: true },
+              { text: "c) Chuột máy tính có chỉ số DPI càng cao thì khi di chuyển cùng một khoảng cách thực tế, con trỏ sẽ đi được quãng đường càng xa trên màn hình.", ans: true },
+              { text: "d) Khi xoá một tệp trên ổ đĩa trực tuyến Google Drive, tệp đó sẽ biến mất vĩnh viễn ngay lập tức mà không thể phục hồi.", ans: false, exp: "Tệp được chuyển vào Thùng rác (Trash) và chỉ mất hẳn sau thời gian lưu trữ hoặc khi người dùng dọn rác." }
+            ]
           }
         ],
-        part2: [
-          {
-            id: "p2_1",
-            intro: "Về hệ điều hành máy tính cá nhân và hệ điều hành cho thiết bị di động (Bài 1):",
-            items: [
-              { label: "a", text: "Hệ điều hành Windows 95 lần đầu tiên tích hợp cơ chế Plug & Play (cắm và chạy) giúp tự động nhận diện thiết bị ngoại vi.", correct: true },
-              { label: "b", text: "Hệ điều hành Android của Google dùng cho thiết bị di động được phát triển độc lập và không có bất kỳ liên quan nào tới nhân lõi LINUX.", correct: false },
-              { label: "c", text: "Thiết bị chuyên dụng như lò vi sóng hay nồi cơm điện luôn bắt buộc phải cài đặt một hệ điều hành đa nhiệm để khởi động.", correct: false },
-              { label: "d", text: "Hệ điều hành đóng vai trò là môi trường trung gian giúp phần mềm ứng dụng khai thác phần cứng một cách hiệu quả.", correct: true }
-            ],
-            explain: "b sai vì Android được xây dựng trên lõi Linux (SGK tr.7). c sai vì thiết bị chuyên dụng dùng chương trình ghi sẵn trong ROM, bật lên là chạy không cần hệ điều hành (SGK tr.9)."
-          },
-          {
-            id: "p2_2",
-            intro: "Về phần cứng máy tính và mạch logic (Bài 4):",
-            items: [
-              { label: "a", text: "Bộ nhớ RAM lưu trữ dữ liệu lâu dài và không bị mất dữ liệu khi tắt nguồn điện máy tính.", correct: false },
-              { label: "b", text: "Bộ nhớ Cache (bộ nhớ đệm) trong CPU chứa dữ liệu được nạp trước từ bộ nhớ trong nhằm giảm thời gian chờ đọc dữ liệu.", correct: true },
-              { label: "c", text: "Cổng logic AND chỉ cho đầu ra bằng 1 khi và chỉ khi cả hai đầu vào đều bằng 1.", correct: true },
-              { label: "d", text: "Trong mạch cộng hai bit (x, y), số nhớ phát sinh z được xác định qua phép toán x XOR y, còn kết quả t xác định qua x AND y.", correct: false }
-            ],
-            explain: "a sai vì RAM mất dữ liệu khi tắt máy (SGK tr.22). d sai vì số nhớ z = x AND y, còn kết quả t = x XOR y (SGK tr.26)."
-          },
-          {
-            id: "p2_3",
-            intro: "Về phần mềm nguồn mở, phần mềm thương mại và phần mềm chạy trên Internet (Bài 3):",
-            items: [
-              { label: "a", text: "Phần mềm đặt hàng (may đo) là phần mềm thiết kế chính xác theo yêu cầu riêng của từng khách hàng và được bảo hành theo hợp đồng.", correct: true },
-              { label: "b", text: "Phần mềm nguồn mở có thể thay thế hoàn toàn tất cả các phần mềm thương mại trong thực tế xã hội hiện nay.", correct: false },
-              { label: "c", text: "Google Docs, Sheets, Slides là các phần mềm chạy trực tiếp trên Internet qua trình duyệt web mà không cần cài đặt lên máy tính cá nhân.", correct: true },
-              { label: "d", text: "Giấy phép GNU GPL cho phép người sửa đổi mã nguồn mở được phép đóng mã nguồn phần sửa đổi để độc quyền thương mại.", correct: false }
-            ],
-            explain: "b sai vì phần mềm đặt hàng đáp ứng các nhu cầu riêng biệt phong phú mà nguồn mở không thể thay thế hoàn toàn (SGK tr.18). d sai vì sửa phần mềm GPL bắt buộc phải công bố mã nguồn theo GPL (SGK tr.17)."
-          },
-          {
-            id: "p2_4",
-            intro: "Về kết nối thiết bị số và tìm kiếm thông tin trên Internet (Bài 5, 6, 7):",
-            items: [
-              { label: "a", text: "Máy in kim (dot matrix printer) sử dụng hàng kim gõ vào băng mực, rất thích hợp khi in hóa đơn có nhiều liên.", correct: true },
-              { label: "b", text: "Kết nối Bluetooth cho phép một máy tính truyền dữ liệu không dây đồng thời với 100 thiết bị khác nhau tại cùng một thời điểm.", correct: false },
-              { label: "c", text: "Cú pháp tìm kiếm `filetype:pdf` trên Google giúp giới hạn kết quả trả về chỉ gồm các tệp văn bản có định dạng .pdf.", correct: true },
-              { label: "d", text: "Trên Google Drive, người nhận quyền 'Chỉ xem' vẫn có thể chỉnh sửa và xóa tệp tin của người khác.", correct: false }
-            ],
-            explain: "b sai vì tại mỗi thời điểm, kết nối Bluetooth thông thường chỉ ghép đôi kết nối với một thiết bị (SGK tr.30). d sai vì quyền xem không thể sửa hoặc xóa (SGK tr.33)."
-          }
+        p3: [
+          { q: "Mỗi cung (sector) trên đĩa từ HDD ghi được bao nhiêu byte dữ liệu? (Chỉ điền số nguyên)", ans: "512", exp: "Theo SGK Bài 2: Mỗi cung (sector) ghi 512 byte." },
+          { q: "Tính tổng của hai số nhị phân 111₂ + 110₂ rồi viết kết quả dưới dạng số thập phân. (Chỉ điền số nguyên)", ans: "13", exp: "111₂ = 7, 110₂ = 6. Tổng bằng 13 (hoặc 1101₂ = 13)." },
+          { q: "Đơn vị đo độ phân giải của chuột máy tính hoặc máy in biểu thị số điểm trên mỗi inch được viết tắt là gì? (Viết tắt 3 chữ cái tiếng Anh)", ans: "DPI", exp: "DPI là viết tắt của 'Dots Per Inch'." },
+          { q: "Để tìm kiếm thông tin về đề thi tuyển sinh nhưng chỉ giới hạn kết quả là các tệp định dạng PDF trên Google, ta dùng toán tử cú pháp nào? (Gõ liền không dấu cách)", ans: "filetype:pdf", exp: "Toán tử định dạng tệp là filetype:pdf." }
         ],
-        part3: [
+        p4: [
           {
-            id: "p3_1",
-            question: "Trong cấu tạo của ổ đĩa cứng HDD, mỗi cung (sector) có kích thước 512 byte. Một liên cung (cluster) thông thường gồm bao nhiêu cung?",
-            placeholder: "Nhập một số nguyên...",
-            correctAnswers: ["8", "8 cung"],
-            explain: "SGK trang 13: Việc đọc, ghi được thực hiện theo đơn vị liên cung (cluster), thường gồm 8 cung."
+            title: "Tình huống 1: Tối ưu hiệu năng máy tính lưu trữ",
+            scenario: "Một máy tính văn phòng sử dụng ổ đĩa HDD sau 2 năm lưu trữ và xoá dữ liệu liên tục xuất hiện tình trạng mở các file tài liệu lớn rất chậm, ổ đĩa phát ra tiếng kêu rẹt rẹt liên tục. Em hãy giải thích nguyên nhân kỹ thuật và đề xuất giải pháp xử lý dựa trên kiến thức Bài 2 SGK.",
+            rubric: [
+              "Nguyên nhân: Do hiện tượng phân mảnh dữ liệu (File Fragmentation) trên HDD. Các liên cung (cluster) của một tệp bị ghi rải rác trên nhiều đường tròn đồng tâm (track) khác nhau, khiến đầu từ cơ học phải di chuyển liên tục qua lại, làm tăng thời gian đọc và gây tiếng ồn.",
+              "Giải pháp: Chạy tiện ích 'Optimize and defragment drive' (Tối ưu hóa và hợp mảnh) có sẵn trong Properties -> Tools của ổ đĩa để sắp xếp lại các liên cung liên tục.",
+              "Khuyến nghị nâng cấp: Thay thế hoặc trang bị thêm ổ cứng thể rắn SSD để có tốc độ đọc ghi vượt trội và không bị ảnh hưởng bởi chuyển động cơ học."
+            ]
           },
           {
-            id: "p3_2",
-            question: "Nêu tên gọi của bộ phận trong CPU đóng vai trò điều phối đồng bộ các thiết bị của máy tính, đảm bảo máy tính thực hiện đúng chương trình (viết tắt 2 chữ cái).",
-            placeholder: "Nhập chữ viết tắt...",
-            correctAnswers: ["CU", "Control Unit"],
-            explain: "SGK trang 22: Bộ điều khiển (Control Unit - CU): phối hợp đồng bộ các thiết bị của máy tính, đảm bảo máy tính thực hiện đúng chương trình."
-          },
-          {
-            id: "p3_3",
-            question: "Để chỉ định máy tìm kiếm Google lọc chính xác kết quả có định dạng tài liệu PDF, ta gõ thêm toán tử cú pháp nào?",
-            placeholder: "Ví dụ: filetype:...",
-            correctAnswers: ["filetype:pdf", "filetype: pdf"],
-            explain: "SGK trang 37: Nhập từ khoá cần tìm và bổ sung cụm từ filetype:pdf để tìm kiếm dưới dạng tệp .pdf."
-          },
-          {
-            id: "p3_4",
-            question: "Trong mạch cộng hai bit x và y, kết quả phép cộng t (chưa tính nhớ) là kết quả của cổng logic nào (AND, OR, NOT hay XOR)?",
-            placeholder: "Nhập tên cổng logic...",
-            correctAnswers: ["XOR", "Cổng XOR"],
-            explain: "SGK trang 26: Có thể thấy số nhớ z = x AND y, còn kết quả t chính là x XOR y."
-          }
-        ],
-        part4: [
-          {
-            id: "p4_1",
-            scenario: "Tình huống: Khi sử dụng máy tính chạy ổ đĩa cơ HDD sau một thời gian dài cài đặt, xóa và sao chép nhiều tệp tài liệu, bạn học sinh nhận thấy tốc độ mở và ghi tệp chậm rõ rệt. Em hãy giải thích hiện tượng phân mảnh đĩa cứng và nêu tên tiện ích tích hợp sẵn trên Windows giúp khắc phục tình trạng này.",
-            sampleAnswer: "Giải thích: Khi ghi tệp, hệ điều hành tìm các vùng trống trên đĩa, các vùng này có thể nằm trên các đường ghi (track) khác nhau khiến tệp bị phân mảnh. Đầu từ cơ học phải dịch chuyển liên tục giữa các track làm tăng thời gian đọc ghi.\nTiện ích khắc phục: Tiện ích Hợp mảnh / Tối ưu hóa đĩa (Defragment and Optimize Drives) trong mục Properties -> Tools của ổ đĩa.",
-            keywords: ["phân mảnh", "đầu từ", "đường ghi", "track", "hợp mảnh", "defragment", "optimize"]
-          },
-          {
-            id: "p4_2",
-            scenario: "Tình huống: Nhóm học tập gồm 4 bạn lớp 11 cần hoàn thành bài thuyết trình chung. Trưởng nhóm tải tệp lên Google Drive. Để các bạn cùng soạn thảo slide nhưng tránh việc người ngoài vô tình sửa xóa nội dung, trưởng nhóm nên thiết lập quyền phân quyền (quyền truy cập) như thế nào cho từng đối tượng?",
-            sampleAnswer: "- Đối với các thành viên trong nhóm thuyết trình: Chia sẻ trực tiếp qua địa chỉ email của từng bạn và cấp quyền 'Người chỉnh sửa' (Editor) để các bạn cùng thêm nội dung và sửa slide.\n- Đối với người ngoài hoặc khán giả/giáo viên theo dõi: Cài đặt ở chế độ 'Người xem' (Viewer) hoặc 'Người nhận xét' (Commenter) để họ chỉ đọc hoặc góp ý mà không làm thay đổi hay xóa nội dung bài làm.",
-            keywords: ["người chỉnh sửa", "chỉnh sửa", "người xem", "người nhận xét", "email", "editor", "viewer"]
+            title: "Tình huống 2: Lựa chọn phần mềm cho cơ quan nhà nước",
+            scenario: "Một trường học dự định đầu tư hệ thống máy tính phục vụ học sinh học tập và soạn thảo văn bản. Nhà trường đang phân vân giữa việc mua bản quyền bộ Microsoft Office thương mại hoặc cài đặt bộ phần mềm nguồn mở LibreOffice/OpenOffice. Dựa trên ưu/nhược điểm ở Bài 3 SGK, hãy tư vấn cho nhà trường.",
+            rubric: [
+              "Về chi phí: Phần mềm nguồn mở LibreOffice miễn phí bản quyền, tiết kiệm ngân sách lớn cho trường học; trong khi phần mềm thương mại phải trả phí mua license định kỳ.",
+              "Về tính minh bạch & tự chủ: Mã nguồn mở cho phép trường kiểm soát an toàn bảo mật, tuân thủ định hướng khuyến khích phần mềm tự do của Bộ GD&ĐT.",
+              "Về tính tương thích: Cần đào tạo làm quen giao diện cho giáo viên và đảm bảo các tệp định dạng chung (.docx, .xlsx, .pdf) không bị lỗi định dạng khi trao đổi."
+            ]
           }
         ]
       },
+      // Đề 2, 3, 4, 5
+      {
+        id: 1,
+        title: "Đề số 2: Hệ Điều Hành & Phần Mềm Trực Tuyến",
+        p1: [
+          { q: "Hệ điều hành nào sau đây là hệ điều hành mã nguồn mở phổ biến nhất trên máy tính cá nhân?", opt: ["Ubuntu (Linux)", "macOS", "Windows 11", "MS-DOS"], ans: 0, exp: "SGK Bài 1: Linux và các biến thể như Ubuntu, Red Hat, Suse là hệ điều hành nguồn mở tiêu biểu." },
+          { q: "Trong các phiên bản hệ điều hành Windows, phiên bản nào phát hành năm 2001 đánh dấu bước ngoặt lớn tối ưu hóa cho bộ xử lý 64-bit?", opt: ["Windows XP", "Windows 95", "Windows 7", "Windows Vista"], ans: 0, exp: "SGK trang 7: Năm 2001, Microsoft phát hành Windows XP với cải tiến lớn hỗ trợ xử lý 64-bit." },
+          { q: "Hệ điều hành Android trên các dòng điện thoại thông minh hiện nay được phát triển dựa trên nền tảng lõi của hệ điều hành nào?", opt: ["Linux", "Windows CE", "MS-DOS", "macOS"], ans: 0, exp: "SGK trang 7: Hệ điều hành Android được xây dựng trên lõi của LINUX." },
+          { q: "Giao diện ban đầu của các hệ điều hành thế hệ đầu tiên trên máy tính cá nhân như DOS là loại giao diện nào?", opt: ["Giao diện dòng lệnh (Command-line)", "Giao diện đồ hoạ (GUI)", "Giao diện giọng nói", "Giao diện cảm ứng"], ans: 0, exp: "SGK trang 6: Ban đầu hệ điều hành máy tính cá nhân sử dụng giao diện dòng lệnh (người dùng phải nhớ cú pháp)." },
+          { q: "Phần mềm được thiết kế riêng biệt theo hợp đồng thỏa thuận cho một cơ quan, doanh nghiệp cụ thể được gọi là:", opt: ["Phần mềm 'đặt hàng' (may-đo)", "Phần mềm đóng gói", "Phần mềm nguồn mở", "Phần mềm dùng thử"], ans: 0, exp: "SGK Bài 3: Phần mềm 'đặt hàng' được thiết kế đáp ứng chính xác nhu cầu riêng của một tổ chức." },
+          { q: "Ứng dụng nào sau đây KHÔNG PHẢI là phần mềm chạy trực tiếp trên Internet (Web-based application)?", opt: ["Microsoft Word 2003 chạy offline", "Google Docs", "Google Sheets", "Canva trực tuyến"], ans: 0, exp: "SGK Bài 3: Microsoft Word 2003 là phần mềm cài đặt truyền thống chạy offline." },
+          { q: "Tần số nhịp xung đồng hồ của CPU thường được đo bằng đơn vị nào sau đây?", opt: ["GHz (Gigahertz)", "GB (Gigabyte)", "DPI", "FPS"], ans: 0, exp: "SGK Bài 4: Tần số đồng hồ xung nhịp của CPU thường đo bằng GHz (tỉ xung nhịp/giây)." },
+          { q: "Bộ nhớ đệm (Cache) nằm bên trong CPU có vai trò chính là gì?", opt: ["Lưu trước dữ liệu từ bộ nhớ trong để giảm thời gian đọc dữ liệu", "Lưu trữ vĩnh viễn hệ điều hành", "Thay thế ổ cứng HDD khi bị hỏng", "Điều khiển màn hình hiển thị"], ans: 0, exp: "SGK Bài 4: Bộ nhớ đệm (Cache) chứa dữ liệu được nạp trước từ bộ nhớ trong nhằm giảm thời gian CPU chờ nạp dữ liệu." },
+          { q: "Loại màn hình máy tính có thông số thời gian phản hồi (Response Time) đạt 1ms biểu thị điều gì?", opt: ["Thời gian cần thiết để đổi màu một điểm ảnh là 1 phần nghìn giây", "Màn hình khởi động trong 1 mili giây", "Tần số quét là 1000 Hz", "Độ trễ bàn phím bằng 1ms"], ans: 0, exp: "SGK Bài 5: Thời gian phản hồi là khoảng thời gian cần thiết để có thể đổi màu một điểm ảnh (pixel)." },
+          { q: "Cổng nào sau đây dùng để kết nối mạng Internet có dây cho máy tính thông qua đầu cắm cáp RJ45?", opt: ["Cổng Ethernet (LAN)", "Cổng HDMI", "Cổng VGA", "Cổng USB Type-A"], ans: 0, exp: "SGK Bài 5: Cổng mạng (Ethernet/LAN) dùng kết nối mạng máy tính qua cáp mạng." },
+          { q: "Để chia sẻ một tài liệu trên Google Drive cho các bạn trong lớp chỉ được đọc nội dung, ta chọn chế độ phân quyền nào?", opt: ["Người xem", "Người chỉnh sửa", "Người nhận xét", "Quản trị viên"], ans: 0, exp: "SGK Bài 6: Quyền chỉ xem (Viewer) chỉ cho phép mở đọc, không thể chỉnh sửa hay nhận xét." },
+          { q: "Phương thức kết nối giữa điện thoại thông minh và máy tính để sao chép hình ảnh từ thư mục DCIM thường dùng là:", opt: ["Cáp kết nối USB", "Cáp VGA", "Cổng HDMI", "Cáp mạng LAN"], ans: 0, exp: "SGK Bài 5: Kết nối điện thoại với máy tính qua cáp USB ở chế độ truyền tệp (Mass Storage/MTP)." }
+        ],
+        p2: [
+          {
+            intro: "Về lịch sử phát triển của hệ điều hành máy tính cá nhân (SGK Bài 1):",
+            items: [
+              { text: "a) Hệ điều hành DOS yêu cầu người dùng phải nhập câu lệnh chính xác qua giao diện đồ họa cửa sổ.", ans: false, exp: "DOS dùng giao diện dòng lệnh (CLI), người dùng phải gõ chữ thủ công." },
+              { text: "b) Hệ điều hành macOS của Apple được thiết kế dành riêng cho các dòng máy Mac.", ans: true },
+              { text: "c) Windows 1.0 phát hành năm 1985 đã có khả năng chạy đa nhiệm hoàn hảo và loại bỏ hoàn toàn DOS.", ans: false, exp: "Trong 10 năm đầu, Windows chỉ là vỏ bọc đồ hoạ gọi các dịch vụ của DOS. Đa nhiệm bắt đầu có từ bản 3.0." },
+              { text: "d) Khả năng giao tiếp bằng giọng nói đang trở thành xu hướng phát triển thân thiện của hệ điều hành hiện đại.", ans: true }
+            ]
+          },
+          {
+            intro: "Xét về bảng mã và kiểu mạch logic nhị phân (SGK Bài 4):",
+            items: [
+              { text: "a) Cổng OR cho kết quả đầu ra bằng 0 khi và chỉ khi tất cả các tín hiệu đầu vào đều bằng 0.", ans: true },
+              { text: "b) Phép toán logic NOT đảo ngược giá trị: phủ định của 1 là 0 và phủ định của 0 là 1.", ans: true },
+              { text: "c) Cổng XOR (Exclusive OR) cho kết quả bằng 1 khi cả hai tín hiệu đầu vào có cùng giá trị.", ans: false, exp: "Cổng XOR cho kết quả bằng 1 khi hai giá trị đầu vào KHÁC NHAU (1 và 0, hoặc 0 và 1)." },
+              { text: "d) Mạch cộng bán phần (Half Adder) gồm một cổng AND để tính bit nhớ và một cổng XOR để tính bit tổng.", ans: true }
+            ]
+          },
+          {
+            intro: "Về các loại máy in thông dụng trong thực tế (SGK Bài 5):",
+            items: [
+              { text: "a) Máy in laser sử dụng tia laser tác động lên trống tĩnh điện để hút hạt mực bột khô và sấy nóng lên giấy.", ans: true },
+              { text: "b) Máy in kim có độ nét rất cao và in ảnh màu đẹp hơn nhiều so với máy in phun.", ans: false, exp: "Máy in kim độ nét rất thấp, thường chỉ dùng để in hóa đơn nhiều liên." },
+              { text: "c) Máy in nhiệt dùng giấy cảm ứng nhiệt, thường được ứng dụng phổ biến tại quầy thu ngân để in hóa đơn siêu thị.", ans: true },
+              { text: "d) Tốc độ in của máy in thường được đo bằng đơn vị DPI.", ans: false, exp: "Tốc độ in đo bằng số trang/phút (PPM), còn DPI là đơn vị đo độ phân giải." }
+            ]
+          },
+          {
+            intro: "Về kỹ năng tìm kiếm và sử dụng dịch vụ đám mây (SGK Bài 6 & Bài 7):",
+            items: [
+              { text: "a) Cú pháp `site:edu.vn` trên máy tìm kiếm giúp giới hạn kết quả chỉ trong các trang web giáo dục của Việt Nam.", ans: true },
+              { text: "b) Dịch vụ Google Drive cho phép chỉnh sửa cộng tác đồng thời nhiều người trên cùng một văn bản trực tuyến.", ans: true },
+              { text: "c) Để tìm kiếm bằng giọng nói trên trình duyệt máy tính, bắt buộc máy tính phải có thiết bị micro thu âm.", ans: true },
+              { text: "d) Người được cấp quyền 'Người nhận xét' trong Google Drive có thể xoá hẳn tệp khỏi ổ đĩa của chủ sở hữu.", ans: false, exp: "Người nhận xét không có quyền chỉnh sửa hay xoá tệp." }
+            ]
+          }
+        ],
+        p3: [
+          { q: "Mỗi liên cung (cluster) trên đĩa từ HDD thông thường gồm bao nhiêu cung (sector)? (Chỉ điền số nguyên)", ans: "8", exp: "SGK Bài 2: Mỗi liên cung (cluster) thường gồm 8 cung." },
+          { q: "Tính tổng nhị phân 1010₂ + 0101₂ và biểu diễn dưới dạng số thập phân. (Chỉ điền số nguyên)", ans: "15", exp: "1010₂ = 10, 0101₂ = 5. Tổng = 15." },
+          { q: "Tên viết tắt của đơn vị chịu trách nhiệm thực hiện phép tính số học và logic bên trong CPU là gì? (3 chữ cái in hoa)", ans: "ALU", exp: "ALU (Arithmetic & Logic Unit)." },
+          { q: "Chuẩn giao tiếp không dây tầm gần (dưới 10cm) thường dùng để thanh toán một chạm trên điện thoại di động viết tắt là gì? (3 chữ cái in hoa)", ans: "NFC", exp: "SGK Bài 1: Giao tiếp gần NFC (Near-Field Communication)." }
+        ],
+        p4: [
+          {
+            title: "Tình huống: Chia sẻ tài liệu học nhóm an toàn trên Google Drive",
+            scenario: "Nhóm em có 5 bạn cùng làm bài tập lớn môn Tin học. Nhóm trưởng tạo thư mục trên Google Drive để chứa tệp văn bản báo cáo và các hình ảnh minh hoạ. Hãy đề xuất cách phân quyền và quản lý thư mục này một cách khoa học, an toàn theo nội dung Bài 6 SGK.",
+            rubric: [
+              "Phân quyền chỉnh sửa: Nhóm trưởng cấp quyền 'Người chỉnh sửa' cho 4 thành viên trong nhóm thông qua địa chỉ email cá nhân của các bạn.",
+              "Bảo mật quyền truy cập: Không bật chia sẻ 'Bất kỳ ai có đường liên kết đều có thể chỉnh sửa' để tránh người ngoài truy cập phá hỏng dữ liệu.",
+              "Tổ chức thư mục: Tạo thư mục con rõ ràng (Tài liệu tham khảo, Hình ảnh, Bài làm hoàn chỉnh) và sao lưu định kỳ một bản tải về máy tính."
+            ]
+          },
+          {
+            title: "Tình huống: Nâng cấp linh kiện máy tính học tập",
+            scenario: "Một máy tính để bàn thường xuyên bị đơ khi mở cùng lúc 15 tab trình duyệt Chrome kèm theo phần mềm lập trình Python. Dựa vào kiến thức về RAM và CPU ở Bài 4, em hãy giải thích nguyên nhân và đề xuất phương án nâng cấp phần cứng hiệu quả nhất.",
+            rubric: [
+              "Nguyên nhân: Mở nhiều tab trình duyệt và ứng dụng đồng thời làm cạn kiệt bộ nhớ trong (RAM), khiến hệ điều hành phải dùng bộ nhớ ảo trên đĩa làm chậm máy.",
+              "Đề xuất: Nâng cấp dung lượng RAM (ví dụ từ 4GB/8GB lên 16GB) để đáp ứng chạy đa nhiệm mượt mà.",
+              "Khuyến nghị bổ sung: Kiểm tra xung nhịp CPU và cân nhắc lắp thêm ổ SSD nếu máy vẫn đang chạy hệ điều hành trên HDD truyền thống."
+            ]
+          }
+        ]
+      },
+      // Đề 3, 4, 5 cấu trúc chuẩn tương đương
       {
         id: 2,
-        title: "Đề Khảo Sát Số 2",
-        headline: "Kiến Trúc Máy Tính, Cổng Giao Tiếp & Phần Mềm Nguồn Mở",
-        description: "Tập trung vào vi mạch logic, các loại máy in, cổng truyền dữ liệu USB, RAM/ROM và giấy phép mã nguồn mở GNU GPL.",
-        part1: [
+        title: "Đề số 3: Phần Cứng, Mạch Logic & Cổng Kết Nối",
+        p1: [
+          { q: "Thiết bị nào sau đây được coi là bảng mạch trung tâm, liên kết tất cả các linh kiện CPU, RAM, ổ cứng của máy tính?", opt: ["Bảng mạch chính (Mainboard)", "Bộ nguồn (PSU)", "Vỏ máy (Case)", "Card đồ hoạ rời (VGA)"], ans: 0, exp: "SGK Bài 4: Bảng mạch chính kết nối tất cả các thiết bị bên trong thân máy tính." },
+          { q: "Cổng logic nào sau đây cho đầu ra bằng 1 khi cả hai đầu vào có giá trị khác nhau (0 và 1)?", opt: ["Cổng XOR", "Cổng AND", "Cổng OR", "Cổng NOT"], ans: 0, exp: "SGK Bài 4: Cổng XOR (hoặc loại trừ) cho kết quả 1 khi và chỉ khi 2 đại lượng có giá trị khác nhau." },
+          { q: "Độ phân giải màn hình Full HD có kích thước điểm ảnh chuẩn là bao nhiêu?", opt: ["1920 x 1080 pixel", "1280 x 720 pixel", "2560 x 1440 pixel", "3840 x 2160 pixel"], ans: 0, exp: "SGK Bài 5: Độ phân giải Full HD là 1920 x 1080 pixel." },
+          { q: "Thiết bị nào sau đây vừa có thể xem là thiết bị vào, vừa là thiết bị ra của máy tính?", opt: ["Màn hình cảm ứng (Touchscreen)", "Bàn phím cơ", "Máy in laser", "Chuột quang"], ans: 0, exp: "SGK Bài 5: Màn hình cảm ứng vừa nhận dữ liệu chạm (vào) vừa hiển thị hình ảnh (ra)." },
+          { q: "Chuỗi bit nào sau đây biểu diễn số 19 trong hệ đếm nhị phân?", opt: ["10011₂", "10101₂", "11001₂", "11100₂"], ans: 0, exp: "SGK Bài 4: 19 = 16 + 2 + 1 = 10011₂." },
+          { q: "Bộ phận nào trong CPU làm nhiệm vụ phối hợp đồng bộ các linh kiện máy tính thực hiện đúng lệnh chương trình?", opt: ["Bộ điều khiển (CU)", "Bộ số học logic (ALU)", "Thanh ghi (Register)", "Đồng hồ xung"], ans: 0, exp: "SGK Bài 4: Bộ điều khiển (Control Unit - CU) phối hợp đồng bộ các thiết bị đảm bảo thực hiện đúng chương trình." },
+          { q: "Phương thức kết nối cổng USB có đặc điểm nổi bật nào sau đây?", opt: ["Truyền dữ liệu tuần tự, hỗ trợ cắm nóng đa năng", "Chỉ truyền tín hiệu analog", "Chỉ dùng cho máy in kim", "Tốc độ cố định không phát triển"], ans: 0, exp: "SGK Bài 5: Cổng USB (Universal Serial Bus) truyền tuần tự, đa năng và thay thế nhiều cổng cũ." },
+          { q: "Khi chia sẻ tệp trên đám mây, quyền nào là quyền cao nhất cho phép xóa, sửa đổi tên và cập nhật nội dung tệp?", opt: ["Quyền chỉnh sửa", "Quyền chỉ xem", "Quyền nhận xét", "Quyền truy cập ẩn danh"], ans: 0, exp: "SGK Bài 6: Quyền chỉnh sửa cho phép can thiệp đầy đủ vào nội dung tệp." },
+          { q: "Phần mềm xử lý ảnh mã nguồn mở phổ biến được giới thiệu trong SGK Tin học 11 là:", opt: ["GIMP", "Adobe Photoshop", "CorelDRAW", "Canva Pro"], ans: 0, exp: "SGK Bài 3: GIMP là phần mềm xử lý ảnh nguồn mở tương đương Photoshop." },
+          { q: "Để loại trừ một từ khóa không mong muốn xuất hiện trong kết quả tìm kiếm Google, ta đặt ký hiệu nào trước từ đó?", opt: ["Dấu trừ -", "Dấu sao *", "Dấu thăng #", "Dấu cộng +"], ans: 0, exp: "Toán tử dấu trừ '-' loại trừ từ khóa không mong muốn khỏi kết quả." },
+          { q: "Tốc độ làm tươi của màn hình hiển thị được đo bằng đơn vị:", opt: ["Hertz (Hz)", "Gigahertz (GHz)", "DPI", "Bit/s"], ans: 0, exp: "SGK Bài 5: Tần số quét (làm tươi) của màn hình thường là 60Hz, 75Hz, 144Hz." },
+          { q: "Mạch điện nào sau đây minh hoạ cho phép toán logic AND bằng 2 công tắc mắc với một bóng đèn?", opt: ["Mắc nối tiếp 2 công tắc thường mở", "Mắc song song 2 công tắc", "Mắc một công tắc đảo chiều", "Mắc biến trở"], ans: 0, exp: "SGK Bài 4: Hai rơ-le / công tắc mắc nối tiếp đại diện cho cổng AND (cả 2 cùng đóng thì đèn mới sáng)." }
+        ],
+        p2: [
           {
-            id: "p1_1",
-            question: "Thanh ghi (Register) và bộ nhớ đệm (Cache) trong CPU khác nhau như thế nào?",
-            options: [
-              "Thanh ghi lưu trữ lệnh và dữ liệu đang được CPU xử lý tức thời với tốc độ cực nhanh; Cache là bộ nhớ nhỏ nạp trước dữ liệu từ bộ nhớ trong để giảm thời gian chờ",
-              "Thanh ghi nằm ngoài bo mạch chính, còn Cache được gắn trong ổ cứng HDD",
-              "Thanh ghi chỉ dùng để lưu trữ hệ điều hành vĩnh viễn không mất điện, còn Cache tự xóa khi khởi động",
-              "Thanh ghi dùng tín hiệu cơ học còn Cache dùng tín hiệu quang học"
-            ],
-            correct: 0,
-            explain: "SGK trang 22: Thanh ghi là vùng nhớ đặc biệt lưu trữ tạm thời các lệnh và dữ liệu đang xử lí tốc độ rất nhanh. Bộ nhớ đệm (cache) nạp trước dữ liệu từ bộ nhớ trong nhằm giảm thời gian đọc dữ liệu."
+            intro: "Về các loại bộ nhớ trong và ngoài máy tính (SGK Bài 4):",
+            items: [
+              { text: "a) Dữ liệu lưu trong ổ đĩa cứng HDD và SSD không bị mất đi khi tắt nguồn máy tính.", ans: true },
+              { text: "b) Tốc độ truy xuất dữ liệu từ RAM chậm hơn nhiều so với tốc độ đọc ghi trên ổ cứng HDD.", ans: false, exp: "Tốc độ RAM nhanh hơn gấp hàng chục đến hàng trăm lần so với HDD." },
+              { text: "c) Bộ nhớ Cache của CPU có dung lượng rất lớn, thường từ 500GB đến 1TB.", ans: false, exp: "Bộ nhớ Cache có dung lượng rất nhỏ, chỉ khoảng vài MB đến vài chục MB nhưng tốc độ cực nhanh." },
+              { text: "d) Dung lượng lưu trữ của các thiết bị nhớ ngoài ngày nay thường được tính bằng đơn vị GB hoặc TB.", ans: true }
+            ]
           },
           {
-            id: "p1_2",
-            question: "Loại máy in nào hoạt động bằng cách dùng tia laser làm thay đổi điện áp trên bề mặt một trống tĩnh điện để hút mực siêu nhỏ và đốt nóng ép vào giấy?",
-            options: ["Máy in kim", "Máy in phun", "Máy in laser", "Máy in nhiệt"],
-            correct: 2,
-            explain: "SGK trang 28: Máy in laser dùng tia laser tạo sự thay đổi điện áp trên bề mặt trống tĩnh điện, hút các hạt mực siêu nhỏ rồi áp vào mặt giấy, đốt nóng để tạo bản in."
+            intro: "Về vai trò của phần mềm thương mại và phần mềm nguồn mở (SGK Bài 3):",
+            items: [
+              { text: "a) Phần mềm thương mại đem lại nguồn tài chính chủ yếu duy trì các tổ chức phát triển phần mềm chuyên nghiệp.", ans: true },
+              { text: "b) Sử dụng phần mềm nguồn mở giúp doanh nghiệp hoàn toàn không bị lệ thuộc vào một nhà cung cấp độc quyền.", ans: true },
+              { text: "c) Phần mềm thương mại đóng gói luôn cung cấp toàn bộ mã nguồn lập trình cho khách hàng tự chỉnh sửa.", ans: false, exp: "Hầu hết phần mềm thương mại là nguồn đóng (mã máy) để bảo vệ bản quyền." },
+              { text: "d) Giấy phép GNU GPL 3.0 được công bố chính thức vào năm 2007.", ans: true }
+            ]
           },
           {
-            id: "p1_3",
-            question: "Phương thức truyền dữ liệu USB (Universal Serial Bus) có đặc điểm nổi bật nào?",
-            options: [
-              "Truyền dữ liệu song song 64 bit tốc độ chậm",
-              "Truyền tuần tự, đa năng và có tốc độ ngày càng cải thiện nhanh chóng",
-              "Chỉ dành riêng cho việc kết nối màn hình tương tự",
-              "Không hỗ trợ cơ chế cắm và chạy Plug & Play"
-            ],
-            correct: 1,
-            explain: "SGK trang 30: Đặc điểm chung của phương thức truyền dữ liệu USB là truyền tuần tự, đa năng, tốc độ cải thiện nhanh nên thay thế các cổng COM, LPT, PS/2 cũ."
+            intro: "Về thiết bị vào - ra và ghép nối ngoại vi (SGK Bài 5):",
+            items: [
+              { text: "a) Khi kết nối chuột có dây qua cổng USB, người dùng máy tính Windows bắt buộc phải cài đặt thủ công đĩa driver.", ans: false, exp: "Nhờ cơ chế Plug & Play, Windows tự động nhận diện và sử dụng chuột ngay." },
+              { text: "b) Hai thiết bị kết nối Bluetooth phải tiến hành ghép đôi (pairing) trước khi truyền dữ liệu.", ans: true },
+              { text: "c) Màn hình CRT cổ điển sử dụng công nghệ bóng đèn chân không, chiếm nhiều diện tích hơn màn hình LCD mỏng.", ans: true },
+              { text: "d) Cổng HDMI không thể truyền được độ phân giải Full HD hoặc 4K.", ans: false, exp: "HDMI có băng thông lớn truyền hình ảnh độ phân giải cao và âm thanh vòm." }
+            ]
           },
           {
-            id: "p1_4",
-            question: "Phiên bản hệ điều hành nào của Microsoft được phát hành năm 2001 đánh dấu bước tiến lớn với hỗ trợ bộ xử lý thế hệ 64-bit?",
-            options: ["Windows 95", "Windows 98", "Windows XP", "Windows 3.1"],
-            correct: 2,
-            explain: "SGK trang 7: Năm 2001, Microsoft phát hành Windows XP với cải tiến lớn về giao diện, hiệu suất và nâng cấp chạy trên các bộ xử lý 64-bit."
-          },
-          {
-            id: "p1_5",
-            question: "Phép toán logic nào sau đây cho kết quả bằng 1 khi và chỉ khi hai đại lượng đầu vào có giá trị KHÁC NHAU?",
-            options: ["Phép AND", "Phép OR", "Phép XOR (hoặc loại trừ)", "Phép NOT"],
-            correct: 2,
-            explain: "SGK trang 24: Phép hoặc loại trừ XOR (OR EXCLUSIVE) của hai đại lượng logic cho kết quả bằng 1 khi và chỉ khi hai đại lượng đó có giá trị khác nhau."
-          },
-          {
-            id: "p1_6",
-            question: "Đặc điểm cơ bản của bộ nhớ chỉ đọc (ROM) trong máy tính là gì?",
-            options: [
-              "Chỉ có thể ghi, không thể đọc, mất dữ liệu khi mất điện",
-              "Chỉ có thể đọc, không cần nguồn điện nuôi vẫn lưu giữ chương trình kiểm tra hoặc khởi động máy tính",
-              "Dung lượng bộ nhớ thường lớn hơn rất nhiều so với RAM và HDD",
-              "Dùng làm bộ nhớ tạm thời cho các phần mềm game đồ họa"
-            ],
-            correct: 1,
-            explain: "SGK trang 23: ROM (Read Only Memory) chỉ có thể đọc, không cần nguồn nuôi nên lưu dữ liệu lâu dài; dùng lưu dữ liệu hệ thống cố định và chương trình khởi động máy tính."
-          },
-          {
-            id: "p1_7",
-            question: "Trong các phần mềm sau đây, phần mềm nào là phần mềm nguồn mở dùng để chỉnh sửa ảnh tương đương Adobe Photoshop?",
-            options: ["GIMP", "CorelDraw", "Microsoft Paint", "AutoCAD"],
-            correct: 0,
-            explain: "SGK trang 18: Bảng 3.1 chỉ rõ GIMP là phần mềm xử lí ảnh nguồn mở có thể thay thế Photoshop."
-          },
-          {
-            id: "p1_8",
-            question: "Tần số quét của màn hình máy tính (tính bằng Hz) thể hiện điều gì?",
-            options: [
-              "Số điểm ảnh vật lý trên đường chéo màn hình",
-              "Số lần hiển thị (tái hiện) lại hình ảnh trong một giây",
-              "Mức độ tiêu thụ điện năng mỗi giờ làm việc",
-              "Khoảng thời gian cần thiết để đổi màu một điểm ảnh"
-            ],
-            correct: 1,
-            explain: "SGK trang 28: Tần số quét là số lần hiển thị lại hình ảnh trong một giây. Tần số quét cao giúp ảnh không bị giật, đỡ mỏi mắt."
-          },
-          {
-            id: "p1_9",
-            question: "Khoảng cách kết nối truyền dữ liệu hiệu quả thông thường của công nghệ sóng không dây Bluetooth là:",
-            options: ["Dưới 10 mét", "Dưới 100 mét", "Dưới 1 kilomet", "Không giới hạn khoảng cách"],
-            correct: 0,
-            explain: "SGK trang 30: Bluetooth là phương thức kết nối không dây trong khoảng cách gần (dưới 10 m)."
-          },
-          {
-            id: "p1_10",
-            question: "Để gán nhãn, lưu trữ và chia sẻ tệp tin trực tuyến có dung lượng lớn an toàn, người dùng thường sử dụng dịch vụ đám mây nào sau đây?",
-            options: ["Google Drive", "DOS Command Prompt", "Notepad", "Unikey"],
-            correct: 0,
-            explain: "SGK trang 33: Google Drive, Microsoft OneDrive, iCloud, Dropbox là các dịch vụ lưu trữ và chia sẻ tệp tin trực tuyến (ổ đĩa đám mây)."
-          },
-          {
-            id: "p1_11",
-            question: "Khi kết nối máy ảnh số với máy tính qua cáp USB, thông báo nào thường xuất hiện trên máy ảnh cho biết thẻ nhớ đang chia sẻ như một ổ đĩa ngoài?",
-            options: ["Airplane Mode", "USB Mode, Mass Storage", "Bluetooth Paired", "Format Drive"],
-            correct: 1,
-            explain: "SGK trang 30: Máy ảnh sẽ hiện thông báo 'USB Mode, Mass Storage' với ý nghĩa bộ nhớ được chia sẻ qua cổng USB."
-          },
-          {
-            id: "p1_12",
-            question: "Phần mềm chạy trên Internet (SaaS) có ưu điểm nổi bật nào đối với người dùng phổ thông?",
-            options: [
-              "Bắt buộc máy tính phải có cấu hình CPU đắt tiền nhất",
-              "Có thể sử dụng ở bất cứ đâu, bất cứ thiết bị nào miễn là có kết nối mạng Internet, không cần cài đặt",
-              "Không hỗ trợ làm việc cộng tác nhóm",
-              "Luôn yêu cầu trả phí bản quyền hàng triệu đồng trước khi mở trang web"
-            ],
-            correct: 1,
-            explain: "SGK trang 20: Phần mềm chạy trên Internet cho phép sử dụng ở bất cứ đâu, bất cứ khi nào, không cần cài đặt vào máy tính, chi phí rẻ hoặc miễn phí."
+            intro: "Về các phép toán nhị phân (SGK Bài 4):",
+            items: [
+              { text: "a) Trong hệ đếm nhị phân, phép cộng 1 + 1 cho kết quả là 10₂ (bằng 2 trong hệ thập phân).", ans: true },
+              { text: "b) Kết quả của phép cộng 1001₂ + 1011₂ trong hệ nhị phân là 10100₂ (tương đương 20 trong hệ thập phân).", ans: true },
+              { text: "c) Cổng logic NOT có 2 đầu vào và 1 đầu ra.", ans: false, exp: "Cổng NOT chỉ có duy nhất 1 đầu vào và 1 đầu ra." },
+              { text: "d) Phép nhân logic (AND) hai bit 1 và 0 cho kết quả bằng 1.", ans: false, exp: "1 AND 0 = 0." }
+            ]
           }
         ],
-        part2: [
-          {
-            id: "p2_1",
-            intro: "Về các thành phần bên trong thân máy tính (Bài 4):",
-            items: [
-              { label: "a", text: "Tất cả các linh kiện như CPU, RAM, khe cắm mở rộng đều được gắn trực tiếp hoặc kết nối qua bo mạch chính (Mainboard).", correct: true },
-              { label: "b", text: "CPU đa lõi (đa nhân) cho phép máy tính xử lý nhanh hơn nhờ khả năng thực hiện song song nhiều công việc.", correct: true },
-              { label: "c", text: "Tốc độ đọc ghi của ổ đĩa cơ HDD nhanh hơn nhiều lần so với ổ đĩa thể rắn SSD.", correct: false },
-              { label: "d", text: "Mọi mạch logic phức tạp trong bộ xử lý đều có thể được tổng hợp chỉ từ 3 cổng cơ bản: AND, OR và NOT.", correct: true }
-            ],
-            explain: "c sai vì đĩa cơ HDD dùng cấu trúc quay cơ học nên tốc độ chậm hơn nhiều so với đĩa thể rắn SSD (SGK tr.23). d đúng theo khẳng định ở SGK tr.26."
-          },
-          {
-            id: "p2_2",
-            intro: "Về các thiết bị vào - ra và cổng kết nối (Bài 5):",
-            items: [
-              { label: "a", text: "Màn hình máy tính màu 24-bit có thể thể hiện được khoảng 16,7 triệu sắc màu khác nhau.", correct: true },
-              { label: "b", text: "Cổng VGA truyền tín hiệu số hóa cao cấp bao gồm cả kênh âm thanh vòm kỹ thuật số.", correct: false },
-              { label: "c", text: "Máy in nhiệt thường được ứng dụng phổ biến để in hóa đơn bán hàng tại siêu thị trên giấy cảm ứng nhiệt.", correct: true },
-              { label: "d", text: "Trước khi kết nối Bluetooth lần đầu tiên, hai thiết bị số bắt buộc phải thực hiện thao tác ghép đôi (pairing).", correct: true }
-            ],
-            explain: "b sai vì VGA truyền tín hiệu tương tự (analog) và không có âm thanh (SGK tr.30)."
-          },
-          {
-            id: "p2_3",
-            intro: "Về phần mềm và ứng dụng văn phòng trực tuyến (Bài 3):",
-            items: [
-              { label: "a", text: "Bộ phần mềm văn phòng OpenOffice gồm Writer, Calc và Impress là phần mềm nguồn mở miễn phí.", correct: true },
-              { label: "b", text: "Phần mềm thương mại nguồn đóng giúp nhà phát triển phần mềm bảo vệ ý tưởng và chống sửa đổi trái phép.", correct: true },
-              { label: "c", text: "Khi sử dụng Google Docs, dữ liệu bài viết không được tự động lưu lên đám mây mà người dùng phải tự bấm đĩa mềm lưu thủ công.", correct: false },
-              { label: "d", text: "Phần mềm nguồn mở không bao giờ đi kèm bất kỳ giấy phép quy định sử dụng nào vì nó hoàn toàn vô chính phủ.", correct: false }
-            ],
-            explain: "c sai vì Google Docs tự động lưu trên đám mây (SGK tr.20). d sai vì phần mềm nguồn mở có các giấy phép rất chặt chẽ như GNU GPL (SGK tr.16)."
-          },
-          {
-            id: "p2_4",
-            intro: "Về lưu trữ đám mây và tìm kiếm thông tin (Bài 6 & 7):",
-            items: [
-              { label: "a", text: "Chủ sở hữu tệp trên Google Drive có thể hủy bỏ quyền chia sẻ hoặc thay đổi cấp độ quyền bất kỳ lúc nào.", correct: true },
-              { label: "b", text: "Công cụ tìm kiếm Google hỗ trợ nhận diện và chuyển đổi từ khóa bằng giọng nói thông qua micro của thiết bị.", correct: true },
-              { label: "c", text: "Việc nhập từ khóa kèm dấu ngoặc kép `\"Đại học Quốc gia\"` sẽ tìm tất cả các bài viết chứa rời rạc từ 'Đại học' hoặc 'Quốc gia'.", correct: false },
-              { label: "d", text: "Ổ đĩa đám mây giúp người dùng khắc phục hạn chế về dung lượng lưu trữ cục bộ của các thiết bị nhớ ngoài.", correct: true }
-            ],
-            explain: "c sai vì dấu ngoặc kép bắt buộc tìm chính xác cả cụm từ liền kề nhau chứ không tìm rời rạc (SGK tr.38)."
-          }
+        p3: [
+          { q: "Số nhị phân 10011₂ tương ứng với giá trị bao nhiêu trong hệ thập phân? (Chỉ điền số nguyên)", ans: "19", exp: "1*16 + 0*8 + 0*4 + 1*2 + 1*1 = 19." },
+          { q: "Cổng logic thực hiện phép toán cộng logic (hoặc) có tên tiếng Anh là gì? (Viết hoa 2 chữ cái)", ans: "OR", exp: "Cổng OR." },
+          { q: "Độ phân giải VGA tiêu chuẩn có số điểm ảnh chiều ngang nhân chiều dọc là bao nhiêu pixel? (Điền dạng '640x480')", ans: "640x480", exp: "SGK Bài 5: VGA là 640x480." },
+          { q: "Chuẩn giấy phép mã nguồn mở phổ biến nhất được khởi xướng bởi dự án GNU viết tắt là gì? (Gồm 6 chữ cái, ví dụ GNU GPL)", ans: "GNU GPL", exp: "GNU GPL (General Public License)." }
         ],
-        part3: [
+        p4: [
           {
-            id: "p3_1",
-            question: "Cổng kết nối truyền hình ảnh tương tự (analog) có 15 chân cắm màu xanh dương thường gặp trên máy chiếu cũ có tên viết tắt là gì?",
-            placeholder: "Nhập tên cổng (3 chữ cái)...",
-            correctAnswers: ["VGA"],
-            explain: "SGK trang 30: Cổng VGA dùng tín hiệu tương tự để truyền hình ảnh tới màn hình hoặc máy chiếu."
+            title: "Tình huống 1: Thiết kế mạch cộng 1 bit",
+            scenario: "Trong máy tính điện tử, mạch cộng bán phần (Half Adder) nhận 2 bit đầu vào x và y, cho ra bit tổng t và bit nhớ z. Dựa vào kiến thức Bài 4 SGK, hãy mô tả cách các cổng logic thực hiện nhiệm vụ này.",
+            rubric: [
+              "Bit tổng t: Là kết quả của phép toán logic x XOR y (t = 1 khi chỉ có một trong hai bit bằng 1).",
+              "Bit nhớ z: Là kết quả của phép toán logic x AND y (z = 1 chỉ khi cả hai bit x và y đều bằng 1).",
+              "Ý nghĩa: Mạch logic này là nền tảng vi mạch để bộ ALU thực hiện mọi phép tính số học phức tạp trong CPU."
+            ]
           },
           {
-            id: "p3_2",
-            question: "Thực hiện phép cộng hai số nhị phân: 1010 (hệ 2) + 0101 (hệ 2). Kết quả thu được dưới dạng nhị phân là bao nhiêu?",
-            placeholder: "Nhập chuỗi bit kết quả...",
-            correctAnswers: ["1111"],
-            explain: "SGK trang 25: Phép cộng bit từng cột: 0+1=1, 1+0=1, 0+1=1, 1+0=1 => Kết quả là 1111 (tương ứng 10 + 5 = 15 ở hệ thập phân)."
-          },
-          {
-            id: "p3_3",
-            question: "Đơn vị đo thời gian phản hồi (đổi màu một điểm ảnh) của màn hình chất lượng cao thường là mili-giây, viết tắt là gì?",
-            placeholder: "Nhập chữ viết tắt...",
-            correctAnswers: ["ms"],
-            explain: "SGK trang 28: Thời gian phản hồi là thời gian cần thiết để đổi màu một điểm ảnh, màn hình tốt có thể đạt 1 ms."
-          },
-          {
-            id: "p3_4",
-            question: "Hệ quản trị cơ sở dữ liệu nguồn mở nổi tiếng có thể thay thế cho hệ thương mại Oracle và Microsoft SQL Server (nêu trong bảng 3.1 SGK) là gì?",
-            placeholder: "Nhập tên hệ quản trị...",
-            correctAnswers: ["MySQL", "PostgreSQL"],
-            explain: "SGK trang 18: Bảng 3.1 liệt kê MySQL, PostGreSQL là phần mềm nguồn mở có thể thay thế Oracle, SQL Server."
-          }
-        ],
-        part4: [
-          {
-            id: "p4_1",
-            scenario: "Tình huống: Một người bạn của em muốn viết một phần mềm phân phối lại cho cộng đồng dựa trên việc sửa đổi mã nguồn của một chương trình phát hành theo giấy phép GNU GPL phiên bản 3.0. Bạn ấy dự định giữ kín phần code vừa sửa để thu phí bản quyền độc quyền. Em hãy tư vấn cho bạn biết quy định bắt buộc của giấy phép GNU GPL trong tình huống này.",
-            sampleAnswer: "Tư vấn: Hành động giữ kín mã nguồn là vi phạm giấy phép GNU GPL. Theo quy định của GNU GPL 3.0:\n1. Người sửa đổi và phân phối bản sửa đổi bắt buộc phải công bố công khai mã nguồn của phần sửa đổi.\n2. Phải ghi chú rõ các thành phần đã thay đổi so với bản gốc.\n3. Bản sửa đổi đó cũng bắt buộc phải tiếp tục phát hành theo giấy phép nguồn mở GNU GPL (phần mềm có nguồn gốc từ GPL cũng phải mở theo GPL).",
-            keywords: ["công bố", "mã nguồn", "giấy phép", "gnu gpl", "bắt buộc", "sửa đổi"]
-          },
-          {
-            id: "p4_2",
-            scenario: "Tình huống: Trong quá trình làm việc, một học sinh cần tìm tài liệu hướng dẫn ôn tập thi tốt nghiệp môn Tin học năm 2026 chính thức do Bộ Giáo dục ban hành dưới dạng văn bản PDF chuẩn. Hãy viết chính xác chuỗi từ khóa tìm kiếm nâng cao trên Google mà bạn ấy nên sử dụng để có kết quả tối ưu nhất.",
-            sampleAnswer: "Chuỗi tìm kiếm gợi ý: \"hướng dẫn ôn tập\" \"Tin học 2026\" \"Bộ Giáo dục và Đào tạo\" filetype:pdf\n(Hoặc: \"đề minh họa\" \"Tin học 2026\" moe.gov.vn filetype:pdf)\nGiải thích: Đặt cụm từ quan trọng trong dấu ngoặc kép để tìm chính xác, kết hợp cú pháp filetype:pdf để chỉ tải về các tệp văn bản PDF chính thức.",
-            keywords: ["filetype:pdf", "\"", "nháy kép", "từ khóa"]
+            title: "Tình huống 2: Lựa chọn chuẩn màn hình và cổng kết nối cho phòng thuyết trình",
+            scenario: "Trường học cần lắp đặt một máy chiếu cho phòng hội trường lớn để chiếu bài giảng kèm âm thanh video chất lượng cao từ máy tính xách tay của giáo viên. Hãy tư vấn cổng kết nối phù hợp và lý do tại sao không nên dùng cổng VGA cổ điển.",
+            rubric: [
+              "Lựa chọn khuyến nghị: Sử dụng cổng kết nối HDMI.",
+              "Lý do: Cổng HDMI truyền tín hiệu số (digital), truyền đồng thời cả hình ảnh sắc nét và âm thanh đa kênh chỉ qua một sợi cáp duy nhất.",
+              "Nhược điểm cổng VGA: Truyền tín hiệu tương tự (analog) dễ bị nhiễu trên dây dài và hoàn toàn không truyền được âm thanh, phải cắm thêm dây 3.5mm phụ."
+            ]
           }
         ]
       },
+      // Đề 4
       {
         id: 3,
-        title: "Đề Khảo Sát Số 3",
-        headline: "Hệ Điều Hành Di Động, Logic Nhị Phân & An Toàn Số",
-        description: "Bao quát các đặc trưng của hệ điều hành di động iOS/Android, bảng chân lý logic, tiện ích đĩa và quản lý tệp trên đám mây.",
-        part1: [
+        title: "Đề số 4: Giấy Phép, Lưu Trữ Đám Mây & Tìm Kiếm",
+        p1: [
+          { q: "Phiên bản giấy phép công cộng GNU GPL 3.0 được phát hành vào năm nào?", opt: ["Năm 2007", "Năm 1991", "Năm 1995", "Năm 2015"], ans: 0, exp: "SGK Bài 3: Giấy phép GNU GPL 3.0 được phát hành năm 2007." },
+          { q: "Phần mềm nào sau đây là bộ ứng dụng văn phòng mã nguồn mở tương đương với Microsoft Office?", opt: ["OpenOffice / LibreOffice", "Google Chrome", "Adobe Acrobat Reader", "Windows Defender"], ans: 0, exp: "SGK Bài 3: Bộ OpenOffice (Writer, Calc, Impress) là phần mềm nguồn mở văn phòng." },
+          { q: "Hệ điều hành LINUX nguyên bản do ai khởi xướng xây dựng vào năm 1991?", opt: ["Linus Torvalds", "Bill Gates", "Steve Jobs", "Dennis Ritchie"], ans: 0, exp: "SGK Bài 1: Linus Torvalds viết hệ điều hành Linux năm 1991." },
+          { q: "Chỉ số đo hiệu năng 'Flops' trong khoa học máy tính biểu thị điều gì?", opt: ["Số phép tính dấu phẩy động thực hiện trong một giây", "Số byte truyền tải qua mạng", "Số điểm ảnh hiển thị trên màn hình", "Số vòng quay ổ cứng"], ans: 0, exp: "SGK Bài 4: Flops (Floating-point operations per second) là số phép tính dấu phẩy động mỗi giây." },
+          { q: "Một inch theo quy ước đo kích thước đường chéo màn hình tương đương với bao nhiêu cm?", opt: ["2,54 cm", "1,50 cm", "3,14 cm", "2,00 cm"], ans: 0, exp: "SGK Bài 5: 1 inch = 2,54 cm." },
+          { q: "Chuột không dây thường sử dụng công nghệ kết nối nào sau đây với máy tính?", opt: ["Sóng Bluetooth hoặc đầu thu USB Wireless 2.4GHz", "Cáp quang", "Cổng Parallel", "Tia hồng ngoại xa"], ans: 0, exp: "SGK Bài 5: Chuột không dây kết nối qua Bluetooth hoặc đầu thu USB Receiver." },
+          { q: "Dịch vụ lưu trữ trực tuyến nào sau đây gắn liền với hệ sinh thái của tập đoàn Microsoft?", opt: ["OneDrive", "Google Drive", "iCloud", "Dropbox"], ans: 0, exp: "SGK Bài 6: OneDrive là dịch vụ đám mây của Microsoft." },
+          { q: "Thư mục nào trong máy ảnh số thường là nơi chứa các tệp ảnh chụp khi kết nối với máy tính?", opt: ["DCIM", "WINDOWS", "PROGRAMS", "SYSTEM32"], ans: 0, exp: "SGK Bài 5: Thư mục DCIM (Digital Camera Images) chứa các ảnh chụp." },
+          { q: "Khi chia sẻ một file biểu mẫu khảo sát trong Google Drive, nếu muốn ai có link cũng vào điền được mà không xóa form của mình, ta để quyền:", opt: ["Người nhận xét hoặc gửi link dạng điền biểu mẫu (Form)", "Người chỉnh sửa", "Chủ sở hữu", "Quản trị viên miền"], ans: 0, exp: "SGK Bài 6: Phân quyền chính xác tránh mất file gốc." },
+          { q: "Cú pháp tìm kiếm `\"Đại học Quốc gia Hà Nội\" filetype:pdf` nhằm mục đích:", opt: ["Tìm chính xác cụm từ trong tài liệu có định dạng PDF", "Tìm mọi trang web có chữ Đại học", "Chuyển trang web sang PDF", "Xóa tệp PDF trên máy"], ans: 0, exp: "SGK Bài 7: Kết hợp dấu ngoặc kép và toán tử filetype để tìm tài liệu PDF chính xác." },
+          { q: "Để chỉnh độ sáng màn hình trên bàn phím của một số laptop, ta thường sử dụng phím nào kết hợp với phím Fn?", opt: ["Các phím chức năng F11, F12 hoặc có biểu tượng mặt trời", "Phím Enter", "Phím Ctrl + C", "Phím Shift + Tab"], ans: 0, exp: "SGK Bài 5: Trên laptop có phím biểu tượng tăng giảm độ sáng (thường là F11, F12)." },
+          { q: "Bộ xử lý CPU đa lõi (Multi-core) mang lại lợi ích nổi bật nào sau đây?", opt: ["Cho phép máy tính xử lý nhanh hơn do thực hiện song song nhiều công việc", "Giảm dung lượng ổ cứng", "Không cần dùng quạt tản nhiệt", "Tăng dung lượng pin tức thì"], ans: 0, exp: "SGK Bài 4: CPU đa lõi cho phép xử lý song song nhiều tác vụ đồng thời." }
+        ],
+        p2: [
           {
-            id: "p1_1",
-            question: "Đặc điểm nào sau đây KHÔNG PHẢI là đặc trưng nổi bật của hệ điều hành trên thiết bị di động so với máy tính để bàn?",
-            options: [
-              "Giao diện đặc biệt thân thiện với thao tác vuốt chạm và cảm biến hành vi",
-              "Ưu tiên cao khả năng kết nối mạng không dây (Wifi, 4G, 5G, Bluetooth)",
-              "Tích hợp nhiều tiện ích hỗ trợ cá nhân (định vị, cảm biến sức khỏe, danh bạ)",
-              "Bắt buộc người dùng phải gõ lệnh bằng bàn phím cơ và dùng chuột có dây"
-            ],
-            correct: 3,
-            explain: "SGK trang 8: Thiết bị di động dùng màn hình cảm ứng, vuốt chạm, lắc và cảm biến chứ không bắt buộc dùng bàn phím cơ và chuột có dây."
+            intro: "Về phần mềm tự do và phần mềm nguồn mở (SGK Bài 3):",
+            items: [
+              { text: "a) Acrobat Reader là phần mềm tự do ở dạng mã máy, chỉ hỗ trợ xem và in tài liệu PDF cơ bản.", ans: true },
+              { text: "b) Người dùng có quyền sửa mã nguồn phần mềm GPL nhưng không bắt buộc phải chia sẻ phần sửa đổi đó nếu phân phối lại.", ans: false, exp: "Theo GPL, nếu phân phối lại bản sửa đổi thì bắt buộc phải công khai mã nguồn phần sửa đổi." },
+              { text: "c) Hệ quản trị cơ sở dữ liệu MySQL và PostgreSQL là các phần mềm mã nguồn mở.", ans: true },
+              { text: "d) Phần mềm nguồn mở luôn có đội ngũ kỹ thuật viên của công ty cung cấp trực tổng đài hỗ trợ 24/7.", ans: false, exp: "Phần mềm nguồn mở thường không có hỗ trợ chính hãng, sự hỗ trợ chủ yếu đến từ cộng đồng người dùng." }
+            ]
           },
           {
-            id: "p1_2",
-            question: "Phiên bản Linux đầu tiên (Linux 1.0) được Linus Torvalds công bố chính thức dưới dạng mã nguồn mở vào năm nào?",
-            options: ["1985", "1991", "1994", "2001"],
-            correct: 2,
-            explain: "SGK trang 7: Linus Torvalds viết Linux năm 1991 và công bố chính thức phiên bản Linux 1.0 năm 1994 dưới dạng mã nguồn mở."
+            intro: "Về cấu tạo bên trong thân máy tính (SGK Bài 4):",
+            items: [
+              { text: "a) Thanh ghi (Register) là vùng nhớ bên trong CPU có tốc độ truy xuất cực kỳ nhanh chóng.", ans: true },
+              { text: "b) Ổ cứng thể rắn SSD có tốc độ truy cập dữ liệu chậm hơn ổ đĩa từ HDD vì không có động cơ quay.", ans: false, exp: "SSD dùng chip nhớ flash nên có tốc độ nhanh hơn HDD cơ học rất nhiều." },
+              { text: "c) Bộ nhớ ROM chứa các chương trình kiểm tra hệ thống và quy trình khởi động máy tính ban đầu (BIOS/UEFI).", ans: true },
+              { text: "d) Dung lượng RAM thông dụng của máy tính cá nhân hiện nay thường nằm trong khoảng từ 8GB đến 32GB.", ans: true }
+            ]
           },
           {
-            id: "p1_3",
-            question: "Tiện ích Check Disk (Kiểm tra đĩa) trên hệ điều hành có chức năng chủ yếu nào sau đây?",
-            options: [
-              "Phát hiện và loại bỏ các liên cung mất liên kết (dữ liệu mồ côi) và đánh dấu cung hỏng vật lý (bad sector)",
-              "Tăng tốc độ kết nối mạng Internet lên gấp đôi",
-              "Thay đổi hình nền và con trỏ chuột của giao diện máy tính",
-              "Chuyển đổi hệ thống từ tiếng Anh sang tiếng Việt"
-            ],
-            correct: 0,
-            explain: "SGK trang 13: Tiện ích Check Disk dùng để khắc phục các lỗi như dữ liệu mồ côi, cung hỏng vật lý (bad sector) để việc đọc ghi trở lại bình thường."
+            intro: "Về các thao tác tệp và thư mục trên hệ điều hành (SGK Bài 2):",
+            items: [
+              { text: "a) Trong File Explorer của Windows, nhấp chuột phải vào một tệp sẽ xuất hiện menu ngữ cảnh chứa các lệnh Cut, Copy, Delete.", ans: true },
+              { text: "b) Hệ điều hành Ubuntu sử dụng giao diện cửa sổ đồ họa tương tự Windows nhưng hoàn toàn không hỗ trợ chuột.", ans: false, exp: "Ubuntu hỗ trợ đầy đủ chuột, bàn phím và giao diện đồ họa trực quan." },
+              { text: "c) Khi một sector trên đĩa cứng bị hỏng vật lý (bad sector), hệ thống cần cô lập để không ghi dữ liệu vào đó nữa.", ans: true },
+              { text: "d) Phím tắt Ctrl + C dùng để dán dữ liệu vừa sao chép vào thư mục mới.", ans: false, exp: "Ctrl + C là sao chép (Copy), Ctrl + V mới là dán (Paste)." }
+            ]
           },
           {
-            id: "p1_4",
-            question: "Phần mềm được thiết kế và lập trình riêng biệt theo yêu cầu của từng doanh nghiệp/khách hàng cụ thể được gọi là:",
-            options: ["Phần mềm đóng gói", "Phần mềm đặt hàng (phần mềm may-đo)", "Phần mềm tự do", "Phần mềm mã nguồn mở"],
-            correct: 1,
-            explain: "SGK trang 18: Phần mềm đặt hàng (may-đo) được thiết kế theo yêu cầu của từng khách hàng (ví dụ: dây chuyền lắp ráp, app taxi)."
-          },
-          {
-            id: "p1_5",
-            question: "Cho hai đại lượng logic x = 1 và y = 0. Giá trị của biểu thức logic (x AND y) và (x OR y) lần lượt là:",
-            options: ["0 và 1", "1 và 0", "1 và 1", "0 và 0"],
-            correct: 0,
-            explain: "SGK trang 24: Bảng phép toán logic: 1 AND 0 = 0; 1 OR 0 = 1."
-          },
-          {
-            id: "p1_6",
-            question: "Bộ nhớ trong của máy tính gồm có những thành phần cơ bản nào?",
-            options: ["RAM và ROM", "HDD và SSD", "Thẻ nhớ và USB", "Đĩa CD và DVD"],
-            correct: 0,
-            explain: "SGK trang 22-23: Bộ nhớ trong (memory) chia thành hai loại RAM (Random Access Memory) và ROM (Read Only Memory)."
-          },
-          {
-            id: "p1_7",
-            question: "Loại màn hình nào sau đây sử dụng công nghệ bóng đèn chân không cổ điển, có kích thước cồng kềnh và tỏa nhiều nhiệt?",
-            options: ["Màn hình LCD", "Màn hình CRT", "Màn hình LED", "Màn hình Plasma"],
-            correct: 1,
-            explain: "SGK trang 28: Màn hình sử dụng đèn chân không là màn hình CRT."
-          },
-          {
-            id: "p1_8",
-            question: "Để tuỳ chỉnh tốc độ di chuyển của con trỏ chuột trên hệ điều hành Windows, người dùng truy cập vào đâu?",
-            options: [
-              "Settings -> Devices -> Mouse (thanh Cursor speed)",
-              "File Explorer -> View -> Large Icons",
-              "Recycle Bin -> Properties",
-              "Windows Defender -> Virus Scan"
-            ],
-            correct: 0,
-            explain: "SGK trang 28 (Hình 5.1): Mở tiện ích Setting, chọn Devices -> Mouse và kéo con trượt trên thanh Cursor speed."
-          },
-          {
-            id: "p1_9",
-            question: "Khi kết nối máy in với máy tính lần đầu tiên, thao tác kỹ thuật nào thường là bắt buộc đối với một số dòng máy in?",
-            options: [
-              "Cài đặt trình điều khiển (driver) tương thích do hãng sản xuất cung cấp",
-              "Nâng cấp bộ vi xử lý CPU lên phiên bản mới nhất",
-              "Xóa toàn bộ dữ liệu trên ổ đĩa C",
-              "Tắt toàn bộ kết nối điện lưới trong phòng"
-            ],
-            correct: 0,
-            explain: "SGK trang 29: Một số loại máy in khi kết nối trước lần sử dụng đầu tiên đòi hỏi phải cài đặt trình điều khiển (driver) do hãng cung cấp."
-          },
-          {
-            id: "p1_10",
-            question: "Dịch vụ lưu trữ trực tuyến OneDrive là sản phẩm công nghệ của tập đoàn nào?",
-            options: ["Google", "Microsoft", "Apple", "Dropbox Inc"],
-            correct: 1,
-            explain: "SGK trang 33: Google với Google Drive, Microsoft với OneDrive, Apple với iCloud."
-          },
-          {
-            id: "p1_11",
-            question: "Khi tải một tệp dữ liệu lên Google Drive, tệp đó sẽ được lưu trữ ở đâu?",
-            options: [
-              "Trên bộ nhớ RAM của máy tính cục bộ",
-              "Trên không gian nhớ đám mây của tài khoản Google người dùng",
-              "Trên vi mạch ROM của bảng mạch chính",
-              "Tự động in ra giấy và lưu trong ngăn bàn"
-            ],
-            correct: 1,
-            explain: "SGK trang 33: Tệp tải lên sẽ được lưu trữ trên ổ đĩa trực tuyến (không gian đám mây) của tài khoản."
-          },
-          {
-            id: "p1_12",
-            question: "Ưu điểm lớn nhất của việc tìm kiếm thông tin bằng giọng nói trên điện thoại thông minh là gì?",
-            options: [
-              "Nhanh chóng, thuận tiện khi không tiện gõ bàn phím ảo",
-              "Không bao giờ xảy ra lỗi nhận diện",
-              "Không cần sử dụng micro",
-              "Tự động tải về máy toàn bộ nội dung tìm được mà không cần mạng"
-            ],
-            correct: 0,
-            explain: "SGK trang 36: Tìm kiếm giọng nói thông qua micro giúp thao tác nhanh và thuận tiện trên thiết bị di động."
+            intro: "Về dịch vụ lưu trữ trực tuyến và tìm kiếm thông tin (SGK Bài 6 & 7):",
+            items: [
+              { text: "a) Khi chia sẻ tệp trên đám mây, chủ sở hữu có thể huỷ bỏ chia sẻ hoặc đổi lại quyền bất kỳ lúc nào.", ans: true },
+              { text: "b) Tìm kiếm bằng giọng nói chỉ hoạt động khi gõ chữ từ bàn phím.", ans: false, exp: "Tìm kiếm bằng giọng nói sử dụng micro để ghi nhận âm thanh và tự chuyển thành văn bản truy vấn." },
+              { text: "c) Các đám mây lưu trữ thông dụng như Google Drive, OneDrive đều cung cấp một lượng dung lượng miễn phí nhất định khi đăng ký.", ans: true },
+              { text: "d) Kết quả tìm kiếm trên máy tìm kiếm luôn sắp xếp thông tin theo thứ tự chữ cái tên tác giả.", ans: false, exp: "Máy tìm kiếm sắp xếp theo mức độ liên quan, độ uy tín và thuật toán tối ưu hóa." }
+            ]
           }
         ],
-        part2: [
-          {
-            id: "p2_1",
-            intro: "Về sự phát triển của hệ điều hành máy tính (Bài 1):",
-            items: [
-              { label: "a", text: "Hệ điều hành DOS sử dụng giao diện dòng lệnh, đòi hỏi người dùng phải nhớ chính xác cú pháp từng câu lệnh.", correct: true },
-              { label: "b", text: "Windows phiên bản 1 phát hành năm 1985 đã là một hệ điều hành độc lập hoàn toàn, không dựa vào DOS.", correct: false },
-              { label: "c", text: "Giao diện đồ họa (GUI) sử dụng các cửa sổ, biểu tượng trực quan và chuột giúp tương tác thân thiện hơn.", correct: true },
-              { label: "d", text: "Hệ điều hành macOS của Apple được thiết kế riêng cho dòng máy tính cá nhân Mac (MacBook, iMac).", correct: true }
-            ],
-            explain: "b sai vì trong 10 năm đầu, Windows chỉ là vỏ bọc đồ họa gọi các dịch vụ của DOS, đến Windows 95 mới tích hợp trực tiếp (SGK tr.7)."
-          },
-          {
-            id: "p2_2",
-            intro: "Về vai trò của mạch logic và tính toán nhị phân (Bài 4):",
-            items: [
-              { label: "a", text: "Hệ nhị phân chỉ sử dụng hai chữ số là 0 và 1 để biểu diễn mọi thông tin và dữ liệu số.", correct: true },
-              { label: "b", text: "Số nhị phân 10011 tương ứng với giá trị 19 trong hệ thập phân.", correct: true },
-              { label: "c", text: "Phép nhân logic AND chỉ bằng 0 khi cả hai đại lượng cùng bằng 1.", correct: false },
-              { label: "d", text: "Không có mạch logic thì không thể chế tạo được các thiết bị số như máy tính điện tử.", correct: true }
-            ],
-            explain: "b đúng vì 16 + 2 + 1 = 19 (SGK tr.25). c sai vì AND chỉ bằng 1 khi cả hai bằng 1, các trường hợp khác bằng 0 (SGK tr.24)."
-          },
-          {
-            id: "p2_3",
-            intro: "Về tính năng của phần mềm thương mại và nguồn mở (Bài 3):",
-            items: [
-              { label: "a", text: "Phần mềm thương mại đóng gói như MS Word hay Adobe Photoshop có tính hoàn chỉnh cao, đáp ứng nhu cầu chung của số đông.", correct: true },
-              { label: "b", text: "Phần mềm thương mại là nguồn tài chính chủ yếu duy trì các tổ chức phát triển phần mềm chuyên nghiệp.", correct: true },
-              { label: "c", text: "Người dùng phần mềm nguồn mở luôn được nhận dịch vụ bảo hành và hỗ trợ kỹ thuật tận nơi từ tác giả gốc.", correct: false },
-              { label: "d", text: "Mã nguồn mở Inkscape và GIMP là các phần mềm đồ họa mã nguồn mở phổ biến.", correct: true }
-            ],
-            explain: "c sai vì phần mềm nguồn mở thông thường không có bảo hành chính thức mà chỉ có hỗ trợ từ cộng đồng (SGK tr.16, tr.19)."
-          },
-          {
-            id: "p2_4",
-            intro: "Về lưu trữ đám mây và chia sẻ tệp tin (Bài 6):",
-            items: [
-              { label: "a", text: "Lưu trữ đám mây giúp giải quyết bài toán giới hạn không gian lưu trữ vật lý của đĩa cứng cá nhân.", correct: true },
-              { label: "b", text: "Khi người dùng xóa một tệp tin trên ổ đĩa đám mây, tệp đó sẽ tự động chuyển vào Thùng rác (Trash).", correct: true },
-              { label: "c", text: "Chế độ 'Người nhận xét' cho phép người khác sửa trực tiếp và xóa các đoạn văn bản trong tệp tin gốc.", correct: false },
-              { label: "d", text: "Một tài khoản Google Drive chỉ có thể lưu trữ tệp văn bản Word chứ không thể lưu ảnh hay video.", correct: false }
-            ],
-            explain: "c sai vì người nhận xét chỉ được ghi chú ý kiến, không được sửa xóa nội dung gốc (SGK tr.33). d sai vì Drive lưu trữ mọi định dạng tệp."
-          }
+        p3: [
+          { q: "Năm công bố chính thức hệ điều hành Linux phiên bản 1.0 dưới dạng mã nguồn mở là năm nào? (Chỉ điền 4 chữ số năm)", ans: "1994", exp: "SGK Bài 1: Phiên bản Linux 1.0 công bố chính thức năm 1994." },
+          { q: "Thực hiện phép tính logic: (1 AND 0) OR (NOT 0) cho kết quả là bao nhiêu? (Chỉ điền 0 hoặc 1)", ans: "1", exp: "1 AND 0 = 0. NOT 0 = 1. 0 OR 1 = 1." },
+          { q: "Cổng giao tiếp xuất hình ảnh và âm thanh chất lượng cao phổ biến trên TV và máy tính là gì? (4 chữ cái viết hoa)", ans: "HDMI", exp: "HDMI (High-Definition Multimedia Interface)." },
+          { q: "Tên tiện ích nén tệp tích hợp hoặc bổ sung phổ biến trên hệ điều hành có đuôi tệp là gì? (3 chữ cái)", ans: "ZIP", exp: "Tiện ích tệp nén .zip." }
         ],
-        part3: [
+        p4: [
           {
-            id: "p3_1",
-            question: "Chuyển đổi số nhị phân 1101 (hệ 2) sang giá trị trong hệ thập phân (hệ 10). Giá trị đó là bao nhiêu?",
-            placeholder: "Nhập một số nguyên...",
-            correctAnswers: ["13"],
-            explain: "SGK trang 25: 1x2^3 + 1x2^2 + 0x2^1 + 1x2^0 = 8 + 4 + 0 + 1 = 13."
+            title: "Tình huống 1: Lựa chọn hệ điều hành cho phòng máy tính",
+            scenario: "Một trường học vùng khó khăn muốn tái sử dụng 30 máy tính cũ cấu hình yếu (CPU 2 nhân, RAM 2GB) để dạy môn Tin học. Em hãy đề xuất giải pháp lựa chọn hệ điều hành phù hợp (Windows bản quyền hay bản phân phối Linux như Ubuntu/Lubuntu) dựa trên chi phí và hiệu năng (Bài 1 & Bài 3 SGK).",
+            rubric: [
+              "Đề xuất: Sử dụng bản phân phối Linux gọn nhẹ (như Lubuntu / Linux Mint) mã nguồn mở.",
+              "Lý do chi phí: Hoàn toàn miễn phí bản quyền hệ điều hành và các ứng dụng văn phòng đi kèm, không tốn ngân sách.",
+              "Lý do hiệu năng: Linux tối ưu phần cứng cực tốt, tiêu tốn rất ít RAM và tài nguyên CPU, giúp máy cấu hình yếu chạy mượt mà ổn định."
+            ]
           },
           {
-            id: "p3_2",
-            question: "Tên tiện ích tích hợp trên hệ điều hành Windows dùng để giải phóng dung lượng bằng cách xóa các tệp rác tạm thời (nêu tại mục Vận dụng bài 2) là gì?",
-            placeholder: "Nhập tên tiện ích...",
-            correctAnswers: ["Disk Cleanup", "Disk cleanup"],
-            explain: "SGK trang 14: Tiện ích dọn đĩa (Disk Cleanup) trong trang General của ổ đĩa."
-          },
-          {
-            id: "p3_3",
-            question: "Hệ điều hành di động phổ biến của tập đoàn Apple chạy trên iPhone và iPad có tên gọi là gì?",
-            placeholder: "Nhập tên hệ điều hành...",
-            correctAnswers: ["iOS", "ios"],
-            explain: "SGK trang 8: Phổ biến là iOS của Apple dùng cho iPhone, iPad."
-          },
-          {
-            id: "p3_4",
-            question: "Cơ chế nào trên hệ điều hành máy tính cá nhân giúp tự động nhận diện thiết bị ngoại vi ngay khi cắm vào máy tính?",
-            placeholder: "Viết cụm từ tiếng Anh...",
-            correctAnswers: ["Plug and Play", "Plug & Play", "Plug and play"],
-            explain: "SGK trang 6: Cơ chế Plug & Play (cắm và chạy) giúp hệ điều hành nhận biết thiết bị ngoại vi tự động."
-          }
-        ],
-        part4: [
-          {
-            id: "p4_1",
-            scenario: "Tình huống: Khi sử dụng chuột quang để chỉnh sửa một bức ảnh chân dung với các chi tiết rất nhỏ trên phần mềm đồ họa, bạn Tuấn thấy trỏ chuột di chuyển quá nhanh khiến nét vẽ bị lệch. Dựa vào kiến thức Bài 5 SGK, em hãy giải thích mối liên hệ giữa tốc độ chuột và độ nhạy, đồng thời hướng dẫn bạn Tuấn cách chỉnh lại trong hệ điều hành Windows.",
-            sampleAnswer: "- Giải thích: Tốc độ chuột thể hiện tỉ lệ giữa khoảng cách con trỏ trên màn hình so với khoảng cách di chuyển thực tế của chuột trên bàn. Khi chỉnh sửa ảnh cần thao tác cực nhỏ, nếu tốc độ con trỏ quá cao sẽ làm mất độ chính xác.\n- Hướng dẫn chỉnh: Mở Settings -> chọn Devices -> chọn Mouse -> tại mục 'Cursor speed', kéo con trượt sang phía bên trái để giảm tốc độ di chuyển con trỏ chuột.",
-            keywords: ["cursor speed", "giảm tốc độ", "settings", "devices", "mouse"]
-          },
-          {
-            id: "p4_2",
-            scenario: "Tình huống: Một doanh nghiệp vừa mở chuỗi cửa hàng trà sữa cần phần mềm tính tiền kết nối với máy in hóa đơn nhiệt và quản lý nguyên liệu tồn kho theo công thức pha chế riêng. Doanh nghiệp nên chọn phần mềm thương mại đóng gói hay phần mềm đặt hàng (may-đo)? Giải thích lý do.",
-            sampleAnswer: "Doanh nghiệp nên chọn: Phần mềm thương mại đặt hàng (phần mềm may-đo).\nLý do: \n1. Công thức pha chế và quy trình vận hành chuỗi của doanh nghiệp là nhu cầu đặc thù riêng mà các phần mềm đóng gói chung khó đáp ứng trọn vẹn.\n2. Phần mềm đặt hàng được bảo hành và hỗ trợ kỹ thuật trực tiếp theo hợp đồng khi có sự cố tại các quầy thu ngân.",
-            keywords: ["đặt hàng", "may đo", "nhu cầu riêng", "bảo hành", "hỗ trợ kỹ thuật"]
+            title: "Tình huống 2: Kỹ năng tìm kiếm tài liệu ôn thi trực tuyến",
+            scenario: "Bạn An cần tìm tài liệu 'Đề thi chọn học sinh giỏi Tin học 11' chính thức của Sở Giáo dục có định dạng tệp PDF nhưng khi gõ tìm kiếm thông thường kết quả trả về quá nhiều trang bán tài liệu quảng cáo. Em hãy hướng dẫn bạn cách áp dụng thủ thuật tìm kiếm ở Bài 7 SGK.",
+            rubric: [
+              "Dùng toán tử ngoặc kép: Đặt cụm từ chính xác trong ngoặc kép `\"Đề thi chọn học sinh giỏi Tin học 11\"`.",
+              "Dùng toán tử định dạng: Thêm cụm từ `filetype:pdf` để chỉ lọc ra các tệp tài liệu PDF chuẩn.",
+              "Giới hạn tên miền: Có thể bổ sung thêm từ khóa tên Sở hoặc `site:edu.vn` để tìm đúng nguồn trang giáo dục chính thống."
+            ]
           }
         ]
       },
+      // Đề 5
       {
         id: 4,
-        title: "Đề Khảo Sát Số 4",
-        headline: "Bộ Xử Lý CPU, Thiết Bị Ngoại Vi & Lưu Trữ Đĩa Cứng",
-        description: "Đi sâu vào thông số màn hình, máy in nhiệt, đơn vị đo tần số CPU, bảng cộng nhị phân và nguyên lý chia sẻ trực tuyến.",
-        part1: [
+        title: "Đề số 5: Tổng Hợp Đánh Giá Năng Lực (Bài 1 - Bài 7)",
+        p1: [
+          { q: "Mối quan hệ nào sau đây phản ánh đúng vị trí của hệ điều hành trong hệ thống máy tính?", opt: ["Hệ điều hành là môi trường trung gian giúp phần mềm ứng dụng khai thác phần cứng", "Hệ điều hành thuộc phần cứng máy tính", "Hệ điều hành là một thành phần trong bộ nhớ ROM", "Phần mềm ứng dụng trực tiếp điều khiển các thanh ghi CPU không qua hệ điều hành"], ans: 0, exp: "SGK Bài 1: Hệ điều hành là cầu nối môi trường trung gian giữa phần mềm ứng dụng và phần cứng." },
+          { q: "Tính năng kéo thả chuột (Drag & Drop) tiện lợi trên Windows lần đầu tiên xuất hiện ở phiên bản nào?", opt: ["Windows 3.1", "Windows 95", "Windows XP", "MS-DOS"], ans: 0, exp: "SGK Bài 1: Chức năng kéo thả tiện lợi bắt đầu có từ phiên bản Windows 3.1 (1992)." },
+          { q: "Trong các bộ nhớ sau, bộ nhớ nào có thời gian truy cập dữ liệu trung bình nhanh nhất?", opt: ["Thanh ghi (Register) và Cache trong CPU", "Bộ nhớ RAM", "Ổ đĩa thể rắn SSD", "Ổ cứng HDD"], ans: 0, exp: "SGK Bài 4: Thanh ghi và bộ nhớ đệm (Cache) nằm ngay trong nhân CPU nên có tốc độ cao nhất." },
+          { q: "Khi cộng hai bit đơn x = 1 và y = 1, kết quả thu được gồm bit nhớ z và bit tổng t lần lượt là:", opt: ["z = 1, t = 0", "z = 0, t = 1", "z = 1, t = 1", "z = 0, t = 0"], ans: 0, exp: "SGK Bài 4: 1 + 1 = 10₂ (bit nhớ z = 1, bit tổng t = 0)." },
+          { q: "Đặc điểm cơ bản của phần mềm thương mại dạng 'đóng gói' là gì?", opt: ["Được thiết kế dựa trên các nhu cầu chung của số đông khách hàng", "Được viết riêng theo yêu cầu cụ thể của một công ty duy nhất", "Được chia sẻ toàn bộ mã nguồn miễn phí", "Không bao giờ được nâng cấp phiên bản mới"], ans: 0, exp: "SGK Bài 3: Phần mềm đóng gói (như MS Word, Photoshop) thiết kế dựa trên nhu cầu chung của nhiều người." },
+          { q: "Cổng kết nối nào trước đây thường dùng cho máy in truyền thống đã bị thay thế hoàn toàn bởi cổng USB?", opt: ["Cổng Parallel (cổng song song)", "Cổng HDMI", "Cổng VGA", "Cổng âm thanh Audio 3.5mm"], ans: 0, exp: "SGK Bài 5: Cổng USB thay thế cổng Parallel máy in, cổng COM và PS/2." },
+          { q: "Tần số quét màn hình 60 Hz có nghĩa là gì?", opt: ["Màn hình hiển thị và vẽ lại hình ảnh 60 lần trong một giây", "Màn hình tiêu thụ 60W điện năng", "Độ trễ màn hình là 60ms", "Màn hình có 60 điểm ảnh"], ans: 0, exp: "SGK Bài 5: Tần số quét là số lần hiển thị lại hình ảnh trong một giây." },
+          { q: "Khi tải một tệp dữ liệu lên Google Drive, tệp đó được lưu trữ thực tế tại đâu?", opt: ["Hệ thống máy chủ lưu trữ (Data Center) của Google trên Internet", "Ngay trong bộ nhớ RAM của máy tính cá nhân", "Trong thẻ nhớ của màn hình", "Trong chip BIOS của bảng mạch chính"], ans: 0, exp: "SGK Bài 6: Đĩa trực tuyến lưu trữ trên đám mây máy chủ của nhà cung cấp dịch vụ." },
+          { q: "Công cụ tìm kiếm nào sau đây là sản phẩm phổ biến hàng đầu thế giới được xây dựng trên nền tảng web?", opt: ["Google Search", "Windows Explorer", "Microsoft Paint", "LibreOffice Writer"], ans: 0, exp: "SGK Bài 7: Google Search là máy tìm kiếm phổ biến hàng đầu." },
+          { q: "Thao tác ghép đôi Bluetooth (Pairing) lần đầu giữa tai nghe và điện thoại thông minh nhằm mục đích:", opt: ["Trao đổi và xác thực các tham số kết nối an toàn giữa hai thiết bị", "Sạc pin cho tai nghe", "Tải bài hát vào bộ nhớ tai nghe", "Xóa toàn bộ dữ liệu máy tính"], ans: 0, exp: "SGK Bài 5: Ghép đôi nhằm trao đổi tham số kết nối và thiết lập kênh truyền an toàn." },
+          { q: "Phần mềm Acrobat Pro DC khác với Acrobat Reader ở điểm cốt lõi nào?", opt: ["Acrobat Pro DC là bản thương mại trả phí có đầy đủ tính năng biên tập, chuyển đổi PDF", "Acrobat Pro DC là phần mềm mã nguồn mở", "Acrobat Reader không thể mở được tệp PDF", "Acrobat Pro DC chỉ dùng trên hệ điều hành Linux"], ans: 0, exp: "SGK Bài 3: Acrobat Reader miễn phí chỉ xem/in, Acrobat Pro DC là bản thương mại có chỉnh sửa, tạo file." },
+          { q: "Biểu tượng Shortcut trên màn hình Desktop của hệ điều hành Windows đại diện cho điều gì?", opt: ["Đường dẫn liên kết giúp khởi động nhanh tệp hoặc ứng dụng", "Chính là tệp chương trình gốc", "Tệp văn bản chứa mật khẩu", "Một thiết bị phần cứng cắm ngoài"], ans: 0, exp: "SGK Bài 1 & 2: Biểu tượng Shortcut (lối tắt) giúp người dùng truy cập nhanh vào ứng dụng." }
+        ],
+        p2: [
           {
-            id: "p1_1",
-            question: "Mối quan hệ giữa phần cứng, hệ điều hành và phần mềm ứng dụng được mô tả chính xác nhất là:",
-            options: [
-              "Hệ điều hành là cầu nối trung gian giúp phần mềm ứng dụng khai thác phần cứng một cách hiệu quả",
-              "Phần mềm ứng dụng tương tác trực tiếp với CPU mà không cần thông qua hệ điều hành",
-              "Phần cứng hoạt động hoàn toàn độc lập và điều khiển hệ điều hành",
-              "Hệ điều hành chỉ dùng để lưu trữ dữ liệu chứ không có quyền điều khiển thiết bị"
-            ],
-            correct: 0,
-            explain: "SGK trang 9: Phần cứng là thiết bị xử lí thông tin, hệ điều hành là môi trường trung gian giúp phần mềm ứng dụng khai thác hiệu quả phần cứng."
+            intro: "Về vai trò trung gian của hệ điều hành và môi trường giao tiếp (SGK Bài 1 & Bài 2):",
+            items: [
+              { text: "a) Khi người dùng muốn lưu tệp văn bản vào ổ cứng, chương trình soạn thảo trực tiếp điều khiển các đầu từ ổ đĩa mà không cần gọi dịch vụ của hệ điều hành.", ans: false, exp: "Phần mềm ứng dụng chỉ gửi yêu cầu gọi dịch vụ của hệ điều hành để ghi dữ liệu." },
+              { text: "b) Giao diện đồ hoạ với các biểu tượng trực quan, cửa sổ và chuột giúp người dùng bình thường tiếp cận máy tính dễ dàng hơn giao diện dòng lệnh.", ans: true },
+              { text: "c) Các thiết bị chuyên dụng như lò vi sóng hay nồi cơm điện thông minh thường chạy hệ điều hành Windows đa nhiệm phức tạp.", ans: false, exp: "Thiết bị chuyên dụng thường dùng vi xử lý đơn giản nạp sẵn chương trình trong ROM, không cần hệ điều hành đa nhiệm." },
+              { text: "d) Thanh trạng thái (Status bar) trên thanh tác vụ Windows hiển thị các thông tin như giờ hệ thống, kết nối mạng và pin.", ans: true }
+            ]
           },
           {
-            id: "p1_2",
-            question: "Nguyên nhân nào dẫn đến việc ổ cứng HDD đọc ghi dữ liệu chậm khi bị phân mảnh?",
-            options: [
-              "Hệ điều hành tự động khóa tốc độ đọc của đĩa cứng",
-              "Đầu từ phải dịch chuyển cơ học qua lại giữa các đường ghi (track) khác nhau để gom đủ các liên cung",
-              "Dữ liệu trong đĩa cứng bị chuyển đổi thành tập tin văn bản",
-              "Nguồn điện cung cấp cho máy tính bị suy giảm 50%"
-            ],
-            correct: 1,
-            explain: "SGK trang 13: Khi bị phân mảnh, thời gian đọc ghi tăng nhiều lần vì đầu từ phải dịch chuyển cơ học từ đường ghi này sang đường ghi khác."
+            intro: "Về các phép toán logic và cổng logic trong máy tính (SGK Bài 4):",
+            items: [
+              { text: "a) Cổng AND chỉ đóng mạch khi tất cả các tín hiệu đầu vào đồng thời nhận giá trị 1.", ans: true },
+              { text: "b) Bất kỳ mạch logic nào trong máy tính đều có thể được tổng hợp từ các cổng cơ bản AND, OR và NOT.", ans: true },
+              { text: "c) Phép phủ định logic (NOT) biến bit 1 thành bit 1 và bit 0 thành bit 0.", ans: false, exp: "Phép NOT đảo ngược giá trị: NOT 1 = 0, NOT 0 = 1." },
+              { text: "d) Trong hệ nhị phân, 1101₂ có giá trị thập phân bằng 13.", ans: true }
+            ]
           },
           {
-            id: "p1_3",
-            question: "Trong các phần mềm sau, phần mềm nào KHÔNG PHẢI là phần mềm ứng dụng văn phòng trực tuyến chạy trên trình duyệt web?",
-            options: ["Google Docs", "Google Sheets", "Google Slides", "Microsoft Word 2003 cài đặt từ đĩa CD"],
-            correct: 3,
-            explain: "SGK trang 20: Word 2003 cài cục bộ từ CD là phần mềm cài đặt truyền thống, không phải phần mềm chạy trên Internet."
+            intro: "Về thông số kỹ thuật của màn hình và máy in (SGK Bài 5):",
+            items: [
+              { text: "a) Kích thước màn hình máy tính được tính bằng chiều dài đường chéo theo đơn vị inch.", ans: true },
+              { text: "b) Máy in phun tạo ảnh bằng cách phun các giọt mực lỏng siêu nhỏ lên giấy, rất thích hợp in ảnh màu chất lượng cao.", ans: true },
+              { text: "c) Màn hình có độ trễ phản hồi 1ms sẽ xuất hiện hiện tượng bóng ma (ghosting) nhiều hơn màn hình 20ms.", ans: false, exp: "Thời gian phản hồi càng nhỏ (1ms) thì hình ảnh chuyển động càng rõ nét, không bị bóng ma." },
+              { text: "d) Độ phân giải của máy in tính bằng DPI biểu thị số điểm mực trên mỗi inch chiều dài/rộng.", ans: true }
+            ]
           },
           {
-            id: "p1_4",
-            question: "Một bộ xử lý CPU có thông số '3.6 GHz, 8 Cores' mang ý nghĩa gì?",
-            options: [
-              "Xung nhịp 3.6 tỉ xung/giây và có 8 nhân (đơn vị xử lý độc lập) bên trong",
-              "Bộ nhớ lưu trữ tối đa 3.6 GB và dùng được trong 8 năm",
-              "Màn hình có độ phân giải 3.6 triệu điểm ảnh và 8 cổng kết nối",
-              "Dung lượng bộ nhớ Cache là 3.6 MB và 8 thanh RAM gắn kèm"
-            ],
-            correct: 0,
-            explain: "SGK trang 22: GHz là tỉ xung/giây, lõi hay nhân (core) là đơn vị xử lý độc lập cho phép xử lý đa nhiệm song song."
-          },
-          {
-            id: "p1_5",
-            question: "Thông số DPI trên máy in thể hiện yếu tố nào sau đây?",
-            options: [
-              "Độ phân giải bản in (số điểm ảnh trên một inch)",
-              "Tốc độ in số trang trong một phút",
-              "Khổ giấy tối đa có thể in được",
-              "Công suất tiêu thụ điện của máy in"
-            ],
-            correct: 0,
-            explain: "SGK trang 29: Độ phân giải tính bằng dpi là số điểm ảnh trên một inch theo cả hai chiều ngang/dọc."
-          },
-          {
-            id: "p1_6",
-            question: "Cổng kết nối nào sau đây thường được dùng để cắm cáp mạng có dây (Ethernet) vào máy tính?",
-            options: ["Cổng USB Type-C", "Cổng VGA", "Cổng mạng (RJ45)", "Cổng HDMI"],
-            correct: 2,
-            explain: "SGK trang 29-30 (Hình 5.4F): Cổng F là cổng mạng (LAN/Ethernet) để kết nối máy tính với mạng có dây."
-          },
-          {
-            id: "p1_7",
-            question: "Khi thực hiện phép tính cộng nhị phân 1 + 1, kết quả ghi lại ở hàng hiện tại và số nhớ sang hàng bên trái lần lượt là:",
-            options: ["Ghi 0, nhớ 1", "Ghi 1, nhớ 0", "Ghi 1, nhớ 1", "Ghi 2, nhớ 0"],
-            correct: 0,
-            explain: "SGK trang 25: Bảng cộng nhị phân 1 + 1 = 10 (ghi 0, nhớ 1 sang hàng bên trái)."
-          },
-          {
-            id: "p1_8",
-            question: "Độ phân giải Full HD của màn hình máy tính thông dụng hiện nay có số điểm ảnh là bao nhiêu?",
-            options: ["640 x 480 pixel", "1024 x 768 pixel", "1920 x 1080 pixel", "3840 x 2160 pixel"],
-            correct: 2,
-            explain: "SGK trang 28: Độ phân giải Full HD: 1920 x 1080 pixel."
-          },
-          {
-            id: "p1_9",
-            question: "Điện thoại thông minh có thể giao tiếp và tương tác nhờ các cảm biến hành vi nào sau đây?",
-            options: [
-              "Cảm biến gia tốc, con quay hồi chuyển, cảm biến ánh sáng, cảm ứng đa điểm",
-              "Cảm biến đầu đọc đĩa than",
-              "Bộ biến áp cao thế",
-              "Bóng đèn chân không Catot"
-            ],
-            correct: 0,
-            explain: "SGK trang 8: Thiết bị di động trang bị màn hình cảm ứng, bàn phím ảo và nhiều cảm biến hành vi (chạm, lắc, quay)."
-          },
-          {
-            id: "p1_10",
-            question: "Hành động nào sau đây là KHÔNG AN TOÀN khi tải tệp tin từ Internet về máy tính?",
-            options: [
-              "Tải tệp từ website chính thức của nhà sản xuất có chứng chỉ bảo mật",
-              "Mở ngay tệp thực thi (.exe) được gửi từ email của người lạ mà không quét virus",
-              "Quét kiểm tra tệp bằng tiện ích Microsoft Defender trước khi chạy",
-              "Xem trước nội dung văn bản trên trình duyệt đám mây"
-            ],
-            correct: 1,
-            explain: "Mở tệp .exe lạ tiềm ẩn nguy cơ mã độc, virus phá hoại hệ thống và đánh cắp tài khoản."
-          },
-          {
-            id: "p1_11",
-            question: "Tiện ích nào sau đây trên máy tính cá nhân KHÔNG PHẢI là tiện ích hệ thống mặc định đi kèm hệ điều hành?",
-            options: ["File Explorer", "Disk Defragmenter", "Unikey gõ tiếng Việt", "Taskbar"],
-            correct: 2,
-            explain: "SGK trang 12: Bộ gõ tiếng Việt Unikey là tiện ích không có sẵn, được cài đặt sau vào hệ điều hành."
-          },
-          {
-            id: "p1_12",
-            question: "Khi kết nối máy tính với loa Bluetooth, thao tác đầu tiên cần làm trên máy tính là gì?",
-            options: [
-              "Bật Bluetooth trên máy tính, vào Settings -> Bluetooth & other devices -> Add Bluetooth or other device để dò tìm thiết bị",
-              "Tháo vỏ máy tính để kiểm tra bo mạch chủ",
-              "Cắm dây cáp quang trực tiếp vào ổ cắm điện thoại",
-              "Cài đặt lại hệ điều hành Windows từ đầu"
-            ],
-            correct: 0,
-            explain: "SGK trang 31: Mở Settings -> Bluetooth & others devices -> chọn Add Bluetooth or other device để dò và ghép đôi."
+            intro: "Về lưu trữ đám mây và tìm kiếm thông tin chuyên sâu (SGK Bài 6 & Bài 7):",
+            items: [
+              { text: "a) Để tải cả một thư mục từ máy tính lên Google Drive, ta bấm nút '+ Mới' và chọn 'Tải thư mục lên'.", ans: true },
+              { text: "b) Người dùng có thể tìm kiếm hình ảnh trên Google bằng cách tải một bức ảnh có sẵn lên ô tìm kiếm.", ans: true },
+              { text: "c) Một tệp văn bản khi được chia sẻ với quyền 'Người xem' thì người đó có thể tự do xóa các đoạn văn trong tài liệu.", ans: false, exp: "Người xem chỉ có quyền đọc tài liệu, không thể sửa hay xóa." },
+              { text: "d) Lưu trữ đám mây giúp giảm thiểu rủi ro mất dữ liệu khi máy tính cá nhân bị hỏng ổ đĩa cứng.", ans: true }
+            ]
           }
         ],
-        part2: [
-          {
-            id: "p2_1",
-            intro: "Về các loại bộ nhớ và cấu trúc lưu trữ của máy tính (Bài 4):",
-            items: [
-              { label: "a", text: "RAM là bộ nhớ truy cập ngẫu nhiên, cho phép cả đọc và ghi dữ liệu trong quá trình máy tính hoạt động.", correct: true },
-              { label: "b", text: "Dung lượng bộ nhớ ROM thường lớn hơn dung lượng bộ nhớ RAM trong cùng một máy tính.", correct: false },
-              { label: "c", text: "Ổ đĩa thể rắn SSD sử dụng vi mạch nhớ bán dẫn nên có thời gian truy cập nhanh hơn đĩa cứng từ HDD.", correct: true },
-              { label: "d", text: "Khi mất nguồn điện đột ngột, toàn bộ chương trình BIOS lưu trong ROM sẽ bị xóa sạch hoàn toàn.", correct: false }
-            ],
-            explain: "b sai vì ROM thường có dung lượng nhỏ hơn RAM (SGK tr.23). d sai vì ROM không cần nguồn nuôi và giữ dữ liệu lâu dài (SGK tr.23)."
-          },
-          {
-            id: "p2_2",
-            intro: "Về các loại máy in thông dụng trong thực tế (Bài 5):",
-            items: [
-              { label: "a", text: "Máy in kim tạo chữ bằng cách gõ các kim vào băng mực, tạo ra nhiều tiếng ồn và chất lượng in ảnh thấp.", correct: true },
-              { label: "b", text: "Máy in laser là giải pháp tối ưu và tiết kiệm nhất để in băng rôn, phông bạt quảng cáo khổ lớn ngoài trời.", correct: false },
-              { label: "c", text: "Máy in phun tạo ảnh bằng cách phun các giọt mực màu siêu nhỏ, rất thích hợp in ảnh màu chất lượng cao.", correct: true },
-              { label: "d", text: "Tốc độ của máy in văn phòng thường được đánh giá bằng số trang in được trong một phút (ppm).", correct: true }
-            ],
-            explain: "b sai vì in phông bạt quảng cáo khổ lớn thường dùng máy in phun cỡ lớn (SGK tr.28)."
-          },
-          {
-            id: "p2_3",
-            intro: "Về phần mềm nguồn mở và bản quyền (Bài 3):",
-            items: [
-              { label: "a", text: "Phần mềm tự do (free software) luôn luôn bắt buộc phải trả phí chuyển giao bản quyền hàng tháng.", correct: false },
-              { label: "b", text: "Mã nguồn của phần mềm là văn bản chương trình được viết bằng ngôn ngữ lập trình bậc cao gần gũi với con người.", correct: true },
-              { label: "c", text: "Mã máy là chuỗi lệnh nhị phân mà máy tính có thể trực tiếp thực thi được.", correct: true },
-              { label: "d", text: "Mọi phần mềm lập trình bằng ngôn ngữ Python đều mặc nhiên trở thành phần mềm nguồn mở theo định nghĩa.", correct: false }
-            ],
-            explain: "a sai vì phần mềm tự do không chỉ miễn phí mà còn được tự do sử dụng không cần xin phép (SGK tr.16). d sai vì ngôn ngữ chỉ là công cụ, việc mở hay đóng mã nguồn do tác giả cấp phép."
-          },
-          {
-            id: "p2_4",
-            intro: "Về kĩ năng tìm kiếm thông tin trên Internet (Bài 7):",
-            items: [
-              { label: "a", text: "Máy tìm kiếm có thể lọc kết quả theo loại nội dung như: Tất cả, Tin tức, Hình ảnh, Video.", correct: true },
-              { label: "b", text: "Mọi thông tin trên mạng Internet đều đã qua kiểm duyệt nên luôn hoàn toàn chính xác 100%.", correct: false },
-              { label: "c", text: "Sử dụng từ khóa ngắn gọn, đúng trọng tâm và các từ khóa đặc trưng giúp tìm thấy thông tin nhanh hơn.", correct: true },
-              { label: "d", text: "Toán tử dấu trừ (-) trước một từ khóa có thể dùng để loại trừ các kết quả không mong muốn.", correct: true }
-            ],
-            explain: "b sai vì Internet chứa nhiều tin giả, thông tin sai lệch chưa được xác thực."
-          }
+        p3: [
+          { q: "Mỗi sector trên ổ đĩa từ HDD ghi được bao nhiêu byte dữ liệu? (Chỉ điền số nguyên)", ans: "512", exp: "512 byte." },
+          { q: "Đổi số thập phân 15 sang số nhị phân gồm 4 chữ số. (Chỉ điền chuỗi bit)", ans: "1111", exp: "15 = 8 + 4 + 2 + 1 = 1111₂." },
+          { q: "Tên loại cổng kết nối chuẩn truyền dữ liệu tuần tự đa năng đã thay thế cổng bàn phím PS/2 và cổng máy in là gì? (3 chữ cái)", ans: "USB", exp: "USB (Universal Serial Bus)." },
+          { q: "Toán tử tìm kiếm trên Google dùng để ép buộc tìm kiếm chính xác nguyên văn một cụm từ là cặp dấu gì? (Ghi tên hoặc ký hiệu)", ans: "\"\"", exp: "Cặp dấu ngoặc kép \"...\"." }
         ],
-        part3: [
+        p4: [
           {
-            id: "p3_1",
-            question: "Mỗi sector trên đĩa từ HDD ghi được 512 byte. Vậy 4 sector liên tiếp sẽ ghi được bao nhiêu byte dữ liệu?",
-            placeholder: "Nhập số byte...",
-            correctAnswers: ["2048", "2048 byte"],
-            explain: "512 byte x 4 = 2048 byte (hoặc 2 KB)."
+            title: "Tình huống 1: Bảo vệ và sao lưu dữ liệu cá nhân",
+            scenario: "Bạn Bình lưu trữ toàn bộ ảnh kỷ niệm và tài liệu học tập của cả năm học trên ổ đĩa C của máy tính xách tay. Tuần trước máy tính bị nhiễm virus và hỏng hệ điều hành khiến toàn bộ dữ liệu trên ổ C bị mất. Dựa vào kiến thức Bài 2 và Bài 6, hãy phân tích sai lầm của Bình và đề xuất giải pháp phòng tránh.",
+            rubric: [
+              "Sai lầm: Để toàn bộ dữ liệu quan trọng trên phân vùng hệ điều hành (ổ C), không phân chia thư mục sang ổ D/E và không có thói quen sao lưu định kỳ.",
+              "Giải pháp sao lưu đám mây: Sử dụng Google Drive hoặc OneDrive để đồng bộ tự động các tệp quan trọng lên Internet.",
+              "Giải pháp phần cứng: Sao lưu dự phòng ra ổ cứng gắn ngoài hoặc USB định kỳ để đề phòng sự cố hỏng ổ cứng vật lý."
+            ]
           },
           {
-            id: "p3_2",
-            question: "Phép toán logic nào cho kết quả phủ định đảo ngược (đầu vào 1 cho đầu ra 0, đầu vào 0 cho đầu ra 1)?",
-            placeholder: "Nhập tên cổng...",
-            correctAnswers: ["NOT", "Cổng NOT"],
-            explain: "SGK trang 24: Phép phủ định logic NOT cho giá trị ngược lại."
-          },
-          {
-            id: "p3_3",
-            question: "Chuẩn giao tiếp không dây phạm vi ngắn nào được đặt tên theo một vị vua Viking và có biểu tượng công nghệ màu xanh dương?",
-            placeholder: "Nhập tên công nghệ...",
-            correctAnswers: ["Bluetooth", "bluetooth"],
-            explain: "SGK trang 30: Phương thức kết nối không dây tầm ngắn Bluetooth."
-          },
-          {
-            id: "p3_4",
-            question: "Hệ điều hành mã nguồn mở nhân Linux rất phổ biến trên điện thoại thông minh hiện nay do Google phát triển là gì?",
-            placeholder: "Nhập tên hệ điều hành...",
-            correctAnswers: ["Android", "android"],
-            explain: "SGK trang 7-8: Hệ điều hành Android của Google được xây dựng trên lõi của Linux."
-          }
-        ],
-        part4: [
-          {
-            id: "p4_1",
-            scenario: "Tình huống: Một người dùng mua màn hình máy tính có thông số ghi '27 inch, 144 Hz, 1ms, IPS'. Em hãy giải thích ý nghĩa của 2 thông số: '144 Hz' và '1ms' đối với trải nghiệm thị giác của người sử dụng.",
-            sampleAnswer: "- 144 Hz (Tần số quét): Số lần màn hình vẽ lại hình ảnh trong 1 giây là 144 lần. Tần số quét cao giúp chuyển động của con trỏ chuột, hình ảnh video hay game mượt mà, không bị xé hình, giảm giật và hạn chế mỏi mắt.\n- 1ms (Thời gian phản hồi): Khoảng thời gian để một điểm ảnh đổi màu là 1 mili-giây. Thời gian phản hồi càng nhỏ thì hiện tượng bóng ma (ghosting) khi các đối tượng chuyển động nhanh càng ít.",
-            keywords: ["tần số quét", "tái hiện hình ảnh", "thời gian phản hồi", "mượt mà", "mỏi mắt", "điểm ảnh"]
-          },
-          {
-            id: "p4_2",
-            scenario: "Tình huống: Khi mở máy tính cá nhân, hệ thống xuất hiện thông báo lỗi liên quan đến việc không tìm thấy thiết bị khởi động (Boot Device Not Found). Dựa vào kiến thức về các thiết bị bên trong thân máy tính, em hãy suy đoán bộ phận phần cứng nào có thể đang gặp sự cố kết nối hoặc bị hỏng.",
-            sampleAnswer: "Bộ phận có khả năng gặp sự cố là: Ổ đĩa lưu trữ bộ nhớ ngoài chứa hệ điều hành (Ổ đĩa cứng HDD hoặc ổ SSD) hoặc cáp nối dữ liệu (cáp SATA/khe cắm M.2) giữa ổ đĩa và bo mạch chính (Mainboard).\nGiải thích: Hệ điều hành được lưu trữ trên bộ nhớ ngoài, khi khởi động, chương trình trong ROM tìm nạp hệ điều hành từ ổ đĩa vào RAM. Nếu ổ cứng hỏng hoặc tuột cáp tín hiệu, máy sẽ không tìm thấy hệ điều hành để nạp.",
-            keywords: ["ổ cứng", "hdd", "ssd", "cáp nối", "mainboard", "bộ nhớ ngoài"]
-          }
-        ]
-      },
-      {
-        id: 5,
-        title: "Đề Khảo Sát Số 5",
-        headline: "Tổng Hợp Toàn Diện Kiến Thức SGK (Bài 1 - Bài 7)",
-        description: "Đề thi tổng hợp đầy đủ các mức độ tư duy, câu hỏi tình huống thực tiễn và các câu hỏi so sánh công nghệ đặc thù.",
-        part1: [
-          {
-            id: "p1_1",
-            question: "Sự ra đời của hệ điều hành trên máy tính điện tử đã giải quyết khó khăn căn bản nào trong thời kỳ đầu?",
-            options: [
-              "Giải phóng con người khỏi việc phải can thiệp thủ công vào hầu hết các quá trình hoạt động của máy tính",
-              "Thay thế hoàn toàn bộ nhớ trong RAM bằng bộ nhớ ngoài",
-              "Biến máy tính thành một cỗ máy cơ học chạy bằng hơi nước",
-              "Loại bỏ hoàn toàn sự tồn tại của vi mạch số học và logic ALU"
-            ],
-            correct: 0,
-            explain: "SGK trang 5: Khi chưa có hệ điều hành, con người phải can thiệp thủ công vào hầu hết quá trình nên hiệu quả rất thấp. Hệ điều hành ra đời đã khắc phục tình trạng này."
-          },
-          {
-            id: "p1_2",
-            question: "Thanh công việc trên giao diện hệ điều hành Windows được gọi là gì?",
-            options: ["Taskbar", "Status bar", "Menu bar", "Title bar"],
-            correct: 0,
-            explain: "SGK trang 7: Thanh công việc có tên tiếng Anh là Taskbar, xuất hiện từ Windows 95."
-          },
-          {
-            id: "p1_3",
-            question: "Hệ điều hành nào sau đây là bản phân phối mã nguồn mở dựa trên nền tảng LINUX?",
-            options: ["Ubuntu", "macOS", "Windows 11", "MS-DOS"],
-            correct: 0,
-            explain: "SGK trang 7: Các biến thể của Linux gồm có Red Hat, Suse, Ubuntu."
-          },
-          {
-            id: "p1_4",
-            question: "Một cung hỏng trên đĩa từ không thể ghi hoặc đọc dữ liệu một cách an toàn được gọi là:",
-            options: ["Bad sector", "Free sector", "Active cluster", "Cache block"],
-            correct: 0,
-            explain: "SGK trang 13: Tình trạng một số cung bị hỏng về vật lí đọc ghi không được gọi là bad sector."
-          },
-          {
-            id: "p1_5",
-            question: "Phần mềm Adobe Acrobat Reader chỉ có thể đọc và in ấn tài liệu PDF miễn phí, còn bản nâng cao Acrobat Pro DC có tính năng sửa đổi, scan văn bản thì phải trả tiền. Acrobat Reader được xếp vào loại:",
-            options: ["Phần mềm tự do ở dạng mã máy", "Phần mềm mã nguồn mở theo giấy phép GPL", "Phần mềm đặt hàng riêng", "Phần mềm độc hại"],
-            correct: 0,
-            explain: "SGK trang 16: Bản Acrobat Reader là phần mềm tự do ở dạng mã máy (miễn phí sử dụng các tính năng cơ bản)."
-          },
-          {
-            id: "p1_6",
-            question: "Thực hiện phép tính logic: NOT (1 AND 0) cho kết quả là:",
-            options: ["1", "0", "Không xác định", "Cả 0 và 1"],
-            correct: 0,
-            explain: "1 AND 0 = 0. Sau đó NOT(0) cho kết quả đảo ngược là 1."
-          },
-          {
-            id: "p1_7",
-            question: "Đại lượng đo lường nào sau đây phản ánh thời gian truy cập trung bình của bộ nhớ?",
-            options: [
-              "Thời gian cần thiết để ghi hoặc đọc thông tin giữa bộ nhớ và bộ xử lý",
-              "Thời gian bảo hành của linh kiện máy tính khi mua tại siêu thị",
-              "Số lượng tệp tin có thể chứa trong một thư mục",
-              "Độ phân giải hiển thị trên màn hình"
-            ],
-            correct: 0,
-            explain: "SGK trang 23: Thời gian truy cập trung bình của bộ nhớ là thời gian cần thiết để ghi hay đọc thông tin."
-          },
-          {
-            id: "p1_8",
-            question: "Phép cộng hai số nhị phân: 110 + 111 tương ứng với phép cộng nào trong hệ thập phân?",
-            options: ["6 + 7 = 13", "5 + 6 = 11", "4 + 5 = 9", "7 + 8 = 15"],
-            correct: 0,
-            explain: "SGK trang 25 (Hình 4.9): 110 = 6, 111 = 7. Tổng là 1101 = 13."
-          },
-          {
-            id: "p1_9",
-            question: "Khi kết nối máy tính với máy chiếu trong lớp học qua cổng HDMI, nếu chỉ có hình ảnh hiển thị mà không có âm thanh từ loa máy chiếu, nguyên nhân có thể do:",
-            options: [
-              "Máy tính đang cấu hình ngõ xuất âm thanh (Playback Device) ở loa tích hợp thay vì chọn đầu ra HDMI",
-              "Cổng HDMI không bao giờ có khả năng truyền âm thanh",
-              "Máy tính bị hỏng bộ nhớ RAM",
-              "Hệ điều hành bị thiếu giấy phép bản quyền GNU GPL"
-            ],
-            correct: 0,
-            explain: "HDMI truyền đồng thời cả tiếng và hình, nếu không có tiếng thường do người dùng chưa chọn thiết bị xuất âm thanh sang HDMI trong Settings -> Sound."
-          },
-          {
-            id: "p1_10",
-            question: "Khi cộng tác nhóm trên Google Docs, tính năng nào giúp các bạn cùng xem lịch sử và các chỉnh sửa của nhau theo thời gian?",
-            options: ["Lịch sử phiên bản (Version history)", "Check Disk", "Defragment", "Task Manager"],
-            correct: 0,
-            explain: "Google Docs cung cấp tính năng Lịch sử phiên bản (Version history) lưu lại mọi thời điểm và tác giả chỉnh sửa văn bản."
-          },
-          {
-            id: "p1_11",
-            question: "Để tìm kiếm thông tin về tuyển sinh Đại học Dược Hà Nội nhưng chỉ muốn các trang thuộc tên miền chính thức của trường (hup.edu.vn), cú pháp nâng cao là:",
-            options: [
-              "tuyển sinh site:hup.edu.vn",
-              "tuyển sinh filetype:hup.edu.vn",
-              "tuyển sinh inport:8080",
-              "tuyển sinh author:Dược"
-            ],
-            correct: 0,
-            explain: "Toán tử `site:` giúp giới hạn phạm vi tìm kiếm trong một tên miền cụ thể."
-          },
-          {
-            id: "p1_12",
-            question: "Trên hệ điều hành di động, tiện ích nào sau đây cho phép đếm ngược thời gian với độ chính xác lên tới 1/100 giây?",
-            options: ["Tiện ích Đồng hồ (Đồng hồ bấm giờ)", "Tiện ích Danh bạ", "Tiện ích Ghi chú", "Tiện ích Bản đồ"],
-            correct: 0,
-            explain: "SGK trang 14: Tiện ích Đồng hồ có khả năng đếm thời gian chính xác đến 1% giây, rất cần cho các hoạt động thể thao."
-          }
-        ],
-        part2: [
-          {
-            id: "p2_1",
-            intro: "Về sự tương tác giữa người dùng và hệ điều hành (Bài 1 & 2):",
-            items: [
-              { label: "a", text: "Thao tác kéo thả chuột lần đầu tiên được Microsoft tích hợp trên phiên bản Windows 3.1.", correct: true },
-              { label: "b", text: "Trong tiện ích File Explorer, người dùng có thể thực hiện các thao tác quản lý tệp: tạo mới, đổi tên, xóa, sao chép và di chuyển.", correct: true },
-              { label: "c", text: "Hợp mảnh đĩa cứng SSD thường xuyên là thao tác được khuyến cáo bắt buộc làm hàng ngày để tránh hỏng chip nhớ.", correct: false },
-              { label: "d", text: "Một số hệ điều hành cho máy tính cá nhân hiện nay đã hỗ trợ giao tiếp và ra lệnh trực tiếp bằng giọng nói.", correct: true }
-            ],
-            explain: "c sai vì SSD dùng chip flash, không có đầu từ cơ học nên không cần chống phân mảnh như HDD; hợp mảnh liên tục thậm chí làm giảm tuổi thọ chip nhớ (SGK tr.13 lưu ý chức năng hợp mảnh chỉ có tác dụng đối với đĩa từ)."
-          },
-          {
-            id: "p2_2",
-            intro: "Về vai trò và đặc điểm của mã nguồn mở đối với xã hội (Bài 3):",
-            items: [
-              { label: "a", text: "Phần mềm nguồn mở tạo điều kiện cho các trường học và cá nhân có giải pháp phần mềm tốt với chi phí đầu tư thấp.", correct: true },
-              { label: "b", text: "Nhờ tính minh bạch, người dùng có trình độ có thể kiểm soát mã nguồn để xem có mã độc hoặc tính năng cài cắm ngầm hay không.", correct: true },
-              { label: "c", text: "Phần mềm thương mại nguồn đóng hoàn toàn không mang lại bất kỳ lợi ích tài chính nào cho nền kinh tế phần mềm.", correct: false },
-              { label: "d", text: "Người dùng sử dụng phần mềm thương mại dễ bị phụ thuộc vào một nhà cung cấp về mặt giải pháp và kỹ thuật.", correct: true }
-            ],
-            explain: "c sai vì phần mềm thương mại là nguồn thu nhập chủ yếu duy trì các doanh nghiệp làm phần mềm chuyên nghiệp (SGK tr.19)."
-          },
-          {
-            id: "p2_3",
-            intro: "Về các cổng giao tiếp và thiết bị vào - ra (Bài 5):",
-            items: [
-              { label: "a", text: "Chuột máy tính có thể kết nối với máy tính thông qua cáp cắm cổng USB hoặc sóng không dây.", correct: true },
-              { label: "b", text: "Máy in laser thích hợp nhất để in văn bản số lượng lớn với tốc độ cao và chữ in sắc nét.", correct: true },
-              { label: "c", text: "Cổng VGA có kích thước nhỏ gọn hơn cổng USB Type-C rất nhiều.", correct: false },
-              { label: "d", text: "Khi kết nối máy ảnh với máy tính, thư mục chứa ảnh chụp thường được lưu tự động trong thư mục có tên DCIM.", correct: true }
-            ],
-            explain: "c sai vì cổng VGA 15 chân rất to và cồng kềnh, lớn hơn USB Type-C nhiều lần."
-          },
-          {
-            id: "p2_4",
-            intro: "Về dịch vụ đám mây và an toàn trên Internet (Bài 6 & 7):",
-            items: [
-              { label: "a", text: "Lưu trữ tệp tin trên đám mây giúp giảm thiểu nguy cơ mất dữ liệu khi máy tính cá nhân bị hỏng phần cứng hoặc nhiễm virus.", correct: true },
-              { label: "b", text: "Chia sẻ liên kết tệp ở chế độ 'Bất kỳ ai có đường liên kết đều có thể chỉnh sửa' là cách làm an toàn nhất để bảo mật tài liệu nội bộ.", correct: false },
-              { label: "c", text: "Tìm kiếm bằng cách kết hợp từ khóa cùng định dạng tệp giúp tiết kiệm thời gian lọc văn bản.", correct: true },
-              { label: "d", text: "Chỉ có máy tính để bàn mới có thể truy cập và sử dụng dịch vụ Google Drive.", correct: false }
-            ],
-            explain: "b sai vì ai có link cũng sửa/xóa được làm mất an toàn dữ liệu. d sai vì mọi thiết bị có kết nối mạng (điện thoại, tablet) đều truy cập được."
-          }
-        ],
-        part3: [
-          {
-            id: "p3_1",
-            question: "Một cổng logic có 2 đầu vào: x = 0 và y = 1. Đầu ra của cổng OR với 2 đầu vào này bằng bao nhiêu (0 hay 1)?",
-            placeholder: "Nhập 0 hoặc 1...",
-            correctAnswers: ["1"],
-            explain: "SGK trang 24: Phép cộng logic OR bằng 1 khi ít nhất một đầu vào bằng 1. Do đó 0 OR 1 = 1."
-          },
-          {
-            id: "p3_2",
-            question: "Đơn vị đo độ phân giải của màn hình hoặc hình ảnh kỹ thuật số (điểm ảnh) có tên gọi là gì?",
-            placeholder: "Nhập tên tiếng Anh...",
-            correctAnswers: ["Pixel", "pixel", "px"],
-            explain: "SGK trang 28: Độ phân giải thể hiện bởi số điểm ảnh (pixel)."
-          },
-          {
-            id: "p3_3",
-            question: "Viết tên của giao diện đồ họa trực quan dành cho người dùng trên hệ điều hành máy tính (viết tắt 3 chữ cái).",
-            placeholder: "Nhập 3 chữ cái...",
-            correctAnswers: ["GUI"],
-            explain: "GUI (Graphical User Interface) là giao diện đồ hoạ người dùng."
-          },
-          {
-            id: "p3_4",
-            question: "Chuyển số nhị phân 1111 (hệ 2) sang hệ thập phân (hệ 10). Giá trị thu được là bao nhiêu?",
-            placeholder: "Nhập số thập phân...",
-            correctAnswers: ["15"],
-            explain: "1x8 + 1x4 + 1x2 + 1x1 = 15."
-          }
-        ],
-        part4: [
-          {
-            id: "p4_1",
-            scenario: "Tình huống: Một bạn học sinh dự định lưu trữ toàn bộ ảnh chụp gia đình vào một thẻ nhớ USB duy nhất để cất trong tủ và xóa sạch ảnh trên máy tính điện thoại. Phân tích ít nhất 2 rủi ro về mặt an toàn dữ liệu của giải pháp này và đề xuất phương án sao lưu an toàn hơn dựa trên nội dung Bài 6 SGK.",
-            sampleAnswer: "- Phân tích 2 rủi ro:\n1. Thẻ nhớ USB dễ bị thất lạc, va đập vật lý hỏng hóc hoặc bị virus làm ẩn/mất tệp khi cắm vào máy tính lạ.\n2. Thiết bị lưu trữ có tuổi thọ giới hạn, việc chỉ giữ 1 bản duy nhất vi phạm nguyên tắc an toàn dữ liệu.\n- Đề xuất an toàn hơn: Áp dụng phương thức sao lưu đa điểm: tải đồng bộ một bản lên dịch vụ lưu trữ đám mây (Google Drive/OneDrive/iCloud) và giữ thêm một bản sao lưu cục bộ trên máy tính gia đình.",
-            keywords: ["rủi ro", "thất lạc", "hỏng", "đám mây", "google drive", "sao lưu", "backup"]
-          },
-          {
-            id: "p4_2",
-            scenario: "Tình huống: Khi tra cứu thông tin phục vụ bài thuyết trình môn Sinh học về 'Hiện tượng biến đổi khí hậu', bạn Lan gõ từ khóa chung chung 'biến đổi khí hậu' và nhận về hơn 40 triệu kết quả gồm rất nhiều tin tức báo chí, quảng cáo. Em hãy hướng dẫn bạn Lan 2 cách cải thiện câu truy vấn để nhanh chóng tìm được đúng các bài báo cáo khoa học hoặc số liệu chính thống.",
-            sampleAnswer: "Hướng dẫn cải thiện câu truy vấn:\n1. Thêm dấu ngoặc kép và từ khóa chuyên sâu: \"biến đổi khí hậu Việt Nam\" \"báo cáo khí tượng thủy văn\" để lọc đúng các cụm từ nguyên văn.\n2. Kết hợp toán tử lọc tệp hoặc nguồn tin chính thống: Thêm `filetype:pdf` (để tìm tài liệu nghiên cứu dạng PDF) hoặc thêm `site:gov.vn` / `site:edu.vn` (để giới hạn kết quả chỉ từ website chính phủ hoặc trường đại học viện nghiên cứu).",
-            keywords: ["filetype:pdf", "nháy kép", "\"", "site:", "từ khóa hẹp"]
+            title: "Tình huống 2: So sánh phần mềm mã nguồn mở và phần mềm thương mại",
+            scenario: "Một công ty đồ họa chuyên nghiệp yêu cầu thiết kế các ấn phẩm quảng cáo cao cấp và phức tạp cho khách hàng. Ban giám đốc cân nhắc giữa việc trang bị Adobe Photoshop (phần mềm thương mại trả phí) hoặc sử dụng GIMP (phần mềm mã nguồn mở miễn phí). Hãy phân tích và đưa ra khuyến nghị phù hợp theo Bài 3 SGK.",
+            rubric: [
+              "Phân tích Photoshop: Là phần mềm thương mại đóng gói cao cấp, hệ sinh thái chuyên nghiệp, nhiều công cụ AI tiên tiến, hỗ trợ định dạng in ấn chuẩn công nghiệp và có hỗ trợ kỹ thuật chính hãng.",
+              "Phân tích GIMP: Miễn phí, mã nguồn mở, nhẹ, đáp ứng tốt xử lý ảnh cơ bản nhưng giao diện và một số bộ lọc màu in ấn chuyên nghiệp chưa tối ưu bằng Photoshop.",
+              "Khuyến nghị: Với doanh nghiệp đồ họa chuyên nghiệp, đầu tư phần mềm thương mại Photoshop là lựa chọn tối ưu để đảm bảo năng suất và tính tương thích công việc."
+            ]
           }
         ]
       }
     ];
 
-    /* TRẠNG THÁI HIỆN TẠI CỦA ỨNG DỤNG */
-    let currentExamIndex = 0;
-    let userAnswers = {}; // { qId: answer }
-    let examSubmitted = false;
+    // TRẠNG THÁI ỨNG DỤNG
+    let currentExamIdx = 0;
+    let userAnswers = {};
     let timerInterval = null;
     let timeLeft = 45 * 60; // 45 phút
+    let isSubmitted = false;
 
-    // Khởi tạo ứng dụng
-    window.addEventListener('DOMContentLoaded', () => {
-      renderExamSelector();
+    // KHỞI ĐỘNG HỆ THỐNG
+    window.onload = function() {
       loadExam(0);
       startTimer();
-    });
+    };
 
-    // Render danh sách nút chọn đề
-    function renderExamSelector() {
-      const container = document.getElementById('exam-selector-container');
-      container.innerHTML = '';
-      EXAMS_DATA.forEach((exam, index) => {
-        const btn = document.createElement('button');
-        btn.id = `exam-btn-${index}`;
-        btn.onclick = () => switchExam(index);
-        btn.className = `px-3 py-1 text-xs font-semibold rounded-lg transition duration-200 ${
-          index === currentExamIndex 
-            ? 'bg-purple-600 text-white shadow-glow-purple' 
-            : 'text-purple-300 hover:text-white hover:bg-purple-800/40'
-        }`;
-        btn.textContent = `Đề ${index + 1}`;
-        container.appendChild(btn);
-      });
+    function startTimer() {
+      clearInterval(timerInterval);
+      timeLeft = 45 * 60;
+      updateTimerDisplay();
+      timerInterval = setInterval(() => {
+        if (timeLeft > 0 && !isSubmitted) {
+          timeLeft--;
+          updateTimerDisplay();
+        } else if (timeLeft <= 0 && !isSubmitted) {
+          clearInterval(timerInterval);
+          alert("Đã hết thời gian làm bài 45 phút! Hệ thống sẽ tự động thu bài.");
+          submitExam();
+        }
+      }, 1000);
     }
 
-    // Chuyển đề thi
-    function switchExam(index) {
-      if (examSubmitted) {
-        if (!confirm("Bạn đang xem kết quả của đề hiện tại. Bạn có chắc muốn chuyển sang làm đề khác?")) return;
-      }
-      currentExamIndex = index;
-      userAnswers = {};
-      examSubmitted = false;
-      timeLeft = 45 * 60; // reset 45 phút
-      clearInterval(timerInterval);
-      startTimer();
+    function updateTimerDisplay() {
+      const min = Math.floor(timeLeft / 60).toString().padStart(2, '0');
+      const sec = (timeLeft % 60).toString().padStart(2, '0');
+      document.getElementById('timerDisplay').textContent = `${min}:${sec}`;
+    }
 
-      renderExamSelector();
-      loadExam(index);
-      document.getElementById('quick-score-card').classList.add('hidden');
+    function switchExam(idx) {
+      if (!isSubmitted) {
+        if (!confirm("Chuyển sang đề khác sẽ đặt lại toàn bộ tiến độ làm bài của đề hiện tại. Bạn có chắc muốn chuyển?")) {
+          document.getElementById('examSelector').value = currentExamIdx;
+          return;
+        }
+      }
+      currentExamIdx = parseInt(idx);
+      resetExam();
+    }
+
+    function resetExam() {
+      isSubmitted = false;
+      userAnswers = {};
+      document.getElementById('resultModal').classList.add('hidden');
+      loadExam(currentExamIdx);
+      startTimer();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Tải dữ liệu đề thi hiện tại
-    function loadExam(index) {
-      const exam = EXAMS_DATA[index];
-      document.getElementById('badge-exam-name').textContent = exam.title;
-      document.getElementById('exam-headline').textContent = exam.headline;
-
-      const container = document.getElementById('exam-questions-container');
+    // TẢI VÀ RENDER NỘI DUNG ĐỀ THI
+    function loadExam(idx) {
+      const exam = EXAMS_DATA[idx];
+      const container = document.getElementById('questionArea');
       container.innerHTML = '';
 
-      // Phần I: Trắc nghiệm 4 lựa chọn (12 câu)
-      const part1Section = document.createElement('section');
-      part1Section.id = 'section-part-1';
-      part1Section.className = 'glass-panel rounded-3xl p-5 sm:p-7 border border-purple-500/25 shadow-card-glass space-y-6';
-      part1Section.innerHTML = `
-        <div class="border-b border-purple-500/20 pb-3 flex items-center justify-between">
+      // Tiêu đề Đề
+      const headerCard = document.createElement('div');
+      headerCard.className = "bg-appCard border border-appBorder rounded-xl p-5 mb-6";
+      headerCard.innerHTML = `
+        <div class="flex flex-wrap items-center justify-between gap-3">
           <div>
-            <h3 class="text-base sm:text-lg font-bold text-purple-200 flex items-center gap-2">
-              <span class="w-7 h-7 rounded-lg bg-purple-600/40 border border-purple-500/50 flex items-center justify-center text-xs font-black text-purple-300">I</span>
-              PHẦN I: CÂU TRẮC NGHIỆM NHIỀU PHƯƠNG ÁN LỰA CHỌN
-            </h3>
-            <p class="text-xs text-purple-300/70 mt-1">Thí sinh trả lời từ câu 1 đến câu 12. Mỗi câu chọn duy nhất 01 phương án đúng (0.25 điểm/câu).</p>
+            <span class="text-xs font-semibold px-2.5 py-1 rounded bg-accentVioletDim text-accentVioletLight border border-accentViolet/30">Cấu trúc 4 phần chuẩn 2026</span>
+            <h2 class="text-xl sm:text-2xl font-bold text-white mt-2">${exam.title}</h2>
+            <p class="text-sm text-textMuted mt-1">Thời gian: 45 phút | Thang điểm: 10.0 | Bám sát SGK Tin học 11 (Trang 1 - 38)</p>
           </div>
-          <span class="text-xs font-mono-code px-2.5 py-1 rounded-full bg-purple-900/60 text-purple-300 border border-purple-500/30">3.0 điểm</span>
         </div>
-        <div class="space-y-6" id="part1-questions-list"></div>
       `;
-      container.appendChild(part1Section);
+      container.appendChild(headerCard);
 
-      const part1List = part1Section.querySelector('#part1-questions-list');
-      exam.part1.forEach((q, qIdx) => {
-        const qCard = document.createElement('div');
-        qCard.id = `q-${q.id}`;
-        qCard.className = 'p-4 sm:p-5 rounded-2xl bg-purpleDark-900/50 border border-purple-500/20 transition-all duration-200 hover:border-purple-500/40';
-        qCard.innerHTML = `
+      // Render Phần I
+      const p1Box = document.createElement('div');
+      p1Box.className = "mb-8";
+      p1Box.innerHTML = `
+        <div class="flex items-center gap-2 mb-4 border-b border-appBorder pb-2">
+          <span class="px-2.5 py-0.5 rounded bg-appBorder text-white text-xs font-bold">Phần I</span>
+          <h3 class="text-base sm:text-lg font-bold text-white">Câu hỏi trắc nghiệm nhiều phương án lựa chọn (12 câu - 3.0 điểm)</h3>
+        </div>
+      `;
+      exam.p1.forEach((q, i) => {
+        const qEl = document.createElement('div');
+        qEl.id = `q_p1_${i}`;
+        qEl.className = "bg-appCard border border-appBorder rounded-xl p-5 mb-4 transition-all";
+        qEl.innerHTML = `
           <div class="flex items-start gap-3">
-            <span class="px-2.5 py-1 rounded-lg bg-purple-800/50 text-purple-200 text-xs font-bold font-mono-code border border-purple-600/30">Câu ${qIdx + 1}</span>
-            <div class="text-sm font-medium text-gray-100 flex-1 leading-relaxed">${q.question}</div>
+            <span class="text-accentVioletLight font-bold text-base shrink-0">Câu ${i + 1}:</span>
+            <div class="flex-1 break-words-safe">
+              <p class="text-q-title font-semibold text-white mb-3.5">${q.q}</p>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                ${q.opt.map((opt, oIdx) => `
+                  <button type="button" onclick="selectP1(${i}, ${oIdx})" id="btn_p1_${i}_${oIdx}" class="opt-btn-p1 text-left px-4 py-3 rounded-lg border border-appBorder bg-appDark hover:bg-appCardHover text-textBase text-opt-text transition-all flex items-center gap-3">
+                    <span class="w-7 h-7 rounded-md bg-appCard border border-appBorder flex items-center justify-center text-xs font-bold text-textMuted shrink-0">${String.fromCharCode(65 + oIdx)}</span>
+                    <span class="flex-1 break-words-safe">${opt}</span>
+                  </button>
+                `).join('')}
+              </div>
+              <div id="exp_p1_${i}" class="hidden mt-3 p-3 rounded-lg bg-appDark border border-appBorder text-sm text-textMuted"></div>
+            </div>
           </div>
-          <div class="grid grid-cols-1 gap-2.5 mt-4">
-            ${q.options.map((opt, optIdx) => {
-              const label = String.fromCharCode(65 + optIdx);
-              return `
-                <label class="flex items-center gap-3 p-3 rounded-xl bg-purpleDark-950/60 hover:bg-purple-900/40 border border-purple-500/15 cursor-pointer transition option-label option-${q.id}-${optIdx}">
-                  <input type="radio" name="${q.id}" value="${optIdx}" onchange="recordPart1Answer('${q.id}', ${optIdx})" class="w-4 h-4 text-purple-600 focus:ring-purple-500 bg-purpleDark-900 border-purple-500/40">
-                  <span class="text-xs font-bold text-purple-400 font-mono-code">${label}.</span>
-                  <span class="text-xs text-gray-200 leading-snug">${opt}</span>
-                </label>
-              `;
-            }).join('')}
-          </div>
-          <div id="explain-${q.id}" class="hidden mt-3 p-3 rounded-xl bg-purple-950/90 border border-purple-500/30 text-xs text-purple-200"></div>
         `;
-        part1List.appendChild(qCard);
+        p1Box.appendChild(qEl);
       });
+      container.appendChild(p1Box);
 
-      // Phần II: Trắc nghiệm Đúng/Sai (4 câu)
-      const part2Section = document.createElement('section');
-      part2Section.id = 'section-part-2';
-      part2Section.className = 'glass-panel rounded-3xl p-5 sm:p-7 border border-purple-500/25 shadow-card-glass space-y-6';
-      part2Section.innerHTML = `
-        <div class="border-b border-purple-500/20 pb-3 flex items-center justify-between">
-          <div>
-            <h3 class="text-base sm:text-lg font-bold text-cyan-200 flex items-center gap-2">
-              <span class="w-7 h-7 rounded-lg bg-cyan-600/40 border border-cyan-500/50 flex items-center justify-center text-xs font-black text-cyan-300">II</span>
-              PHẦN II: CÂU TRẮC NGHIỆM ĐÚNG / SAI
-            </h3>
-            <p class="text-xs text-purple-300/70 mt-1">Thí sinh trả lời từ câu 1 đến câu 4. Trong mỗi ý a), b), c), d) chọn Đúng hoặc Sai (Chấm điểm chuẩn: 1 ý: 0.1đ | 2 ý: 0.25đ | 3 ý: 0.5đ | 4 ý: 1.0đ).</p>
-          </div>
-          <span class="text-xs font-mono-code px-2.5 py-1 rounded-full bg-cyan-900/60 text-cyan-300 border border-cyan-500/30">4.0 điểm</span>
+      // Render Phần II
+      const p2Box = document.createElement('div');
+      p2Box.className = "mb-8";
+      p2Box.innerHTML = `
+        <div class="flex items-center gap-2 mb-4 border-b border-appBorder pb-2">
+          <span class="px-2.5 py-0.5 rounded bg-appBorder text-white text-xs font-bold">Phần II</span>
+          <h3 class="text-base sm:text-lg font-bold text-white">Câu hỏi trắc nghiệm Đúng / Sai (4 câu - 4.0 điểm)</h3>
         </div>
-        <div class="space-y-6" id="part2-questions-list"></div>
       `;
-      container.appendChild(part2Section);
-
-      const part2List = part2Section.querySelector('#part2-questions-list');
-      exam.part2.forEach((q, qIdx) => {
-        const qCard = document.createElement('div');
-        qCard.id = `q-${q.id}`;
-        qCard.className = 'p-4 sm:p-5 rounded-2xl bg-purpleDark-900/50 border border-purple-500/20 transition-all duration-200 hover:border-purple-500/40';
-        qCard.innerHTML = `
-          <div class="flex items-start gap-3">
-            <span class="px-2.5 py-1 rounded-lg bg-cyan-900/60 text-cyan-200 text-xs font-bold font-mono-code border border-cyan-600/40">Câu ${qIdx + 1}</span>
-            <div class="text-sm font-semibold text-gray-100 flex-1 leading-relaxed">${q.intro}</div>
+      exam.p2.forEach((q, i) => {
+        const qEl = document.createElement('div');
+        qEl.id = `q_p2_${i}`;
+        qEl.className = "bg-appCard border border-appBorder rounded-xl p-5 mb-4";
+        qEl.innerHTML = `
+          <div class="flex items-start gap-3 mb-3">
+            <span class="text-accentVioletLight font-bold text-base shrink-0">Câu ${12 + i + 1}:</span>
+            <p class="text-q-title font-semibold text-white break-words-safe">${q.intro}</p>
           </div>
-          <div class="mt-4 space-y-2.5">
-            ${q.items.map((item, itemIdx) => {
-              const radioName = `${q.id}_${item.label}`;
-              return `
-                <div class="flex flex-col sm:flex-row sm:items-center justify-between p-3 rounded-xl bg-purpleDark-950/60 border border-purple-500/15 gap-3 item-box-${q.id}-${item.label}">
-                  <div class="flex items-start gap-2.5 text-xs text-gray-200 flex-1">
-                    <span class="font-bold text-cyan-400 uppercase font-mono-code">${item.label})</span>
-                    <span>${item.text}</span>
-                  </div>
-                  <div class="flex items-center gap-4 pl-6 sm:pl-0">
-                    <label class="flex items-center gap-1.5 text-xs text-gray-300 cursor-pointer">
-                      <input type="radio" name="${radioName}" value="true" onchange="recordPart2Answer('${q.id}', '${item.label}', true)" class="w-3.5 h-3.5 text-green-500 focus:ring-green-500 bg-purpleDark-900 border-purple-500/40">
-                      <span>Đúng</span>
-                    </label>
-                    <label class="flex items-center gap-1.5 text-xs text-gray-300 cursor-pointer">
-                      <input type="radio" name="${radioName}" value="false" onchange="recordPart2Answer('${q.id}', '${item.label}', false)" class="w-3.5 h-3.5 text-red-500 focus:ring-red-500 bg-purpleDark-900 border-purple-500/40">
-                      <span>Sai</span>
-                    </label>
-                  </div>
+          <div class="space-y-3">
+            ${q.items.map((item, itemIdx) => `
+              <div class="p-3.5 rounded-lg bg-appDark border border-appBorder flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                <span class="text-opt-text text-textBase flex-1 break-words-safe">${item.text}</span>
+                <div class="flex items-center gap-2 shrink-0 self-end sm:self-center">
+                  <button type="button" onclick="selectP2(${i}, ${itemIdx}, true)" id="btn_p2_${i}_${itemIdx}_true" class="px-3.5 py-1.5 rounded border border-appBorder text-sm font-semibold hover:border-textMuted transition-all">Đúng</button>
+                  <button type="button" onclick="selectP2(${i}, ${itemIdx}, false)" id="btn_p2_${i}_${itemIdx}_false" class="px-3.5 py-1.5 rounded border border-appBorder text-sm font-semibold hover:border-textMuted transition-all">Sai</button>
                 </div>
-              `;
-            }).join('')}
+              </div>
+            `).join('')}
           </div>
-          <div id="explain-${q.id}" class="hidden mt-3 p-3 rounded-xl bg-purple-950/90 border border-purple-500/30 text-xs text-purple-200"></div>
+          <div id="exp_p2_${i}" class="hidden mt-3 p-3 rounded-lg bg-appDark border border-appBorder text-sm text-textMuted"></div>
         `;
-        part2List.appendChild(qCard);
+        p2Box.appendChild(qEl);
       });
+      container.appendChild(p2Box);
 
-      // Phần III: Trả lời ngắn (4 câu)
-      const part3Section = document.createElement('section');
-      part3Section.id = 'section-part-3';
-      part3Section.className = 'glass-panel rounded-3xl p-5 sm:p-7 border border-purple-500/25 shadow-card-glass space-y-6';
-      part3Section.innerHTML = `
-        <div class="border-b border-purple-500/20 pb-3 flex items-center justify-between">
-          <div>
-            <h3 class="text-base sm:text-lg font-bold text-pink-200 flex items-center gap-2">
-              <span class="w-7 h-7 rounded-lg bg-pink-600/40 border border-pink-500/50 flex items-center justify-center text-xs font-black text-pink-300">III</span>
-              PHẦN III: CÂU TRẮC NGHIỆM TRẢ LỜI NGẮN
-            </h3>
-            <p class="text-xs text-purple-300/70 mt-1">Thí sinh trả lời từ câu 1 đến câu 4. Điền số, chuỗi ký tự hoặc thuật ngữ ngắn gọn (0.25 điểm/câu).</p>
-          </div>
-          <span class="text-xs font-mono-code px-2.5 py-1 rounded-full bg-pink-900/60 text-pink-300 border border-pink-500/30">1.0 điểm</span>
+      // Render Phần III
+      const p3Box = document.createElement('div');
+      p3Box.className = "mb-8";
+      p3Box.innerHTML = `
+        <div class="flex items-center gap-2 mb-4 border-b border-appBorder pb-2">
+          <span class="px-2.5 py-0.5 rounded bg-appBorder text-white text-xs font-bold">Phần III</span>
+          <h3 class="text-base sm:text-lg font-bold text-white">Câu hỏi trắc nghiệm trả lời ngắn (4 câu - 1.0 điểm)</h3>
         </div>
-        <div class="space-y-5" id="part3-questions-list"></div>
       `;
-      container.appendChild(part3Section);
-
-      const part3List = part3Section.querySelector('#part3-questions-list');
-      exam.part3.forEach((q, qIdx) => {
-        const qCard = document.createElement('div');
-        qCard.id = `q-${q.id}`;
-        qCard.className = 'p-4 sm:p-5 rounded-2xl bg-purpleDark-900/50 border border-purple-500/20';
-        qCard.innerHTML = `
+      exam.p3.forEach((q, i) => {
+        const qEl = document.createElement('div');
+        qEl.id = `q_p3_${i}`;
+        qEl.className = "bg-appCard border border-appBorder rounded-xl p-5 mb-4";
+        qEl.innerHTML = `
           <div class="flex items-start gap-3">
-            <span class="px-2.5 py-1 rounded-lg bg-pink-900/60 text-pink-200 text-xs font-bold font-mono-code border border-pink-600/40">Câu ${qIdx + 1}</span>
-            <div class="text-sm font-medium text-gray-100 flex-1 leading-relaxed">${q.question}</div>
-          </div>
-          <div class="mt-3 max-w-md">
-            <div class="relative">
-              <input type="text" id="input-${q.id}" oninput="recordPart3Answer('${q.id}', this.value)" placeholder="${q.placeholder}" class="w-full px-4 py-2.5 rounded-xl glass-input text-xs text-white placeholder-purple-400/50 transition">
-              <span id="feedback-icon-${q.id}" class="absolute right-3 top-2.5 hidden"></span>
+            <span class="text-accentVioletLight font-bold text-base shrink-0">Câu ${16 + i + 1}:</span>
+            <div class="flex-1 break-words-safe">
+              <p class="text-q-title font-semibold text-white mb-3">${q.q}</p>
+              <div class="flex flex-wrap items-center gap-3">
+                <input type="text" id="input_p3_${i}" oninput="recordP3(${i}, this.value)" placeholder="Nhập đáp án của em..." class="w-full sm:w-80 bg-appDark border border-appBorder rounded-lg px-4 py-2.5 text-textBase text-opt-text focus:outline-none focus:border-accentViolet">
+                <span class="text-xs text-textMuted">(Chỉ điền số hoặc từ khoá ngắn gọn)</span>
+              </div>
+              <div id="exp_p3_${i}" class="hidden mt-3 p-3 rounded-lg bg-appDark border border-appBorder text-sm text-textMuted"></div>
             </div>
           </div>
-          <div id="explain-${q.id}" class="hidden mt-3 p-3 rounded-xl bg-purple-950/90 border border-purple-500/30 text-xs text-purple-200"></div>
         `;
-        part3List.appendChild(qCard);
+        p3Box.appendChild(qEl);
       });
+      container.appendChild(p3Box);
 
-      // Phần IV: Vận dụng / Tình huống thực tiễn (2 câu)
-      const part4Section = document.createElement('section');
-      part4Section.id = 'section-part-4';
-      part4Section.className = 'glass-panel rounded-3xl p-5 sm:p-7 border border-purple-500/25 shadow-card-glass space-y-6';
-      part4Section.innerHTML = `
-        <div class="border-b border-purple-500/20 pb-3 flex items-center justify-between">
-          <div>
-            <h3 class="text-base sm:text-lg font-bold text-amber-200 flex items-center gap-2">
-              <span class="w-7 h-7 rounded-lg bg-amber-600/40 border border-amber-500/50 flex items-center justify-center text-xs font-black text-amber-300">IV</span>
-              PHẦN IV: CÂU HỎI TỰ LUẬN / VẬN DỤNG TÌNH HUỐNG
-            </h3>
-            <p class="text-xs text-purple-300/70 mt-1">Thí sinh trả lời 2 tình huống thực tế. Sau khi nộp bài sẽ tự đối chiếu rubric đáp án mẫu và tự đánh giá điểm (1.0 điểm/câu).</p>
-          </div>
-          <span class="text-xs font-mono-code px-2.5 py-1 rounded-full bg-amber-900/60 text-amber-300 border border-amber-500/30">2.0 điểm</span>
+      // Render Phần IV
+      const p4Box = document.createElement('div');
+      p4Box.className = "mb-8";
+      p4Box.innerHTML = `
+        <div class="flex items-center gap-2 mb-4 border-b border-appBorder pb-2">
+          <span class="px-2.5 py-0.5 rounded bg-appBorder text-white text-xs font-bold">Phần IV</span>
+          <h3 class="text-base sm:text-lg font-bold text-white">Tự luận / Tình huống vận dụng thực tế (2 câu - 2.0 điểm)</h3>
         </div>
-        <div class="space-y-6" id="part4-questions-list"></div>
       `;
-      container.appendChild(part4Section);
-
-      const part4List = part4Section.querySelector('#part4-questions-list');
-      exam.part4.forEach((q, qIdx) => {
-        const qCard = document.createElement('div');
-        qCard.id = `q-${q.id}`;
-        qCard.className = 'p-4 sm:p-5 rounded-2xl bg-purpleDark-900/50 border border-purple-500/20 space-y-3';
-        qCard.innerHTML = `
+      exam.p4.forEach((q, i) => {
+        const qEl = document.createElement('div');
+        qEl.id = `q_p4_${i}`;
+        qEl.className = "bg-appCard border border-appBorder rounded-xl p-5 mb-4";
+        qEl.innerHTML = `
           <div class="flex items-start gap-3">
-            <span class="px-2.5 py-1 rounded-lg bg-amber-900/60 text-amber-200 text-xs font-bold font-mono-code border border-amber-600/40">Tình huống ${qIdx + 1}</span>
-            <div class="text-sm font-medium text-gray-100 flex-1 leading-relaxed">${q.scenario}</div>
-          </div>
-          <div>
-            <textarea id="essay-${q.id}" oninput="recordPart4Answer('${q.id}', this.value)" rows="3" placeholder="Nhập câu trả lời phân tích hoặc phương án giải quyết của em..." class="w-full p-3.5 rounded-xl glass-input text-xs text-white placeholder-purple-400/50 resize-y"></textarea>
-          </div>
-          <div id="self-eval-${q.id}" class="hidden p-4 rounded-xl bg-purpleDark-950/90 border border-amber-500/40 space-y-2">
-            <div class="text-xs font-bold text-amber-300 uppercase flex items-center gap-1.5">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-              Gợi ý đáp án & Rubric chuẩn SGK:
-            </div>
-            <pre class="text-xs text-gray-200 whitespace-pre-wrap font-sans bg-purpleDark-900/80 p-3 rounded-lg border border-purple-500/20 leading-relaxed">${q.sampleAnswer}</pre>
-            <div class="flex items-center justify-between pt-2">
-              <span class="text-xs text-purple-300">Tự chấm điểm phần tự luận của bạn:</span>
-              <select id="score-essay-${q.id}" onchange="recalculateTotalScore()" class="px-3 py-1 rounded-lg bg-purple-900 text-xs font-bold text-amber-300 border border-amber-500/40">
-                <option value="1.0">1.0 điểm (Đầy đủ ý)</option>
-                <option value="0.75">0.75 điểm (Khá)</option>
-                <option value="0.5">0.5 điểm (Trung bình)</option>
-                <option value="0.25">0.25 điểm (Sơ sài)</option>
-                <option value="0">0.0 điểm (Chưa đạt)</option>
-              </select>
+            <span class="text-accentVioletLight font-bold text-base shrink-0">Câu ${20 + i + 1}:</span>
+            <div class="flex-1 break-words-safe">
+              <h4 class="text-q-title font-bold text-white mb-1">${q.title}</h4>
+              <p class="text-body-lg text-textBase mb-3 leading-relaxed">${q.scenario}</p>
+              <textarea id="area_p4_${i}" oninput="recordP4(${i}, this.value)" rows="3" placeholder="Gõ phương án giải quyết của em vào đây..." class="w-full bg-appDark border border-appBorder rounded-lg p-3.5 text-textBase text-opt-text focus:outline-none focus:border-accentViolet leading-relaxed"></textarea>
+              <div id="rubric_p4_${i}" class="hidden mt-3 p-4 rounded-lg bg-appDark border border-appBorder">
+                <span class="text-xs font-bold uppercase text-accentVioletLight tracking-wider">Gợi ý Rubric biểu điểm chuẩn SGK:</span>
+                <ul class="list-disc list-inside space-y-1.5 mt-2 text-sm text-textMuted">
+                  ${q.rubric.map(r => `<li>${r}</li>`).join('')}
+                </ul>
+              </div>
             </div>
           </div>
         `;
-        part4List.appendChild(qCard);
+        p4Box.appendChild(qEl);
       });
+      container.appendChild(p4Box);
 
-      renderNavigationPanel();
-      updateAnsweredCounter();
+      renderSidebarNav();
+      updateProgressStats();
     }
 
-    // Render các ô vuông số câu hỏi ở thanh điều hướng bên phải
-    function renderNavigationPanel() {
-      const exam = EXAMS_DATA[currentExamIndex];
+    // TẠO THANH ĐIỀU HƯỚNG BÊN PHẢI
+    function renderSidebarNav() {
+      const nav1 = document.getElementById('navPart1');
+      const nav2 = document.getElementById('navPart2');
+      const nav3 = document.getElementById('navPart3');
+      const nav4 = document.getElementById('navPart4');
 
-      // Part 1
-      const nav1 = document.getElementById('nav-part-1');
       nav1.innerHTML = '';
-      exam.part1.forEach((q, idx) => {
-        const btn = document.createElement('button');
-        btn.id = `nav-btn-${q.id}`;
-        btn.onclick = () => scrollToQuestion(`q-${q.id}`);
-        btn.className = 'w-7 h-7 rounded-lg text-xs font-mono-code font-bold bg-purple-950/60 hover:bg-purple-800 border border-purple-500/30 text-purple-300 transition';
-        btn.textContent = idx + 1;
-        nav1.appendChild(btn);
-      });
-
-      // Part 2
-      const nav2 = document.getElementById('nav-part-2');
       nav2.innerHTML = '';
-      exam.part2.forEach((q, idx) => {
-        const btn = document.createElement('button');
-        btn.id = `nav-btn-${q.id}`;
-        btn.onclick = () => scrollToQuestion(`q-${q.id}`);
-        btn.className = 'w-7 h-7 rounded-lg text-xs font-mono-code font-bold bg-purple-950/60 hover:bg-purple-800 border border-cyan-500/30 text-cyan-300 transition';
-        btn.textContent = idx + 1;
-        nav2.appendChild(btn);
-      });
-
-      // Part 3
-      const nav3 = document.getElementById('nav-part-3');
       nav3.innerHTML = '';
-      exam.part3.forEach((q, idx) => {
-        const btn = document.createElement('button');
-        btn.id = `nav-btn-${q.id}`;
-        btn.onclick = () => scrollToQuestion(`q-${q.id}`);
-        btn.className = 'w-7 h-7 rounded-lg text-xs font-mono-code font-bold bg-purple-950/60 hover:bg-purple-800 border border-pink-500/30 text-pink-300 transition';
-        btn.textContent = idx + 1;
-        nav3.appendChild(btn);
-      });
-
-      // Part 4
-      const nav4 = document.getElementById('nav-part-4');
       nav4.innerHTML = '';
-      exam.part4.forEach((q, idx) => {
-        const btn = document.createElement('button');
-        btn.id = `nav-btn-${q.id}`;
-        btn.onclick = () => scrollToQuestion(`q-${q.id}`);
-        btn.className = 'w-full py-1 rounded-lg text-xs font-mono-code font-bold bg-purple-950/60 hover:bg-purple-800 border border-amber-500/30 text-amber-300 transition';
-        btn.textContent = `TH ${idx + 1}`;
-        nav4.appendChild(btn);
-      });
+
+      for (let i = 0; i < 12; i++) {
+        nav1.innerHTML += `<button id="nav_btn_p1_${i}" onclick="scrollToQ('q_p1_${i}')" class="h-8 rounded bg-appDark border border-appBorder text-xs font-medium text-textMuted hover:border-accentViolet transition-colors">${i + 1}</button>`;
+      }
+      for (let i = 0; i < 4; i++) {
+        nav2.innerHTML += `<button id="nav_btn_p2_${i}" onclick="scrollToQ('q_p2_${i}')" class="h-8 rounded bg-appDark border border-appBorder text-xs font-medium text-textMuted hover:border-accentViolet transition-colors">${12 + i + 1}</button>`;
+      }
+      for (let i = 0; i < 4; i++) {
+        nav3.innerHTML += `<button id="nav_btn_p3_${i}" onclick="scrollToQ('q_p3_${i}')" class="h-8 rounded bg-appDark border border-appBorder text-xs font-medium text-textMuted hover:border-accentViolet transition-colors">${16 + i + 1}</button>`;
+      }
+      for (let i = 0; i < 2; i++) {
+        nav4.innerHTML += `<button id="nav_btn_p4_${i}" onclick="scrollToQ('q_p4_${i}')" class="h-8 rounded bg-appDark border border-appBorder text-xs font-medium text-textMuted hover:border-accentViolet transition-colors">${20 + i + 1}</button>`;
+      }
     }
 
-    // Cuộn mượt đến câu hỏi
-    function scrollToQuestion(elementId) {
-      const el = document.getElementById(elementId);
+    function scrollToQ(id) {
+      const el = document.getElementById(id);
       if (el) {
         el.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
     }
 
-    // Ghi nhận trả lời Phần 1
-    function recordPart1Answer(qId, optIdx) {
-      userAnswers[qId] = optIdx;
-      markNavAnswered(qId, true);
-      updateAnsweredCounter();
-    }
-
-    // Ghi nhận trả lời Phần 2
-    function recordPart2Answer(qId, label, val) {
-      if (!userAnswers[qId]) userAnswers[qId] = {};
-      userAnswers[qId][label] = val;
-      // kiểm tra đủ 4 ý a,b,c,d chưa
-      const count = Object.keys(userAnswers[qId]).length;
-      markNavAnswered(qId, count === 4);
-      updateAnsweredCounter();
-    }
-
-    // Ghi nhận trả lời Phần 3
-    function recordPart3Answer(qId, text) {
-      const clean = text.trim();
-      if (clean.length > 0) {
-        userAnswers[qId] = clean;
-        markNavAnswered(qId, true);
-      } else {
-        delete userAnswers[qId];
-        markNavAnswered(qId, false);
-      }
-      updateAnsweredCounter();
-    }
-
-    // Ghi nhận trả lời Phần 4
-    function recordPart4Answer(qId, text) {
-      const clean = text.trim();
-      if (clean.length > 5) {
-        userAnswers[qId] = clean;
-        markNavAnswered(qId, true);
-      } else {
-        delete userAnswers[qId];
-        markNavAnswered(qId, false);
-      }
-      updateAnsweredCounter();
-    }
-
-    function markNavAnswered(qId, isDone) {
-      const btn = document.getElementById(`nav-btn-${qId}`);
-      if (!btn) return;
-      if (isDone) {
-        btn.classList.add('bg-purple-600', 'text-white', 'border-purple-400');
-        btn.classList.remove('bg-purple-950/60');
-      } else {
-        btn.classList.remove('bg-purple-600', 'text-white', 'border-purple-400');
-        btn.classList.add('bg-purple-950/60');
-      }
-    }
-
-    function updateAnsweredCounter() {
-      const totalQuestions = 12 + 4 + 4 + 2; // 22 câu
-      let answered = 0;
-      const exam = EXAMS_DATA[currentExamIndex];
-
-      exam.part1.forEach(q => { if (userAnswers[q.id] !== undefined) answered++; });
-      exam.part2.forEach(q => { if (userAnswers[q.id] && Object.keys(userAnswers[q.id]).length === 4) answered++; });
-      exam.part3.forEach(q => { if (userAnswers[q.id]) answered++; });
-      exam.part4.forEach(q => { if (userAnswers[q.id]) answered++; });
-
-      document.getElementById('answered-counter').textContent = `${answered}/${totalQuestions} câu`;
-    }
-
-    // Đếm ngược thời gian
-    function startTimer() {
-      const display = document.getElementById('timer-display');
-      timerInterval = setInterval(() => {
-        if (timeLeft <= 0) {
-          clearInterval(timerInterval);
-          display.textContent = "00:00";
-          alertTimeOutAndSubmit();
-          return;
+    // GHI NHẬN LỰA CHỌN
+    function selectP1(qIdx, optIdx) {
+      if (isSubmitted) return;
+      userAnswers[`p1_${qIdx}`] = optIdx;
+      for (let o = 0; o < 4; o++) {
+        const btn = document.getElementById(`btn_p1_${qIdx}_${o}`);
+        if (btn) {
+          if (o === optIdx) {
+            btn.className = "opt-btn-p1 text-left px-4 py-3 rounded-lg border border-accentViolet bg-accentVioletDim text-white text-opt-text transition-all flex items-center gap-3";
+          } else {
+            btn.className = "opt-btn-p1 text-left px-4 py-3 rounded-lg border border-appBorder bg-appDark hover:bg-appCardHover text-textBase text-opt-text transition-all flex items-center gap-3";
+          }
         }
-        timeLeft--;
-        const m = Math.floor(timeLeft / 60);
-        const s = timeLeft % 60;
-        display.textContent = `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
-      }, 1000);
+      }
+      const navBtn = document.getElementById(`nav_btn_p1_${qIdx}`);
+      if (navBtn) {
+        navBtn.classList.remove('bg-appDark', 'text-textMuted');
+        navBtn.classList.add('bg-accentVioletDim', 'border-accentViolet', 'text-accentVioletLight');
+      }
+      updateProgressStats();
     }
 
-    function alertTimeOutAndSubmit() {
-      alert("Hết giờ làm bài! Hệ thống sẽ tự động tổng hợp kết quả của bạn.");
-      submitExam();
-    }
+    function selectP2(qIdx, itemIdx, val) {
+      if (isSubmitted) return;
+      if (!userAnswers[`p2_${qIdx}`]) userAnswers[`p2_${qIdx}`] = {};
+      userAnswers[`p2_${qIdx}`][itemIdx] = val;
 
-    // NỘP BÀI & CHẤM ĐIỂM CHI TIẾT
-    function submitExam() {
-      if (examSubmitted) {
-        alert("Bạn đã nộp bài rồi! Đang hiển thị kết quả và lời giải chi tiết.");
-        return;
+      const btnTrue = document.getElementById(`btn_p2_${qIdx}_${itemIdx}_true`);
+      const btnFalse = document.getElementById(`btn_p2_${qIdx}_${itemIdx}_false`);
+
+      if (val === true) {
+        btnTrue.className = "px-3.5 py-1.5 rounded border border-accentViolet bg-accentVioletDim text-accentVioletLight text-sm font-semibold";
+        btnFalse.className = "px-3.5 py-1.5 rounded border border-appBorder text-sm font-semibold hover:border-textMuted";
+      } else {
+        btnFalse.className = "px-3.5 py-1.5 rounded border border-accentViolet bg-accentVioletDim text-accentVioletLight text-sm font-semibold";
+        btnTrue.className = "px-3.5 py-1.5 rounded border border-appBorder text-sm font-semibold hover:border-textMuted";
       }
 
-      examSubmitted = true;
+      const totalItemsChosen = Object.keys(userAnswers[`p2_${qIdx}`]).length;
+      if (totalItemsChosen === 4) {
+        const navBtn = document.getElementById(`nav_btn_p2_${qIdx}`);
+        if (navBtn) {
+          navBtn.classList.remove('bg-appDark', 'text-textMuted');
+          navBtn.classList.add('bg-accentVioletDim', 'border-accentViolet', 'text-accentVioletLight');
+        }
+      }
+      updateProgressStats();
+    }
+
+    function recordP3(qIdx, val) {
+      if (isSubmitted) return;
+      if (val.trim()) {
+        userAnswers[`p3_${qIdx}`] = val.trim();
+        const navBtn = document.getElementById(`nav_btn_p3_${qIdx}`);
+        if (navBtn) {
+          navBtn.classList.remove('bg-appDark', 'text-textMuted');
+          navBtn.classList.add('bg-accentVioletDim', 'border-accentViolet', 'text-accentVioletLight');
+        }
+      } else {
+        delete userAnswers[`p3_${qIdx}`];
+        const navBtn = document.getElementById(`nav_btn_p3_${qIdx}`);
+        if (navBtn) {
+          navBtn.classList.remove('bg-accentVioletDim', 'border-accentViolet', 'text-accentVioletLight');
+          navBtn.classList.add('bg-appDark', 'text-textMuted');
+        }
+      }
+      updateProgressStats();
+    }
+
+    function recordP4(qIdx, val) {
+      if (isSubmitted) return;
+      if (val.trim()) {
+        userAnswers[`p4_${qIdx}`] = val.trim();
+        const navBtn = document.getElementById(`nav_btn_p4_${qIdx}`);
+        if (navBtn) {
+          navBtn.classList.remove('bg-appDark', 'text-textMuted');
+          navBtn.classList.add('bg-accentVioletDim', 'border-accentViolet', 'text-accentVioletLight');
+        }
+      } else {
+        delete userAnswers[`p4_${qIdx}`];
+        const navBtn = document.getElementById(`nav_btn_p4_${qIdx}`);
+        if (navBtn) {
+          navBtn.classList.remove('bg-accentVioletDim', 'border-accentViolet', 'text-accentVioletLight');
+          navBtn.classList.add('bg-appDark', 'text-textMuted');
+        }
+      }
+      updateProgressStats();
+    }
+
+    function updateProgressStats() {
+      let count = 0;
+      for (let i = 0; i < 12; i++) if (userAnswers[`p1_${i}`] !== undefined) count++;
+      for (let i = 0; i < 4; i++) if (userAnswers[`p2_${i}`] && Object.keys(userAnswers[`p2_${i}`]).length === 4) count++;
+      for (let i = 0; i < 4; i++) if (userAnswers[`p3_${i}`]) count++;
+      for (let i = 0; i < 2; i++) if (userAnswers[`p4_${i}`]) count++;
+
+      document.getElementById('answeredStats').textContent = `Đã làm: ${count}/22`;
+    }
+
+    // CHẤM ĐIỂM THEO CHUẨN ĐỀ THI 2026
+    function submitExam() {
+      if (isSubmitted) return;
+      if (!confirm("Bạn có chắc chắn muốn nộp bài để chấm điểm?")) return;
+
+      isSubmitted = true;
       clearInterval(timerInterval);
 
-      const exam = EXAMS_DATA[currentExamIndex];
-      let p1Score = 0;
-      let p2Score = 0;
-      let p3Score = 0;
+      const exam = EXAMS_DATA[currentExamIdx];
+      let scoreP1 = 0;
+      let scoreP2 = 0;
+      let scoreP3 = 0;
+      let scoreP4 = 2.0; // Phần tự luận mặc định cấp đủ điểm đối chiếu theo Rubric
 
-      // 1. Chấm Phần 1 (12 câu x 0.25 = 3.0 điểm)
-      exam.part1.forEach((q, idx) => {
-        const userChoice = userAnswers[q.id];
-        const isCorrect = userChoice === q.correct;
-        if (isCorrect) p1Score += 0.25;
+      // 1. Chấm Phần I (3.0đ - 12 câu, mỗi câu 0.25đ)
+      exam.p1.forEach((q, i) => {
+        const userChoice = userAnswers[`p1_${i}`];
+        const expBox = document.getElementById(`exp_p1_${i}`);
+        expBox.classList.remove('hidden');
 
-        // Đổi màu các option
-        q.options.forEach((_, optIdx) => {
-          const optLabel = document.querySelector(`.option-${q.id}-${optIdx}`);
-          if (optLabel) {
-            if (optIdx === q.correct) {
-              optLabel.classList.add('bg-green-900/50', 'border-green-500/60', 'text-green-200');
-            } else if (userChoice === optIdx && !isCorrect) {
-              optLabel.classList.add('bg-red-900/50', 'border-red-500/60', 'text-red-200');
-            }
+        if (userChoice === q.ans) {
+          scoreP1 += 0.25;
+          expBox.innerHTML = `<span class="text-emerald-400 font-bold">✓ Chính xác (+0.25đ):</span> ${q.exp}`;
+          document.getElementById(`btn_p1_${i}_${userChoice}`).classList.add('border-emerald-500/70', 'bg-emerald-950/20');
+        } else {
+          expBox.innerHTML = `<span class="text-rose-400 font-bold">✗ Chưa đúng.</span> Đáp án đúng là <b>${String.fromCharCode(65 + q.ans)}</b>. ${q.exp}`;
+          if (userChoice !== undefined) {
+            document.getElementById(`btn_p1_${i}_${userChoice}`).classList.add('border-rose-500/70', 'bg-rose-950/20');
           }
+          document.getElementById(`btn_p1_${i}_${q.ans}`).classList.add('border-emerald-500/70');
+        }
+      });
+
+      // 2. Chấm Phần II (4.0đ - 4 câu, mỗi câu tối đa 1.0đ theo quy tắc lũy tiến 2026)
+      exam.p2.forEach((q, i) => {
+        const userChoices = userAnswers[`p2_${i}`] || {};
+        let correctCount = 0;
+        let details = [];
+
+        q.items.forEach((item, itemIdx) => {
+          const userVal = userChoices[itemIdx];
+          const isCorrect = userVal === item.ans;
+          if (isCorrect) correctCount++;
+          details.push(`Ý ${String.fromCharCode(97 + itemIdx)}: <b>${item.ans ? 'Đúng' : 'Sai'}</b> ${item.exp ? `(${item.exp})` : ''}`);
         });
 
-        // Hiển thị lời giải thích SGK
-        const expEl = document.getElementById(`explain-${q.id}`);
-        expEl.classList.remove('hidden');
-        expEl.innerHTML = `
-          <div class="font-bold ${isCorrect ? 'text-green-400' : 'text-red-400'} flex items-center gap-1.5 mb-1">
-            ${isCorrect ? '✓ Đáp án chính xác (+0.25đ)' : `✗ Sai (Đáp án đúng là: ${String.fromCharCode(65 + q.correct)})`}
-          </div>
-          <div class="text-purple-300/90">${q.explain}</div>
+        // Thang điểm Bộ GD&ĐT 2026 cho câu Đúng/Sai:
+        // Đúng 1 ý: 0.1đ | Đúng 2 ý: 0.25đ | Đúng 3 ý: 0.5đ | Đúng 4 ý: 1.0đ
+        let earned = 0;
+        if (correctCount === 1) earned = 0.1;
+        else if (correctCount === 2) earned = 0.25;
+        else if (correctCount === 3) earned = 0.5;
+        else if (correctCount === 4) earned = 1.0;
+
+        scoreP2 += earned;
+
+        const expBox = document.getElementById(`exp_p2_${i}`);
+        expBox.classList.remove('hidden');
+        expBox.innerHTML = `
+          <div class="mb-1"><span class="font-bold text-accentVioletLight">Kết quả: Đúng ${correctCount}/4 ý (+${earned}đ)</span></div>
+          <div class="text-xs space-y-1">${details.map(d => `<div>• ${d}</div>`).join('')}</div>
         `;
       });
 
-      // 2. Chấm Phần 2 (4 câu x 1.0 = 4.0 điểm)
-      // Thang điểm chuẩn: 1 ý đúng 0.1, 2 ý 0.25, 3 ý 0.5, 4 ý 1.0
-      exam.part2.forEach((q) => {
-        let correctItemsCount = 0;
-        const userAnsGroup = userAnswers[q.id] || {};
+      // 3. Chấm Phần III (1.0đ - 4 câu, mỗi câu 0.25đ)
+      exam.p3.forEach((q, i) => {
+        const userVal = (userAnswers[`p3_${i}`] || '').toLowerCase().replace(/\s+/g, '');
+        const correctVal = q.ans.toLowerCase().replace(/\s+/g, '');
+        const expBox = document.getElementById(`exp_p3_${i}`);
+        expBox.classList.remove('hidden');
 
-        q.items.forEach((item) => {
-          const userVal = userAnsGroup[item.label];
-          const isItemCorrect = userVal === item.correct;
-          if (isItemCorrect) correctItemsCount++;
-
-          const box = document.querySelector(`.item-box-${q.id}-${item.label}`);
-          if (box) {
-            if (isItemCorrect) {
-              box.classList.add('border-green-500/40', 'bg-green-950/30');
-            } else {
-              box.classList.add('border-red-500/40', 'bg-red-950/30');
-            }
-          }
-        });
-
-        let qScore = 0;
-        if (correctItemsCount === 1) qScore = 0.1;
-        else if (correctItemsCount === 2) qScore = 0.25;
-        else if (correctItemsCount === 3) qScore = 0.5;
-        else if (correctItemsCount === 4) qScore = 1.0;
-
-        p2Score += qScore;
-
-        const expEl = document.getElementById(`explain-${q.id}`);
-        expEl.classList.remove('hidden');
-        expEl.innerHTML = `
-          <div class="font-bold text-cyan-300 mb-1">
-            Đúng ${correctItemsCount}/4 ý (+${qScore.toFixed(2)} điểm)
-          </div>
-          <div class="text-purple-300/90">${q.explain}</div>
-        `;
-      });
-
-      // 3. Chấm Phần 3 (4 câu x 0.25 = 1.0 điểm)
-      exam.part3.forEach((q) => {
-        const userAns = (userAnswers[q.id] || "").trim().toLowerCase();
-        let isCorrect = false;
-
-        for (let valid of q.correctAnswers) {
-          if (userAns === valid.toLowerCase()) {
-            isCorrect = true;
-            break;
-          }
-        }
-
-        if (isCorrect) p3Score += 0.25;
-
-        const inputEl = document.getElementById(`input-${q.id}`);
-        if (inputEl) {
-          if (isCorrect) {
-            inputEl.classList.add('border-green-500', 'bg-green-950/40');
-          } else {
-            inputEl.classList.add('border-red-500', 'bg-red-950/40');
-          }
-        }
-
-        const expEl = document.getElementById(`explain-${q.id}`);
-        expEl.classList.remove('hidden');
-        expEl.innerHTML = `
-          <div class="font-bold ${isCorrect ? 'text-green-400' : 'text-red-400'} mb-1">
-            ${isCorrect ? '✓ Chính xác (+0.25đ)' : `✗ Sai (Đáp án chấp nhận: ${q.correctAnswers.join(' / ')})`}
-          </div>
-          <div class="text-purple-300/90">${q.explain}</div>
-        `;
-      });
-
-      // 4. Mở gợi ý chấm điểm cho Phần 4 (2 câu tự luận)
-      exam.part4.forEach((q) => {
-        const selfEval = document.getElementById(`self-eval-${q.id}`);
-        if (selfEval) selfEval.classList.remove('hidden');
-      });
-
-      // Tính tổng điểm ban đầu (Tự luận mặc định cho 1.0 điểm mỗi câu để người học tự tinh chỉnh)
-      let p4Score = 2.0;
-      const totalScore = (p1Score + p2Score + p3Score + p4Score).toFixed(2);
-
-      // Hiển thị Card điểm nhanh trên banner
-      const quickCard = document.getElementById('quick-score-card');
-      quickCard.classList.remove('hidden');
-      document.getElementById('score-text').textContent = `${totalScore} / 10`;
-      
-      let ratingText = "Xuất Sắc! Nắm vững SGK";
-      if (totalScore < 5.0) ratingText = "Cần ôn tập lại các bài 1-7";
-      else if (totalScore < 7.0) ratingText = "Đạt yêu cầu - Cần lưu ý bài tập";
-      else if (totalScore < 8.5) ratingText = "Khá tốt - Rèn thêm câu trả lời ngắn";
-      document.getElementById('score-rating').textContent = ratingText;
-
-      // Hiển thị modal thông báo kết quả
-      document.getElementById('modal-exam-subtitle').textContent = `${exam.title} - ${exam.headline}`;
-      document.getElementById('modal-score').textContent = `${totalScore} / 10`;
-      document.getElementById('modal-breakdown').innerHTML = `
-        <div class="flex justify-between"><span>Phần I (Trắc nghiệm):</span> <b class="text-purple-300">${p1Score.toFixed(2)} / 3.0đ</b></div>
-        <div class="flex justify-between"><span>Phần II (Đúng/Sai):</span> <b class="text-cyan-300">${p2Score.toFixed(2)} / 4.0đ</b></div>
-        <div class="flex justify-between"><span>Phần III (Trả lời ngắn):</span> <b class="text-pink-300">${p3Score.toFixed(2)} / 1.0đ</b></div>
-        <div class="flex justify-between"><span>Phần IV (Vận dụng):</span> <b class="text-amber-300">${p4Score.toFixed(2)} / 2.0đ (Tự đánh giá)</b></div>
-      `;
-      document.getElementById('result-modal').classList.remove('hidden');
-    }
-
-    // Tự tính lại điểm khi người dùng chỉnh điểm tự luận
-    function recalculateTotalScore() {
-      if (!examSubmitted) return;
-      const exam = EXAMS_DATA[currentExamIndex];
-
-      let p1 = 0;
-      exam.part1.forEach(q => { if (userAnswers[q.id] === q.correct) p1 += 0.25; });
-
-      let p2 = 0;
-      exam.part2.forEach(q => {
-        let correctItems = 0;
-        const group = userAnswers[q.id] || {};
-        q.items.forEach(it => { if (group[it.label] === it.correct) correctItems++; });
-        if (correctItems === 1) p2 += 0.1;
-        else if (correctItems === 2) p2 += 0.25;
-        else if (correctItems === 3) p2 += 0.5;
-        else if (correctItems === 4) p2 += 1.0;
-      });
-
-      let p3 = 0;
-      exam.part3.forEach(q => {
-        const val = (userAnswers[q.id] || "").trim().toLowerCase();
-        for (let c of q.correctAnswers) {
-          if (val === c.toLowerCase()) { p3 += 0.25; break; }
+        if (userVal === correctVal || (correctVal === '""' && (userVal === '""' || userVal === 'ngoặckép' || userVal === 'dấunháy'))) {
+          scoreP3 += 0.25;
+          expBox.innerHTML = `<span class="text-emerald-400 font-bold">✓ Đúng (+0.25đ).</span> Đáp án chuẩn: <b>${q.ans}</b>. ${q.exp}`;
+        } else {
+          expBox.innerHTML = `<span class="text-rose-400 font-bold">✗ Chưa chính xác.</span> Đáp án chuẩn: <b>${q.ans}</b>. ${q.exp}`;
         }
       });
 
-      let p4 = 0;
-      exam.part4.forEach(q => {
-        const sel = document.getElementById(`score-essay-${q.id}`);
-        if (sel) p4 += parseFloat(sel.value);
+      // 4. Hiển thị Rubric Phần IV
+      exam.p4.forEach((q, i) => {
+        document.getElementById(`rubric_p4_${i}`).classList.remove('hidden');
       });
 
-      const total = (p1 + p2 + p3 + p4).toFixed(2);
-      document.getElementById('score-text').textContent = `${total} / 10`;
+      // Tổng kết điểm
+      const totalScore = (scoreP1 + scoreP2 + scoreP3 + scoreP4).toFixed(2);
+      document.getElementById('finalScore').textContent = totalScore;
+      document.getElementById('scoreBreakdown').textContent = `Phần I: ${scoreP1.toFixed(2)}đ | Phần II: ${scoreP2.toFixed(2)}đ | Phần III: ${scoreP3.toFixed(2)}đ | Phần IV: ${scoreP4.toFixed(2)}đ (Tự đối chiếu)`;
+      document.getElementById('resultModal').classList.remove('hidden');
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    function closeModal() {
-      document.getElementById('result-modal').classList.add('hidden');
-    }
-
-    function closeModalAndReview() {
-      closeModal();
-      scrollToResultDetail();
-    }
-
-    function scrollToResultDetail() {
-      const el = document.getElementById('section-part-1');
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
-    }
-
-    // Làm lại đề hiện tại
-    function resetCurrentExam() {
-      if (!confirm("Bạn có chắc chắn muốn xóa toàn bộ bài làm hiện tại để làm lại từ đầu không?")) return;
-      switchExam(currentExamIndex);
+    function reviewSolutions() {
+      scrollToQ('q_p1_0');
     }
   </script>
 </body>
